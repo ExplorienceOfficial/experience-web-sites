@@ -1,0 +1,39 @@
+/* ========================================
+   THEME VARIABLES (Monochrome Elegance)
+   ======================================== */
+:root {
+    /* Modern Black-White-Grey Palette */
+
+    /* Primary Colors */
+    --primary-color: #FFFFFF;
+    /* Pure White - Primary Accent */
+    --secondary-color: #E5E5E5;
+    /* Light Grey - Secondary Accent */
+
+    /* Background & Text */
+    --bg-color: #000000;
+    /* Pure Black - Deep Background */
+    --text-color: #F5F5F5;
+    /* Off-White - Readable Text */
+
+    /* Accents */
+    --accent-color: #CCCCCC;
+    /* Medium Light Grey - Soft Contrast */
+    --neutral-color: #808080;
+    /* Mid Grey - Subtle Elements */
+
+    /* Dark Shades */
+    --dark-grey: #1A1A1A;
+    /* Almost Black - Subtle Depth */
+    --darker-grey: #0D0D0D;
+    /* Deeper Black - Layering */
+
+    /* UI Elements */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    /* Subtle white tint for glass effect */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    /* Light border for definition */
+
+    /* Typography */
+    --font-main: 'Outfit', sans-serif;
+}

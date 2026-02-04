@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern ve etkileyici bir web deneyimi.">
+    <title>Experience Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/video.css">
+    <link rel="stylesheet" href="css/solutions.css">
+    <link rel="stylesheet" href="css/info.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/story.css">
+    <link rel="stylesheet" href="css/features.css">
+    <link rel="stylesheet" href="css/utilities.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Experience<span class="highlight">.</span></div>
+        <ul class="nav-links">
+            <li><a href="#hero">Ana Sayfa</a></li>
+            <li><a href="#features">Özellikler</a></li>
+            <li><a href="#contact">İletişim</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Video Section 1 (Top) -->
+    <div class="video-scroll-container" id="container-v3">
+        <video class="scroll-video-item" src="assets/video3.mp4" autoplay loop muted playsinline preload="auto"
+            style="width: 100%; height: 100%; object-fit: cover;"></video>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse-icon"></div>
+            <span class="scroll-text">Kaydırın</span>
+        </div>
+    </div>
+
+    <!-- Solutions Section (Cards) -->
+    <section id="solutions" class="solutions-section">
+        <div class="solutions-header">
+            <h2 class="section-title">Çözümlerimiz</h2>
+            <p class="section-subtitle">İşinizi büyütmek için yapay zekâdan yazılıma kadar uçtan uca çözümler sunuyoruz.
+            </p>
+        </div>
+
+        <div class="solutions-container">
+            <!-- AI Solutions Category -->
+            <div class="solution-category" data-category="ai">
+                <h3 class="category-title">Yapay Zekâ Çözümleri</h3>
+                <div class="cards-grid">
+                    <div class="solution-card">
+                        <span class="card-icon">🤖</span>
+                        <h4 class="card-title">ML Modelleri</h4>
+                        <p class="card-description">Özelleştirilmiş makine öğrenimi modelleri ile verilerinizden değer
+                            çıkarın</p>
+                    </div>
+                    <div class="solution-card">
+                        <span class="card-icon">🎯</span>
+                        <h4 class="card-title">Tahmin Sistemleri</h4>
+                        <p class="card-description">Gelişmiş tahmin algoritmaları ile geleceği öngörün</p>
+                    </div>
+                    <div class="solution-card">
+                        <span class="card-icon">⚡</span>
+                        <h4 class="card-title">Otomasyon</h4>
+                        <p class="card-description">Yapay zeka destekli otomasyon ile verimliliği artırın</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Solutions Category -->
+            <div class="solution-category" data-category="data">
+                <h3 class="category-title">Veri Çözümleri</h3>
+                <div class="cards-grid">
+                    <div class="solution-card">
+                        <span class="card-icon">🧹</span>
+                        <h4 class="card-title">Data Cleaning</h4>
+                        <p class="card-description">Verilerinizi temizleyip analiz için hazır hale getirin</p>
+                    </div>
+                    <div class="solution-card">
+                        <span class="card-icon">🎨</span>
+                        <h4 class="card-title">Data Design</h4>
+                        <p class="card-description">Veri mimarinizi optimize edin ve ölçeklenebilir yapılar kurun</p>
+                    </div>
+                    <div class="solution-card">
+                        <span class="card-icon">📈</span>
+                        <h4 class="card-title">Analiz & Raporlama</h4>
+                        <p class="card-description">Görselleştirme ve raporlama ile verilerinizi anlamlandırın</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App Development Category -->
+            <div class="solution-category" data-category="apps">
+                <h3 class="category-title">Uygulama Geliştirme</h3>
+                <div class="cards-grid">
+                    <div class="solution-card">
+                        <span class="card-icon">🌐</span>
+                        <h4 class="card-title">Web Uygulamaları</h4>
+                        <p class="card-description">Modern ve responsive web uygulamaları geliştirin</p>
+                    </div>
+                    <div class="solution-card">
+                        <span class="card-icon">📱</span>
+                        <h4 class="card-title">Mobil Uygulamalar</h4>
+                        <p class="card-description">iOS ve Android için native performanslı uygulamalar</p>
+                    </div>
+                    <div class="solution-card">
+                        <span class="card-icon">🔧</span>
+                        <h4 class="card-title">Backend Sistemleri</h4>
+                        <p class="card-description">Güvenli ve ölçeklenebilir backend altyapıları</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & Mission Section -->
+    <div class="info-wrapper snap-section">
+        <!-- Address Section -->
+        <section class="address-section" id="contact">
+            <div class="address-card">
+                <div class="location-visual">
+                    <div class="map-placeholder">
+                        <div class="map-grid"></div>
+                        <div class="pin-point"></div>
+                    </div>
+                </div>
+                <div class="address-info">
+                    <span class="card-label">OFİSİMİZ</span>
+                    <h3 class="address-title">Ankara, Çankaya</h3>
+                    <p class="address-text">
+                        Teknolojinin kalbinde, inovasyonun merkezindeyiz. <br>
+                        Çankaya'daki modern ofisimizde geleceği tasarlıyoruz.
+                    </p>
+                    <a href="mailto:info@experience.com" class="contact-btn">Bize Ulaşın</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Mission & Vision Section -->
+        <section class="mission-section">
+            <div class="mission-container">
+                <!-- Mission -->
+                <div class="mission-card">
+                    <span class="card-label">MİSYONUMUZ</span>
+                    <h3 class="mission-title">Sınırları Zorlamak</h3>
+                    <p class="mission-text">
+                        Teknolojiyi kullanarak işletmelerin potansiyelini en üst düzeye çıkarmak.
+                        Karmaşık sorunlara basit, etkili ve yenilikçi çözümler üreterek değer yaratmak.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div class="mission-card">
+                    <span class="card-label vision">HEDEFİMİZ</span>
+                    <h3 class="mission-title">Geleceği Şekillendirmek</h3>
+                    <p class="mission-text">
+                        Yapay zeka ve dijital dönüşüm alanında global bir lider olmak.
+                        İnsan hayatını kolaylaştıran ve dünyayı daha iyi bir yer haline getiren teknolojilere öncülük
+                        etmek.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Video Section 2 (Middle) -->
+    <div class="video-scroll-container" id="container-v1">
+        <video class="scroll-video-item" src="assets/video1.mp4" autoplay loop muted playsinline preload="auto"
+            style="width: 100%; height: 100%; object-fit: cover;"></video>
+    </div>
+
+    <!-- Video Section 3 (Bottom) -->
+    <div class="video-scroll-container" id="container-v2">
+        <video class="scroll-video-item" src="assets/video2.mp4" autoplay loop muted playsinline preload="auto"
+            style="width: 100%; height: 100%; object-fit: cover;"></video>
+    </div>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer snap-section">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">Experience<span class="highlight">.</span></div>
+                <p>Geleceği kodluyoruz.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#hero">Ana Sayfa</a>
+                <a href="#solutions">Çözümler</a>
+                <a href="#contact">İletişim</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Experience Web. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Modular JavaScript -->
+    <script src="js/interactions.js"></script>
+    <script src="js/video.js"></script>
+    <script src="js/solutions.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
