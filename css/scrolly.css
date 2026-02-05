@@ -77,12 +77,13 @@
 }
 
 /* Card Styling */
+/* Card Styling */
 .scrolly-card {
     pointer-events: auto;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-left: 4px solid var(--primary-color, #00f5ff);
+    border-left: 4px solid var(--highlight-color);
     padding: 3rem;
     max-width: 500px;
     border-radius: 0 20px 20px 0;
@@ -95,8 +96,167 @@
 /* Right Aligned Cards fix */
 .scrolly-card-wrapper:nth-child(even) .scrolly-card {
     border-left: none;
-    border-right: 4px solid var(--primary-color, #00f5ff);
+    border-right: 4px solid var(--highlight-color);
     border-radius: 20px 0 0 20px;
+}
+
+
+.scrolly-card h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.scrolly-card p {
+    font-size: 1.25rem;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* ========================================
+   TIMELINE (FIXED POSITIONING)
+   ======================================== */
+.scroll-progress-container {
+    position: fixed;
+    top: 50%;
+    /* MOVED FAR LEFT to prevent cutoff */
+    right: 120px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    z-index: 100;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-progress-container.hide-timeline {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-track {
+    position: relative;
+    width: 2px;
+    height: 40vh;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.scroll-progress-bar {
+    width: 100%;
+    height: 0%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    transition: height 0.1s linear;
+}
+
+/* Labels */
+.progress-labels {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    /* Safe distance from line */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+    width: 200px;
+}
+
+.progress-label {
+    text-decoration: none;
+    /* Reset link style */
+    cursor: pointer;
+    pointer-events: auto;
+    /* Enable clicks */
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: right;
+    transition: all 0.3s ease;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    /* Stack main and sub */
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    /* Space out items */
+}
+
+.progress-label .main {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.progress-label .sub {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: 2px;
+    letter-spacing: 1px;
+    opacity: 0;
+    /* Hidden by default */
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Active State for Label */
+.progress-label.active {
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.progress-label.active .sub,
+.progress-label:hover .sub {
+    opacity: 1;
+    color: var(--highlight-color);
+    /* Pop color for sub */
+    transform: translateX(0);
+}
+
+/* ... */
+
+.category-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid var(--highlight-color);
+    color: var(--highlight-color);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/* ... */
+
+.progress-label.child-label.active {
+    opacity: 1;
+    color: var(--highlight-color);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.8), 0 0 20px rgba(0, 245, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+    margin-right: 20px;
+}
+
+/* ... */
+
+.scrolly-card {
+    border-left: none;
+    border-top: 4px solid var(--highlight-color);
+    border-radius: 20px;
+    text-align: center;
 }
 
 .scrolly-card h2 {
@@ -219,7 +379,7 @@
 .progress-label.active .sub,
 .progress-label:hover .sub {
     opacity: 1;
-    color: #00f5ff;
+    color: var(--highlight-color);
     /* Pop color for sub */
     transform: translateX(0);
 }
@@ -272,8 +432,8 @@
 .category-tag {
     display: inline-block;
     padding: 5px 15px;
-    border: 1px solid #00f5ff;
-    color: #00f5ff;
+    border: 1px solid var(--highlight-color);
+    color: var(--highlight-color);
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 700;
@@ -295,7 +455,7 @@
 
 .progress-label.child-label.active {
     opacity: 1;
-    color: #00f5ff;
+    color: var(--highlight-color);
     text-shadow: 0 0 10px rgba(0, 245, 255, 0.8), 0 0 20px rgba(0, 245, 255, 0.5);
     transform: translateY(-50%) scale(1.1);
     margin-right: 20px;
@@ -311,7 +471,7 @@
 
     .scrolly-card {
         border-left: none;
-        border-top: 4px solid var(--primary-color, #00f5ff);
+        border-top: 4px solid var(--primary-color, var(--highlight-color));
         border-radius: 20px;
         text-align: center;
     }

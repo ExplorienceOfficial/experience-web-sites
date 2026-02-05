@@ -56,11 +56,4 @@ function initNavbarScroll() {
     });
 }
 
-// ========================================
-// INTERACTIONS
-// ========================================
-function initInteractions() {
-    // Placeholder for random interaction logic if needed
-    // Currently relying on video.js for main scroll logic
-    console.log("Interactions initialized");
-}
+
