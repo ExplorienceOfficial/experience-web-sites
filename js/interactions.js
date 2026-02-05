@@ -2,8 +2,22 @@
 // USER INTERACTIONS
 // ========================================
 function initInteractions() {
-    initCustomCursor();
+    // Only init custom cursor on non-touch devices
+    if (!isTouchDevice()) {
+        initCustomCursor();
+    } else {
+        // Hide cursor elements on mobile
+        const cursorElements = document.querySelectorAll('.cursor-dot, .cursor-outline');
+        cursorElements.forEach(el => el.style.display = 'none');
+    }
     init3DTilt();
+}
+
+// Detect if device is touch-enabled (mobile/tablet)
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
 }
 
 function initCustomCursor() {

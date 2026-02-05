@@ -40,3 +40,210 @@
     /* Typography */
     --font-main: 'Outfit', sans-serif;
 }
+
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    cursor: none;
+    /* Hide default cursor on desktop */
+}
+
+/* ========================================
+   CUSTOM CURSOR (Desktop Only)
+   ======================================== */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10000;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--highlight-color);
+    box-shadow: 0 0 10px var(--highlight-color);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+body.hovering .cursor-outline {
+    transform: translate(-50%, -50%) scale(1.5);
+    border-color: var(--highlight-color);
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem 5%;
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: 1px;
+}
+
+.logo .highlight {
+    color: var(--highlight-color);
+}
+
+/* Contact Button Styles */
+.contact-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, var(--highlight-color), #00c8d4);
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.5);
+}
+
+/* ========================================
+   FOOTER STYLES
+   ======================================== */
+.modern-footer {
+    background: var(--darker-grey);
+    padding: 3rem 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.footer-brand p {
+    margin-top: 0.5rem;
+    color: var(--neutral-color);
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a,
+.footer-social a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: var(--highlight-color);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--neutral-color);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+@media (max-width: 1024px) and (hover: none) and (pointer: coarse) {
+
+    /* Hide custom cursor on mobile/tablet */
+    body {
+        cursor: auto !important;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    /* Hide timeline/progress bar on mobile and tablet */
+    .scroll-progress-container {
+        display: none !important;
+    }
+
+    /* Adjust navbar for smaller screens */
+    .navbar {
+        padding: 1rem 3%;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    /* Footer adjustments */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-social {
+        justify-content: center;
+    }
+}
