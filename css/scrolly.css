@@ -222,25 +222,7 @@
     margin: 0 auto;
 }
 
-/* Mobile-only: Right edge blur gradient when text is present */
-/* Apply to all slides EXCEPT the first intro slide */
-.scrolly-card-wrapper:not(#sec-intro) .fullscreen-text-slide::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 80px;
-    height: 100vh;
-    height: 100dvh;
-    background: linear-gradient(to left,
-            rgba(0, 0, 0, 0.7) 0%,
-            rgba(0, 0, 0, 0.4) 30%,
-            transparent 100%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    pointer-events: none;
-    z-index: 1;
-}
+
 
 .giant-text {
     font-size: 2.5rem;
@@ -319,10 +301,7 @@
         padding: 1.5rem;
     }
 
-    /* Remove blur gradient on tablet+ */
-    .scrolly-card-wrapper:not(#sec-intro) .fullscreen-text-slide::after {
-        display: none;
-    }
+
 
     .giant-text {
         font-size: 4rem;
