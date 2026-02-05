@@ -7,37 +7,6 @@ function initInteractions() {
 }
 
 function initCustomCursor() {
-    // Check if device is mobile or touch-enabled
-    const isMobile = window.matchMedia("(max-width: 768px)").matches ||
-        window.matchMedia("(pointer: coarse)").matches;
-
-    // Create unique ID for style element
-    const styleId = 'cursor-style-hide';
-    let styleEl = document.getElementById(styleId);
-
-    if (isMobile) {
-        // Hide cursor elements on mobile using CSS
-        if (!styleEl) {
-            styleEl = document.createElement('style');
-            styleEl.id = styleId;
-            styleEl.textContent = `
-                .cursor-dot, .cursor-outline {
-                    display: none !important;
-                }
-                body {
-                    cursor: auto !important;
-                }
-            `;
-            document.head.appendChild(styleEl);
-        }
-        return;
-    } else {
-        // Remove the hiding style if we are on desktop (in case of resize)
-        if (styleEl) {
-            styleEl.remove();
-        }
-    }
-
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
 

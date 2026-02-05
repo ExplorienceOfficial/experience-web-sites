@@ -1,15 +1,14 @@
 /* ========================================
-   SCROLLYTELLING SECTION (MOBILE-FIRST)
+   SCROLLYTELLING SECTION (REPAIRED)
    ======================================== */
 
 /* Main Container */
 .scrolly-container {
     position: relative;
     width: 100%;
-    max-width: 100vw;
     /* Default height, overridden inline for long sections */
     height: 350vh;
-    overflow-x: hidden;
+    background-color: #000;
 }
 
 /* Sticky Wrapper for the Video */
@@ -17,10 +16,7 @@
     position: sticky;
     top: 0;
     width: 100%;
-    max-width: 100vw;
     height: 100vh;
-    /* Fallback */
-    height: 100dvh;
     overflow: hidden;
     z-index: 0;
 }
@@ -28,18 +24,16 @@
 .sticky-video-wrapper video {
     width: 100vw;
     height: 100vh;
-    /* Fallback */
-    height: 100dvh;
     object-fit: cover;
-    opacity: 0.7;
-    filter: brightness(0.6);
+    opacity: 0.6;
+    filter: brightness(0.8);
 }
 
 .sticky-video-wrapper::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
     pointer-events: none;
 }
 
@@ -54,17 +48,27 @@
     pointer-events: none;
 }
 
-/* Cards Wrapper - MOBILE FIRST */
+/* Cards Wrapper */
 .scrolly-card-wrapper {
     height: 100vh;
-    /* Fallback */
-    height: 100dvh;
     display: flex;
     align-items: center;
+    padding: 0 10%;
+    transition: justify-content 0.3s ease;
+}
+
+/* Zig-Zag Layout - REMOVED for Cinematic Uniformity */
+/* All items now center by default or via helper classes */
+.scrolly-card-wrapper {
     justify-content: center;
     text-align: center;
-    padding: 0 1.5rem;
-    transition: justify-content 0.3s ease;
+}
+
+/* Force all slides to be centered and full width */
+.scrolly-card-wrapper:nth-child(odd),
+.scrolly-card-wrapper:nth-child(even) {
+    justify-content: center;
+    text-align: center;
 }
 
 .scrolly-card-wrapper.center-force {
@@ -72,25 +76,33 @@
     text-align: center !important;
 }
 
-/* Card Styling - Simplified for mobile */
+/* Card Styling */
+/* Card Styling */
 .scrolly-card {
     pointer-events: auto;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-top: 3px solid var(--highlight-color);
-    padding: 2rem 1.5rem;
-    max-width: 100%;
-    border-radius: 16px;
+    border-left: 4px solid var(--highlight-color);
+    padding: 3rem;
+    max-width: 500px;
+    border-radius: 0 20px 20px 0;
     will-change: transform, opacity;
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.1s linear;
-    text-align: center;
 }
 
+/* Right Aligned Cards fix */
+.scrolly-card-wrapper:nth-child(even) .scrolly-card {
+    border-left: none;
+    border-right: 4px solid var(--highlight-color);
+    border-radius: 20px 0 0 20px;
+}
+
+
 .scrolly-card h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, #fff, #aaa);
@@ -100,29 +112,25 @@
 }
 
 .scrolly-card p {
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: #ddd;
     line-height: 1.6;
 }
 
 /* ========================================
-   TIMELINE - FORCE HIDDEN ON MOBILE
+   TIMELINE (FIXED POSITIONING)
    ======================================== */
 .scroll-progress-container {
-    display: none !important;
-    /* FORCE hidden on mobile */
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
     position: fixed;
     top: 50%;
+    /* MOVED FAR LEFT to prevent cutoff */
     right: 120px;
     transform: translateY(-50%);
+    display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 0;
-    z-index: -1;
-    /* Negative z-index on mobile */
+    z-index: 100;
     transition: opacity 0.5s ease;
 }
 
@@ -154,6 +162,7 @@
     position: absolute;
     top: 0;
     right: 30px;
+    /* Safe distance from line */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -164,8 +173,11 @@
 
 .progress-label {
     text-decoration: none;
+    /* Reset link style */
     cursor: pointer;
     pointer-events: auto;
+    /* Enable clicks */
+
     font-size: 0.9rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.4);
@@ -174,11 +186,14 @@
     text-align: right;
     transition: all 0.3s ease;
     transform: translateY(-50%);
+
     display: flex;
     flex-direction: column;
+    /* Stack main and sub */
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 20px;
+    /* Space out items */
 }
 
 .progress-label .main {
@@ -192,6 +207,7 @@
     margin-top: 2px;
     letter-spacing: 1px;
     opacity: 0;
+    /* Hidden by default */
     transform: translateX(-10px);
     transition: all 0.3s ease;
 }
@@ -206,34 +222,193 @@
 .progress-label:hover .sub {
     opacity: 1;
     color: var(--highlight-color);
+    /* Pop color for sub */
+    transform: translateX(0);
+}
+
+/* ... */
+
+.category-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid var(--highlight-color);
+    color: var(--highlight-color);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/* ... */
+
+.progress-label.child-label.active {
+    opacity: 1;
+    color: var(--highlight-color);
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.8), 0 0 20px rgba(0, 245, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+    margin-right: 20px;
+}
+
+/* ... */
+
+.scrolly-card {
+    border-left: none;
+    border-top: 4px solid var(--highlight-color);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.scrolly-card h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.scrolly-card p {
+    font-size: 1.25rem;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* ========================================
+   TIMELINE (FIXED POSITIONING)
+   ======================================== */
+.scroll-progress-container {
+    position: fixed;
+    top: 50%;
+    /* MOVED FAR LEFT to prevent cutoff */
+    right: 120px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    z-index: 100;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-progress-container.hide-timeline {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-track {
+    position: relative;
+    width: 2px;
+    height: 40vh;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.scroll-progress-bar {
+    width: 100%;
+    height: 0%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    transition: height 0.1s linear;
+}
+
+/* Labels */
+.progress-labels {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    /* Safe distance from line */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+    width: 200px;
+}
+
+.progress-label {
+    text-decoration: none;
+    /* Reset link style */
+    cursor: pointer;
+    pointer-events: auto;
+    /* Enable clicks */
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: right;
+    transition: all 0.3s ease;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    /* Stack main and sub */
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    /* Space out items */
+}
+
+.progress-label .main {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.progress-label .sub {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: 2px;
+    letter-spacing: 1px;
+    opacity: 0;
+    /* Hidden by default */
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Active State for Label */
+.progress-label.active {
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.progress-label.active .sub,
+.progress-label:hover .sub {
+    opacity: 1;
+    color: var(--highlight-color);
+    /* Pop color for sub */
     transform: translateX(0);
 }
 
 /* ========================================
-   CINEMATIC TYPOGRAPHY (MOBILE OPTIMIZED)
+   CINEMATIC TYPOGRAPHY (NEW)
    ======================================== */
 .fullscreen-text-slide {
     text-align: center;
     position: relative;
     z-index: 10;
-    padding: 1rem;
-    max-width: 95%;
+    /* Ensure it takes distinct space */
+    padding: 2rem;
+    max-width: 60%;
     margin: 0 auto;
 }
 
-
-
 .giant-text {
-    font-size: 2.5rem;
+    font-size: 6rem;
     font-weight: 800;
-    line-height: 1.1;
-    margin: 0 0 1rem 0;
-    letter-spacing: -1px;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -2px;
     background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
     transform: scale(0.9);
     opacity: 0;
     animation: revealText 1s ease forwards;
@@ -247,24 +422,23 @@
 }
 
 .subtitle-text {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.85);
-    margin-top: 0.5rem;
-    letter-spacing: 0.5px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1rem;
+    letter-spacing: 1px;
 }
 
 .category-tag {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 5px 15px;
     border: 1px solid var(--highlight-color);
     color: var(--highlight-color);
     border-radius: 50px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
 /* Child Labels (Nested items) */
@@ -287,132 +461,36 @@
     margin-right: 20px;
 }
 
-/* ========================================
-   TABLET (min-width: 768px)
-   ======================================== */
-@media (min-width: 768px) {
+/* Responsive */
+@media (max-width: 768px) {
     .scrolly-card-wrapper {
-        padding: 0 5%;
-    }
-
-    .fullscreen-text-slide {
-        max-width: 70%;
-        padding: 1.5rem;
-    }
-
-
-
-    .giant-text {
-        font-size: 4rem;
-        letter-spacing: -1.5px;
-    }
-
-    .subtitle-text {
-        font-size: 1.3rem;
-        letter-spacing: 0.8px;
-    }
-
-    .category-tag {
-        font-size: 0.75rem;
-        padding: 5px 14px;
+        justify-content: center;
+        padding-left: 0;
+        padding: 0 20px;
     }
 
     .scrolly-card {
-        padding: 2.5rem;
-        max-width: 600px;
+        border-left: none;
+        border-top: 4px solid var(--primary-color, var(--highlight-color));
+        border-radius: 20px;
+        text-align: center;
     }
 
     .scrolly-card h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
-    .scrolly-card p {
-        font-size: 1.15rem;
-    }
-
-    /* Show timeline on tablet+ */
     .scroll-progress-container {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        z-index: 100;
-        right: 60px;
-        transform: scale(0.85) translateY(-60%);
-    }
-}
-
-/* ========================================
-   DESKTOP (min-width: 1024px)
-   ======================================== */
-@media (min-width: 1024px) {
-    .scrolly-card-wrapper {
-        padding: 0 10%;
-    }
-
-    .fullscreen-text-slide {
-        max-width: 60%;
-        padding: 2rem;
+        right: 20px;
+        /* Closer on mobile */
+        transform: scale(0.8) translateY(-60%);
     }
 
     .giant-text {
-        font-size: 6rem;
-        letter-spacing: -2px;
-    }
-
-    .subtitle-text {
-        font-size: 1.5rem;
-        letter-spacing: 1px;
-    }
-
-    .category-tag {
-        font-size: 0.8rem;
-        padding: 5px 15px;
-    }
-
-    .scrolly-card {
-        padding: 3rem;
-        max-width: 500px;
-    }
-
-    .scrolly-card h2 {
         font-size: 3rem;
     }
 
-    .scrolly-card p {
-        font-size: 1.25rem;
-    }
-
-    .sticky-video-wrapper video {
-        opacity: 0.6;
-        filter: brightness(0.8);
-    }
-
-    .sticky-video-wrapper::after {
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
-    }
-
-    /* Full timeline on desktop */
-    .scroll-progress-container {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        z-index: 100;
-        right: 120px;
-        transform: translateY(-50%) scale(1);
-    }
-}
-
-/* ========================================
-   LARGE DESKTOP (min-width: 1440px)
-   ======================================== */
-@media (min-width: 1440px) {
-    .giant-text {
-        font-size: 7rem;
-    }
-
     .subtitle-text {
-        font-size: 1.6rem;
+        font-size: 1.1rem;
     }
 }
