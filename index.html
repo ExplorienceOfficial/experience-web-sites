@@ -4,7 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Modern ve etkileyici bir web deneyimi.">
+    <meta name="description"
+        content="Explorience ile dijital geleceği keşfedin. Yapay zeka, veri analitiği ve modern web çözümleriyle işinizi dönüştürün.">
+    <meta name="keywords"
+        content="Explorience, Dijital Dönüşüm, Yapay Zeka, Web Tasarım, Veri Analitiği, ERP, Yazılım Çözümleri, Ankara Yazılım Firması">
+    <meta name="author" content="Explorience">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.explorience.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.explorience.com/">
+    <meta property="og:title" content="Explorience - Dijital Geleceği Keşfet">
+    <meta property="og:description"
+        content="Explorience ile dijital geleceği keşfedin. Yapay zeka, veri analitiği ve modern web çözümleriyle işinizi dönüştürün.">
+    <meta property="og:image" content="https://www.explorience.com/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.explorience.com/">
+    <meta property="twitter:title" content="Explorience - Dijital Geleceği Keşfet">
+    <meta property="twitter:description"
+        content="Explorience ile dijital geleceği keşfedin. Yapay zeka, veri analitiği ve modern web çözümleriyle işinizi dönüştürün.">
+    <meta property="twitter:image" content="https://www.explorience.com/assets/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
+    <link rel="manifest" href="site.webmanifest">
     <title>Explorience - Dijital Geleceği Keşfet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,9 +48,19 @@
     <link rel="stylesheet" href="css/features.css">
     <link rel="stylesheet" href="css/scrolly.css?v=4"> <!-- v4 Force Cache Bust -->
     <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/preloader.css">
 </head>
 
 <body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">Explorience<span>.</span></div>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
     <!-- Custom Cursor elements -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
@@ -93,7 +128,7 @@
 
             <div class="scrolly-card-wrapper center-force" id="sec-intro">
                 <div class="fullscreen-text-slide">
-                    <h2 class="giant-text">EXPLORIENCE</h2>
+                    <h1 class="giant-text">EXPLORIENCE</h1>
                     <p class="subtitle-text">Deneyimi Keşfet. Sınırları Yeniden Çiz.</p>
                 </div>
             </div>
@@ -340,6 +375,19 @@
     <script src="js/scrolly.js"></script>
 
     <script src="js/app.js"></script>
+
+    <!-- Preloader Logic -->
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            // Ensure preloader stays for at least 800ms for branding effect
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+                // Optional: Enable body scroll if disabled
+                document.body.style.overflow = 'auto';
+            }, 800);
+        });
+    </script>
 </body>
 
 </html>
