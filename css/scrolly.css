@@ -1,0 +1,336 @@
+/* ========================================
+   SCROLLYTELLING SECTION (REPAIRED)
+   ======================================== */
+
+/* Main Container */
+.scrolly-container {
+    position: relative;
+    width: 100%;
+    /* Default height, overridden inline for long sections */
+    height: 350vh;
+    background-color: #000;
+}
+
+/* Sticky Wrapper for the Video */
+.sticky-video-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.sticky-video-wrapper video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.6;
+    filter: brightness(0.8);
+}
+
+.sticky-video-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+/* Scrollable Content Container */
+.scrolly-text-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Cards Wrapper */
+.scrolly-card-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    transition: justify-content 0.3s ease;
+}
+
+/* Zig-Zag Layout - REMOVED for Cinematic Uniformity */
+/* All items now center by default or via helper classes */
+.scrolly-card-wrapper {
+    justify-content: center;
+    text-align: center;
+}
+
+/* Force all slides to be centered and full width */
+.scrolly-card-wrapper:nth-child(odd),
+.scrolly-card-wrapper:nth-child(even) {
+    justify-content: center;
+    text-align: center;
+}
+
+.scrolly-card-wrapper.center-force {
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Card Styling */
+.scrolly-card {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 4px solid var(--primary-color, #00f5ff);
+    padding: 3rem;
+    max-width: 500px;
+    border-radius: 0 20px 20px 0;
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.1s linear;
+}
+
+/* Right Aligned Cards fix */
+.scrolly-card-wrapper:nth-child(even) .scrolly-card {
+    border-left: none;
+    border-right: 4px solid var(--primary-color, #00f5ff);
+    border-radius: 20px 0 0 20px;
+}
+
+.scrolly-card h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.scrolly-card p {
+    font-size: 1.25rem;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* ========================================
+   TIMELINE (FIXED POSITIONING)
+   ======================================== */
+.scroll-progress-container {
+    position: fixed;
+    top: 50%;
+    /* MOVED FAR LEFT to prevent cutoff */
+    right: 120px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    z-index: 100;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-progress-container.hide-timeline {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-track {
+    position: relative;
+    width: 2px;
+    height: 40vh;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.scroll-progress-bar {
+    width: 100%;
+    height: 0%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    transition: height 0.1s linear;
+}
+
+/* Labels */
+.progress-labels {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    /* Safe distance from line */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+    width: 200px;
+}
+
+.progress-label {
+    text-decoration: none;
+    /* Reset link style */
+    cursor: pointer;
+    pointer-events: auto;
+    /* Enable clicks */
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: right;
+    transition: all 0.3s ease;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    /* Stack main and sub */
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    /* Space out items */
+}
+
+.progress-label .main {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.progress-label .sub {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: 2px;
+    letter-spacing: 1px;
+    opacity: 0;
+    /* Hidden by default */
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Active State for Label */
+.progress-label.active {
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.progress-label.active .sub,
+.progress-label:hover .sub {
+    opacity: 1;
+    color: #00f5ff;
+    /* Pop color for sub */
+    transform: translateX(0);
+}
+
+/* ========================================
+   CINEMATIC TYPOGRAPHY (NEW)
+   ======================================== */
+.fullscreen-text-slide {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    /* Ensure it takes distinct space */
+    padding: 2rem;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.giant-text {
+    font-size: 6rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    transform: scale(0.9);
+    opacity: 0;
+    animation: revealText 1s ease forwards;
+}
+
+@keyframes revealText {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.subtitle-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1rem;
+    letter-spacing: 1px;
+}
+
+.category-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #00f5ff;
+    color: #00f5ff;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/* Child Labels (Nested items) */
+.progress-label.child-label {
+    margin-right: 15px;
+    opacity: 0.6;
+    transform: translateY(-50%) scale(0.9);
+}
+
+.progress-label.child-label .main {
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.progress-label.child-label.active {
+    opacity: 1;
+    color: #00f5ff;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.8), 0 0 20px rgba(0, 245, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+    margin-right: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .scrolly-card-wrapper {
+        justify-content: center;
+        padding-left: 0;
+        padding: 0 20px;
+    }
+
+    .scrolly-card {
+        border-left: none;
+        border-top: 4px solid var(--primary-color, #00f5ff);
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .scrolly-card h2 {
+        font-size: 2rem;
+    }
+
+    .scroll-progress-container {
+        right: 20px;
+        /* Closer on mobile */
+        transform: scale(0.8) translateY(-60%);
+    }
+
+    .giant-text {
+        font-size: 3rem;
+    }
+
+    .subtitle-text {
+        font-size: 1.1rem;
+    }
+}

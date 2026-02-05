@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Modern ve etkileyici bir web deneyimi.">
-    <title>Experience Web</title>
+    <title>Explorience - Dijital Geleceği Keşfet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -16,18 +16,19 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/video.css">
-    <link rel="stylesheet" href="css/solutions.css">
+
     <link rel="stylesheet" href="css/info.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/story.css">
     <link rel="stylesheet" href="css/features.css">
+    <link rel="stylesheet" href="css/scrolly.css?v=4"> <!-- v4 Force Cache Bust -->
     <link rel="stylesheet" href="css/utilities.css">
 </head>
 
 <body>
 
     <nav class="navbar">
-        <div class="logo">Experience<span class="highlight">.</span></div>
+        <div class="logo">Explorience<span class="highlight">.</span></div>
         <ul class="nav-links">
             <li><a href="#hero">Ana Sayfa</a></li>
             <li><a href="#features">Özellikler</a></li>
@@ -35,166 +36,288 @@
         </ul>
     </nav>
 
+    <!-- Timeline Progress Bar -->
+    <div class="scroll-progress-container">
+        <!-- Labels side -->
+        <div class="progress-labels">
+            <a href="#sec-intro" class="progress-label active" data-target="0">
+                <span class="main">Giriş</span>
+            </a>
 
-    <!-- Video Section 1 (Top) -->
-    <div class="video-scroll-container" id="container-v3">
-        <video class="scroll-video-item" src="assets/video3.mp4" autoplay loop muted playsinline preload="auto"
-            style="width: 100%; height: 100%; object-fit: cover;"></video>
+            <a href="#sec-vision" class="progress-label" data-target="15">
+                <span class="main">Hakkımızda</span>
+            </a>
 
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="mouse-icon"></div>
-            <span class="scroll-text">Kaydırın</span>
+            <a href="#sec-mission-slide" class="progress-label child-label" data-target="20">
+                <span class="main">Misyon</span>
+            </a>
+            <a href="#sec-vision-slide" class="progress-label child-label" data-target="25">
+                <span class="main">Vizyon</span>
+            </a>
+
+            <a href="#sec-solutions" class="progress-label" data-target="35">
+                <span class="main">Çözümler</span>
+            </a>
+
+            <a href="#sec-ai" class="progress-label child-label" data-target="45">
+                <span class="main">Yapay Zeka</span>
+            </a>
+            <a href="#sec-data" class="progress-label child-label" data-target="55">
+                <span class="main">Veri & Analitik</span>
+            </a>
+            <a href="#sec-erp" class="progress-label child-label" data-target="65">
+                <span class="main">ERP & Kurumsal</span>
+            </a>
+            <a href="#sec-apps" class="progress-label child-label" data-target="75">
+                <span class="main">Web & Mobil</span>
+            </a>
+
+            <a href="#sec-contact" class="progress-label" data-target="95">
+                <span class="main">İletişim</span>
+            </a>
+        </div>
+
+        <!-- The Line -->
+        <div class="progress-track">
+            <div class="scroll-progress-bar"></div>
         </div>
     </div>
 
-    <!-- Solutions Section (Cards) -->
-    <section id="solutions" class="solutions-section">
-        <div class="solutions-header">
-            <h2 class="section-title">Çözümlerimiz</h2>
-            <p class="section-subtitle">İşinizi büyütmek için yapay zekâdan yazılıma kadar uçtan uca çözümler sunuyoruz.
-            </p>
+
+    <!-- 1. INTRO (Video 1) -->
+    <div class="scrolly-container" style="height: 400vh;">
+        <div class="sticky-video-wrapper">
+            <video class="scroll-video-item" src="assets/video1.mp4" autoplay loop muted playsinline preload="auto"
+                style="filter: brightness(0.5);"></video>
         </div>
 
-        <div class="solutions-container">
-            <!-- AI Solutions Category -->
-            <div class="solution-category" data-category="ai">
-                <h3 class="category-title">Yapay Zekâ Çözümleri</h3>
-                <div class="cards-grid">
-                    <div class="solution-card">
-                        <span class="card-icon">🤖</span>
-                        <h4 class="card-title">ML Modelleri</h4>
-                        <p class="card-description">Özelleştirilmiş makine öğrenimi modelleri ile verilerinizden değer
-                            çıkarın</p>
-                    </div>
-                    <div class="solution-card">
-                        <span class="card-icon">🎯</span>
-                        <h4 class="card-title">Tahmin Sistemleri</h4>
-                        <p class="card-description">Gelişmiş tahmin algoritmaları ile geleceği öngörün</p>
-                    </div>
-                    <div class="solution-card">
-                        <span class="card-icon">⚡</span>
-                        <h4 class="card-title">Otomasyon</h4>
-                        <p class="card-description">Yapay zeka destekli otomasyon ile verimliliği artırın</p>
-                    </div>
+        <div class="scrolly-text-content">
+
+            <div class="scrolly-card-wrapper center-force" id="sec-intro">
+                <div class="fullscreen-text-slide">
+                    <h2 class="giant-text">EXPLORIENCE</h2>
+                    <p class="subtitle-text">Deneyimi Keşfet. Sınırları Yeniden Çiz.</p>
                 </div>
             </div>
 
-            <!-- Data Solutions Category -->
-            <div class="solution-category" data-category="data">
-                <h3 class="category-title">Veri Çözümleri</h3>
-                <div class="cards-grid">
-                    <div class="solution-card">
-                        <span class="card-icon">🧹</span>
-                        <h4 class="card-title">Data Cleaning</h4>
-                        <p class="card-description">Verilerinizi temizleyip analiz için hazır hale getirin</p>
-                    </div>
-                    <div class="solution-card">
-                        <span class="card-icon">🎨</span>
-                        <h4 class="card-title">Data Design</h4>
-                        <p class="card-description">Veri mimarinizi optimize edin ve ölçeklenebilir yapılar kurun</p>
-                    </div>
-                    <div class="solution-card">
-                        <span class="card-icon">📈</span>
-                        <h4 class="card-title">Analiz & Raporlama</h4>
-                        <p class="card-description">Görselleştirme ve raporlama ile verilerinizi anlamlandırın</p>
-                    </div>
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">YENİ NESİL</span>
+                    <h2 class="giant-text">DİNAMİK</h2>
+                    <p class="subtitle-text">Teknoloji dünyasına taze, cesur ve<br>yenilikçi bir bakış açısı
+                        getiriyoruz.</p>
                 </div>
             </div>
 
-            <!-- App Development Category -->
-            <div class="solution-category" data-category="apps">
-                <h3 class="category-title">Uygulama Geliştirme</h3>
-                <div class="cards-grid">
-                    <div class="solution-card">
-                        <span class="card-icon">🌐</span>
-                        <h4 class="card-title">Web Uygulamaları</h4>
-                        <p class="card-description">Modern ve responsive web uygulamaları geliştirin</p>
-                    </div>
-                    <div class="solution-card">
-                        <span class="card-icon">📱</span>
-                        <h4 class="card-title">Mobil Uygulamalar</h4>
-                        <p class="card-description">iOS ve Android için native performanslı uygulamalar</p>
-                    </div>
-                    <div class="solution-card">
-                        <span class="card-icon">🔧</span>
-                        <h4 class="card-title">Backend Sistemleri</h4>
-                        <p class="card-description">Güvenli ve ölçeklenebilir backend altyapıları</p>
-                    </div>
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">VİZYON</span>
+                    <h2 class="giant-text">KEŞİF</h2>
+                    <p class="subtitle-text">Bilinmeyeni görünür kılan dijital çözümler.</p>
                 </div>
             </div>
+
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <p class="subtitle-text" style="opacity: 0.6; font-size: 1rem;">KEŞFETMEK İÇİN KAYDIR</p>
+                    <div style="width: 2px; height: 50px; background: rgba(255,255,255,0.5); margin: 20px auto;"></div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
 
-    <!-- Info & Mission Section -->
-    <div class="info-wrapper snap-section">
-        <!-- Address Section -->
-        <section class="address-section" id="contact">
-            <div class="address-card">
-                <div class="location-visual">
-                    <div class="map-placeholder">
-                        <div class="map-grid"></div>
-                        <div class="pin-point"></div>
+    <!-- 2. VISION / ABOUT (Video 2) -->
+    <div class="scrolly-container" style="height: 500vh;">
+        <div class="sticky-video-wrapper">
+            <video class="scroll-video-item" src="assets/video2.mp4" autoplay loop muted playsinline preload="auto"
+                style="filter: brightness(0.4);"></video>
+        </div>
+
+        <div class="scrolly-text-content">
+            <!-- Intro Concept -->
+            <div class="scrolly-card-wrapper center-force" id="sec-vision">
+                <div class="fullscreen-text-slide">
+                    <h2 class="giant-text">HİKAYEMİZ</h2>
+                    <p class="subtitle-text">Yeni bir yolculuk başlıyor.</p>
+                </div>
+            </div>
+
+            <!-- Mission -->
+            <div class="scrolly-card-wrapper center-force" id="sec-mission-slide">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">MİSYON</span>
+                    <h2 class="giant-text">Dönüşüm</h2>
+                    <p class="subtitle-text">Kuralları yeniden yazmak ve işletmeleri geleceğe taşımak için buradayız.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Vision -->
+            <div class="scrolly-card-wrapper center-force" id="sec-vision-slide">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">VİZYON</span>
+                    <h2 class="giant-text">Global</h2>
+                    <p class="subtitle-text">Henüz başlangıçtayız ama hedefimiz dünya.</p>
+                </div>
+            </div>
+
+            <!-- Approach -->
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">YAKLAŞIM</span>
+                    <h2 class="giant-text">Tutku</h2>
+                    <p class="subtitle-text">Genç, dinamik ve başarıya aç bir ekibiz.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 3. SOLUTIONS (Video 3) -->
+    <div class="scrolly-container" style="height: 950vh;">
+        <div class="sticky-video-wrapper">
+            <video class="scroll-video-item" src="assets/video3.mp4" autoplay loop muted playsinline preload="auto"
+                style="filter: brightness(0.3);"></video>
+        </div>
+
+        <div class="scrolly-text-content">
+
+            <!-- Intro Slide -->
+            <div class="scrolly-card-wrapper center-force" id="sec-solutions">
+                <div class="fullscreen-text-slide">
+                    <h2 class="giant-text">ÇÖZÜMLER</h2>
+                    <p class="subtitle-text">Modern Sorunlara Yeni Nesil Yanıtlar</p>
+                </div>
+            </div>
+
+            <!-- AI SECTION -->
+            <div class="scrolly-card-wrapper center-force" id="sec-ai">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">YAPAY ZEKA</span>
+                    <h2 class="giant-text">GenAI & LLM</h2>
+                    <p class="subtitle-text">İş süreçlerinizi otonomlaştıran akıllı asistanlar ve özel modeller. RAG
+                        mimarisiyle, kurum içi verilerinizi güvenle kullanan yapay zeka çözümleri geliştiriyoruz.</p>
+                </div>
+            </div>
+
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">YAPAY ZEKA</span>
+                    <h2 class="giant-text">Tahmin</h2>
+                    <p class="subtitle-text">Geleceği öngören gelişmiş makine öğrenimi algoritmaları. Talep tahmini,
+                        müşteri kaybı analizi ve dinamik fiyatlama modelleriyle belirsizliği ortadan kaldırın.</p>
+                </div>
+            </div>
+
+            <!-- DATA SECTION -->
+            <div class="scrolly-card-wrapper center-force" id="sec-data">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">BÜYÜK VERİ</span>
+                    <h2 class="giant-text">Mimari</h2>
+                    <p class="subtitle-text">Ölçeklenebilir Data Warehouse ve Lakehouse tasarımları. Verilerinizi
+                        silolardan kurtarıyor, modern bulut mimarileri üzerinde tek bir gerçeklik kaynağı (SSOT)
+                        yaratıyoruz.</p>
+                </div>
+            </div>
+
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">VERİ MÜHENDİSLİĞİ</span>
+                    <h2 class="giant-text">Pipeline</h2>
+                    <p class="subtitle-text">Kesintisiz ve gerçek zamanlı veri akış sistemleri (ETL/ELT). Karmaşık veri
+                        kaynaklarını saniyeler içinde işleyerek analitiğe hazır hale getiriyoruz.</p>
+                </div>
+            </div>
+
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">ANALİTİK</span>
+                    <h2 class="giant-text">İçgörü</h2>
+                    <p class="subtitle-text">Ham veriden stratejik kararlara giden en kısa yol. Power BI ve Tableau
+                        entegrasyonlarıyla, verinin anlattığı hikayeyi herkesin anlamasını sağlıyoruz.</p>
+                </div>
+            </div>
+
+            <!-- ERP SECTION -->
+            <div class="scrolly-card-wrapper center-force" id="sec-erp">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">KURUMSAL</span>
+                    <h2 class="giant-text">ERP & CRM</h2>
+                    <p class="subtitle-text">Şirket kaynaklarınızı tek merkezden yönetin, verimliliği artırın. İhtiyaca
+                        özel modüllerle süreçlerinizi dijitalleştiriyor, insan hatasını minimize ediyoruz.</p>
+                </div>
+            </div>
+
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">ENTEGRASYON</span>
+                    <h2 class="giant-text">API & Microservis</h2>
+                    <p class="subtitle-text">Dağınık sistemleri birbirine bağlayan güçlü altyapılar. Eski (legacy)
+                        sistemlerinizi modern dünyayla konuşturuyor, esnek ve güvenli entegrasyonlar kuruyoruz.</p>
+                </div>
+            </div>
+
+            <!-- APP SECTION -->
+            <div class="scrolly-card-wrapper center-force" id="sec-apps">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">DİJİTAL YÜZÜNÜZ</span>
+                    <h2 class="giant-text">Web & Mobil</h2>
+                    <p class="subtitle-text">iOS, Android ve Web'de kullanıcı deneyimini zirveye taşıyan arayüzler.
+                        React Native ve Flutter ile cross-platform, Next.js ile ultra hızlı web deneyimleri sunuyoruz.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 4. CONTACT (Video 1 reused) -->
+    <div class="scrolly-container" style="height: 350vh;">
+        <div class="sticky-video-wrapper">
+            <video class="scroll-video-item" src="assets/video1.mp4" autoplay loop muted playsinline preload="auto"
+                style="filter: brightness(0.4);"></video>
+        </div>
+
+        <div class="scrolly-text-content">
+
+            <!-- Call to Action -->
+            <div class="scrolly-card-wrapper center-force" id="sec-contact">
+                <div class="fullscreen-text-slide">
+                    <h2 class="giant-text">HAZIR MISIN?</h2>
+                    <p class="subtitle-text">Geleceği bugünden inşa etmeye başla.</p>
+                </div>
+            </div>
+
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <h2 class="giant-text">BİZE KATIL</h2>
+                    <a href="#contact" class="contact-btn" style="margin-top: 30px; transform: scale(1.5);">Hemen
+                        İletişime Geç</a>
+                </div>
+            </div>
+
+            <!-- LOCATION / ADDRESS -->
+            <div class="scrolly-card-wrapper center-force">
+                <div class="fullscreen-text-slide">
+                    <span class="category-tag">OFİSİMİZ</span>
+                    <h2 class="giant-text" style="font-size: 4rem;">ANKARA</h2>
+                    <p class="subtitle-text">Çankaya, Teknoloji Vadisi<br>No: 123, Kat: 5</p>
+                    <div style="margin-top: 2rem; font-size: 1.2rem; color: rgba(255,255,255,0.7);">
+                        info@explorience.com<br>
+                        +90 555 000 00 00
                     </div>
                 </div>
-                <div class="address-info">
-                    <span class="card-label">OFİSİMİZ</span>
-                    <h3 class="address-title">Ankara, Çankaya</h3>
-                    <p class="address-text">
-                        Teknolojinin kalbinde, inovasyonun merkezindeyiz. <br>
-                        Çankaya'daki modern ofisimizde geleceği tasarlıyoruz.
-                    </p>
-                    <a href="mailto:info@experience.com" class="contact-btn">Bize Ulaşın</a>
-                </div>
             </div>
-        </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Mission & Vision Section -->
-        <section class="mission-section">
-            <div class="mission-container">
-                <!-- Mission -->
-                <div class="mission-card">
-                    <span class="card-label">MİSYONUMUZ</span>
-                    <h3 class="mission-title">Sınırları Zorlamak</h3>
-                    <p class="mission-text">
-                        Teknolojiyi kullanarak işletmelerin potansiyelini en üst düzeye çıkarmak.
-                        Karmaşık sorunlara basit, etkili ve yenilikçi çözümler üreterek değer yaratmak.
-                    </p>
-                </div>
-
-                <!-- Vision -->
-                <div class="mission-card">
-                    <span class="card-label vision">HEDEFİMİZ</span>
-                    <h3 class="mission-title">Geleceği Şekillendirmek</h3>
-                    <p class="mission-text">
-                        Yapay zeka ve dijital dönüşüm alanında global bir lider olmak.
-                        İnsan hayatını kolaylaştıran ve dünyayı daha iyi bir yer haline getiren teknolojilere öncülük
-                        etmek.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Video Section 2 (Middle) -->
-    <div class="video-scroll-container" id="container-v1">
-        <video class="scroll-video-item" src="assets/video1.mp4" autoplay loop muted playsinline preload="auto"
-            style="width: 100%; height: 100%; object-fit: cover;"></video>
-    </div>
-
-    <!-- Video Section 3 (Bottom) -->
-    <div class="video-scroll-container" id="container-v2">
-        <video class="scroll-video-item" src="assets/video2.mp4" autoplay loop muted playsinline preload="auto"
-            style="width: 100%; height: 100%; object-fit: cover;"></video>
+        </div>
     </div>
 
     <!-- Modern Footer -->
     <footer class="modern-footer snap-section">
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="logo">Experience<span class="highlight">.</span></div>
+                <div class="logo">Explorience<span class="highlight">.</span></div>
                 <p>Geleceği kodluyoruz.</p>
             </div>
             <div class="footer-links">
@@ -209,14 +332,15 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Experience Web. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 Explorience. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
     <!-- Modular JavaScript -->
     <script src="js/interactions.js"></script>
     <script src="js/video.js"></script>
-    <script src="js/solutions.js"></script>
+    <script src="js/scrolly.js"></script>
+
     <script src="js/app.js"></script>
 </body>
 

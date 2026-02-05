@@ -3,8 +3,13 @@
    ======================================== */
 
 /* Parent container for snap scrolling */
+/* Parent container for snap scrolling - DISABLED for Scrollytelling
 html {
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+*/
+html {
     scroll-behavior: smooth;
 }
 

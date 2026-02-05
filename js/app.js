@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initVideoScroll();
     initInteractions();
     initNavbarScroll(); // Navbar logic
-    if (typeof initSolutions === 'function') initSolutions();
+
 
     // Optional: Hero animations if elements exist
     if (document.querySelector('.reveal-text')) {
@@ -31,12 +31,28 @@ function initNavbarScroll() {
     const nav = document.querySelector('.navbar');
     if (!nav) return;
 
+    let lastScrollY = window.scrollY;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        const currentScrollY = window.scrollY;
+
+        // 1. Logic for background style (transparency vs solid)
+        if (currentScrollY > 50) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
+
+        // 2. Logic for Hide/Show on scroll direction
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling DOWN -> Hide
+            nav.classList.add('hidden');
+        } else {
+            // Scrolling UP -> Show
+            nav.classList.remove('hidden');
+        }
+
+        lastScrollY = currentScrollY;
     });
 }
 
