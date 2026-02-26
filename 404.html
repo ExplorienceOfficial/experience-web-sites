@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sayfa Bulunamadı - Explorience</title>
+    <title data-i18n="error_404_title">Sayfa Bulunamadı - Explorience</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/base.css">
@@ -56,9 +56,15 @@
 </head>
 
 <body>
+    <div class="nav-controls" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
     <h1>404</h1>
-    <p>Üzgünüz, aradığınız sayfa uzay boşluğunda kaybolmuş olabilir.</p>
-    <a href="/" class="btn-home">Ana Sayfaya Dön</a>
+    <p data-i18n="error_404_message">Üzgünüz, aradığınız sayfa uzay boşluğunda kaybolmuş olabilir.</p>
+    <a href="/" class="btn-home" data-i18n="error_404_btn">Ana Sayfaya Dön</a>
+
+    <script src="language/tr.js"></script>
+    <script src="language/en.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/i18n.js"></script>
 </body>
 
 </html>

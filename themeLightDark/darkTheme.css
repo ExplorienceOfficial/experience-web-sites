@@ -1,0 +1,33 @@
+:root {
+    /* ── Deep Purple Night Palette ── */
+    --primary-color: #E8E4F0;
+    --secondary-color: #C4B5D9;
+    --bg-color: #0B0A12;
+    --text-color: #E8E4F0;
+    --accent-color: #9B8EC4;
+    --neutral-color: #6B6187;
+    --highlight-color: #A78BFA;
+    --dark-grey: #13111D;
+    --darker-grey: #0E0D16;
+
+    --glass-bg: rgba(167, 139, 250, 0.04);
+    --glass-border: rgba(167, 139, 250, 0.12);
+
+    --nav-bg: rgba(11, 10, 18, 0.4);
+    --nav-scrolled-bg: rgba(11, 10, 18, 0.92);
+    --footer-bg: #0E0D16;
+    --footer-border: rgba(167, 139, 250, 0.08);
+
+    /* Scrolly Specific */
+    --scrolly-bg: #0B0A12;
+    --scrolly-overlay: linear-gradient(to right, rgba(11, 10, 18, 0.75) 0%, transparent 100%);
+    --card-bg: rgba(167, 139, 250, 0.04);
+    --card-text: #C4B5D9;
+    --title-gradient: linear-gradient(135deg, #E8E4F0, #A78BFA);
+    --progress-track-bg: rgba(167, 139, 250, 0.12);
+    --progress-bar-bg: #A78BFA;
+    --label-color: rgba(232, 228, 240, 0.35);
+    --label-active: #E8E4F0;
+    --giant-text-gradient: linear-gradient(135deg, #E8E4F0 0%, #A78BFA 100%);
+    --subtitle-color: rgba(232, 228, 240, 0.75);
+}

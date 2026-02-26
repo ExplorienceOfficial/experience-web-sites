@@ -17,27 +17,21 @@ function isTouchDevice() {
 
 function initCustomCursor() {
     const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
 
-    if (!cursorDot || !cursorOutline) return;
+    if (!cursorDot) return;
 
     window.addEventListener('mousemove', (e) => {
         const posX = e.clientX;
         const posY = e.clientY;
 
-        // Dot follows immediately
+        // Dot follows with a tiny bit of smooth interp via CSS transitions if needed, 
+        // but JS update is immediate for precision.
         cursorDot.style.left = `${posX}px`;
         cursorDot.style.top = `${posY}px`;
-
-        // Outline follows with a slight delay (using animate for smoother performance)
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
     });
 
     // Add hover effect for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .progress-label, input, textarea, select');
+    const interactiveElements = document.querySelectorAll('a, button, .progress-label, input, textarea, select, .social-link');
 
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
