@@ -182,11 +182,11 @@ function initScrollyObjects() {
             let ty = parseFloat(activeCard.getAttribute('data-ty')) || 0;
             let scale = parseFloat(activeCard.getAttribute('data-scale')) || 1;
             
-            // Eğer mobildeysek, objeyi ekranın üst yarısına al (ty = -25) ve küçült, sağa sola kaymayı (tx) iptal et ki metinle çakışmasın
+            // Eğer mobildeysek, objeyi ekranın üst yarısına al (ty = -35) ve küçült, sağa sola kaymayı (tx) iptal et ki metinle çakışmasın
             if (isMobile) {
                 tx = 0;
-                ty = -25;
-                scale = scale * 0.7; // Mobilde objeleri ufaltıyoruz
+                ty = -35; 
+                scale = scale * 0.55; // Mobilde objeleri ufaltıyoruz ve daha yukarı itiyoruz
             }
 
             const baseRx = parseFloat(activeCard.getAttribute('data-rx')) || 0;

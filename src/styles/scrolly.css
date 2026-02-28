@@ -323,7 +323,8 @@
     .scrolly-card-wrapper {
         justify-content: center !important;
         align-items: flex-end !important;
-        padding: 0 5% 10vh 5% !important;
+        /* Padding pushed strongly to the bottom to force texts away from top center 3d objects */
+        padding: 40vh 5% 5vh 5% !important;
     }
 
     .scrolly-card {
@@ -355,12 +356,15 @@
     .fullscreen-text-slide {
         max-width: 100% !important;
         text-align: center !important;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px;
         padding: 1.5rem !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        /* Ensure it goes to the bottom of the visible container */
+        margin-top: auto;
     }
 
     .category-tag {
