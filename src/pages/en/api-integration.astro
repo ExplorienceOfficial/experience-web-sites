@@ -8,34 +8,106 @@ const t = useTranslations(lang);
 ---
 
 <DetailLayout 
-  title="API & Microservices Integration | Explorience"
-  description="Connect your systems. Scalable, secure, and flexible microservices architectures."
   lang={lang}
+  title={`API & Microservices Integration - Explorience`}
+  description="Connect your systems. Scalable, secure, and flexible microservices architectures."
 >
   <div slot="showcase">
     <ScrollyNetwork />
   </div>
 
-  <div class="detail-section">
-    <span class="category-tag">INTEGRATION</span>
-    <h1 class="giant-text">API Ecosystem</h1>
-    <p class="subtitle-text">
-       Bridges between fragmented systems. We synchronize your business processes with modern API architectures.
-    </p>
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">SEAMLESS CONNECTION</span>
+      <h1 class="detail-title">API & Microservices</h1>
+      <p class="detail-intro">
+        We build digital bridges between fragmented systems. Integrate your business anywhere with modern and flexible architectures.
+      </p>
+    </section>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3>Microservices</h3>
-        <p>Distributed and scalable infrastructures.</p>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Cloud-Native Microservices</h3>
+        <p>Break free from bulky monolithic structures. We design microservices architectures that update fast, scale independently, and are failure-resistant.</p>
       </div>
-      <div class="feature-card">
-        <h3>API Gateway</h3>
-        <p>Secure and fast traffic management.</p>
+
+      <div class="detail-card">
+        <h3>API Gateway & Security</h3>
+        <p>Secure communication with the outside world. Maintain full control of your API traffic with rate limiting, JWT authorization, and detailed audit logs.</p>
       </div>
-      <div class="feature-card">
-        <h3>Webhooks</h3>
-        <p>Event-driven real-time systems.</p>
+
+      <div class="detail-card">
+        <h3>Cross-System Sync</h3>
+        <p>Let your ERP, CRM, and e-commerce platforms talk instantly. Stock, order, and customer data should never lose synchronization.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Third-Party Integration</h3>
+        <p>Enrich your application in seconds with payment systems (iyzico, Stripe), shipping services, or social media APIs.</p>
       </div>
     </div>
+
+    <section class="long-form-section">
+      <div class="section-badge">OUR ARCHITECTURE</div>
+      <h2>Why Microservices are Freedom?</h2>
+      <p>
+        In growing businesses, managing a single large software application slows down development. Microservices allow each business unit to grow with its own software without affecting others. At Explorience, we manage this transition with the principle of <strong>"Seamless Integration."</strong>
+      </p>
+      <ul class="feature-list">
+        <li><strong>Zero Downtime:</strong> Your users continue to receive service even as your systems are updated.</li>
+        <li><strong>Tech Independence:</strong> Each service can be written in the language best suited for its needs (Node.js, Go, Python).</li>
+        <li><strong>Fast Bug Fixing:</strong> We isolate and fix only the service where the error exists.</li>
+      </ul>
+    </section>
   </div>
 </DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
+    font-size: 1.1rem;
+  }
+
+  .feature-list li strong {
+    color: #fff;
+  }
+</style>

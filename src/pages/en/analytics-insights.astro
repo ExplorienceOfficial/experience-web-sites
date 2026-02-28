@@ -8,34 +8,106 @@ const t = useTranslations(lang);
 ---
 
 <DetailLayout 
-  title="Analytics & Insights | Explorience"
-  description="Power your decision-making processes with data. We transform complex data into meaningful stories."
   lang={lang}
+  title={`Analytics & Insights - Explorience`}
+  description="Power your decision-making processes with data. We transform complex data into meaningful stories."
 >
   <div slot="showcase">
     <ScrollyAnalytics />
   </div>
 
-  <div class="detail-section">
-    <span class="category-tag">ANALYTICS</span>
-    <h1 class="giant-text">Next-Gen Insight</h1>
-    <p class="subtitle-text">
-      Draw meaningful conclusions from complex data sets. Reporting isn't enough; you need to understand the story.
-    </p>
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">DATA TO ACTION</span>
+      <h1 class="detail-title">Analytics & Insights</h1>
+      <p class="detail-intro">
+         We don't just report; we find the hidden opportunities within your data. Accurate insight means strategic superiority.
+      </p>
+    </section>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3>Power BI & Tableau</h3>
-        <p>Talk to your data with advanced visualization tools.</p>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Power BI & Tableau Visualization</h3>
+        <p>Break free from static excel tables. Monitor your operations in real-time with interactive, live, and smart dashboards accessible from any device.</p>
       </div>
-      <div class="feature-card">
-        <h3>Predictive Models</h3>
-        <p>Statistical analyses that foresee the future from past data.</p>
+
+      <div class="detail-card">
+        <h3>Advanced Forecasting</h3>
+        <p>See the future from past data. Analyze demand forecasting, financial projections, and market trends with our statistical models.</p>
       </div>
-      <div class="feature-card">
-        <h3>Autonomous Dashboard</h3>
-        <p>Self-updating smart reporting systems.</p>
+
+      <div class="detail-card">
+        <h3>Customer Analytics</h3>
+        <p>Make sense of your customers' behavior. Optimize your marketing budget with segmentation, Churn analysis, and "Lifetime Value" calculations.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Actionable Decision Systems</h3>
+        <p>We design systems that provide automatic alerts or take actions (actionable analytics) when specific conditions are met.</p>
       </div>
     </div>
+
+    <section class="long-form-section">
+      <div class="section-badge">OUR STRATEGY</div>
+      <h2>Go Beyond the Numbers</h2>
+      <p>
+        Data analytics is not a destination, but a journey. At Explorience, we manage the entire process end-to-end, from cleaning raw data to strategic reports presented to the highest level of management.
+      </p>
+      <ul class="feature-list">
+        <li><strong>User-Centric Design:</strong> Our dashboards are designed for business owners, not just technical teams, making them easy and intuitive to understand.</li>
+        <li><strong>Deep-Dive Analysis:</strong> We don't just answer "what happened"; we answer "why it happened" and "what will happen."</li>
+        <li><strong>Data Culture:</strong> We provide the necessary infrastructure to foster a data-driven decision-making culture within your organization.</li>
+      </ul>
+    </section>
   </div>
 </DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
+    font-size: 1.1rem;
+  }
+
+  .feature-list li strong {
+    color: #fff;
+  }
+</style>

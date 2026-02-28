@@ -8,34 +8,106 @@ const t = useTranslations(lang);
 ---
 
 <DetailLayout 
-  title="API & Mikroservis Entegrasyonu | Explorience"
-  description="Sistemlerinizi birbirine bağlayın. Ölçeklenebilir, güvenli ve esnek microservices mimarileri."
   lang={lang}
+  title={`API & Mikroservis Entegrasyonu - Explorience`}
+  description="Sistemlerinizi birbirine bağlayın. Ölçeklenebilir, güvenli ve esnek microservices mimarileri."
 >
   <div slot="showcase">
     <ScrollyNetwork />
   </div>
 
-  <div class="detail-section">
-    <span class="category-tag">ENTEGRASYON</span>
-    <h1 class="giant-text">API Ecosystem</h1>
-    <p class="subtitle-text">
-      Parçalanmış sistemler arasında köprüler kuruyoruz. Modern API mimarileriyle iş süreçlerinizi senkronize ediyoruz.
-    </p>
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">KESİNTİSİZ BAĞLANTI</span>
+      <h1 class="detail-title">API & Microservices</h1>
+      <p class="detail-intro">
+        Parçalanmış sistemler arasında dijital köprüler kuruyoruz. Modern ve esnek mimarilerle işinizi her yere entegre edin.
+      </p>
+    </section>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3>Microservices</h3>
-        <p>Dağınık ve ölçeklenebilir altyapılar.</p>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Cloud-Native Microservices</h3>
+        <p>Hantal monolitik yapılardan kurtulun. Hızlı güncellenen, bağımsız ölçeklenen ve hataya dayanıklı mikroservis mimarileri tasarlıyoruz.</p>
       </div>
-      <div class="feature-card">
-        <h3>API Gateway</h3>
-        <p>Güvenli ve hızlı trafik yönetimi.</p>
+
+      <div class="detail-card">
+        <h3>API Gateway & Güvenlik</h3>
+        <p>Dış dünya ile güvenli iletişim. Rate limiting, JWT yetkilendirme ve detaylı audit logları ile API trafiğinizi tam kontrol altında tutun.</p>
       </div>
-      <div class="feature-card">
-        <h3>Webhooks</h3>
-        <p>Olay tabanlı (event-driven) gerçek zamanlı sistemler.</p>
+
+      <div class="detail-card">
+        <h3>Sistemler Arası Senkronizasyon</h3>
+        <p>ERP, CRM ve e-ticaret platformlarınızı anlık olarak konuşturun. Stok, sipariş ve müşteri verisi hiçbir zaman senkronizasyon kaybetmesin.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Üçüncü Parti Entegrasyon</h3>
+        <p>Ödeme sistemleri (iyzico, Stripe), kargo servisleri veya sosyal medya API'ları ile uygulamanızı saniyeler içinde zenginleştirin.</p>
       </div>
     </div>
+
+    <section class="long-form-section">
+      <div class="section-badge">MİMARİMİZ</div>
+      <h2>Neden Mikroservisler Özgürlüktür?</h2>
+      <p>
+        Büyüyen işletmelerde tek bir büyük yazılımı yönetmek geliştirme süreçlerini yavaşlatır. Mikroservisler, her bir iş biriminin kendi özel yazılımıyla, diğerlerini etkilemeden büyümesini sağlar. Explorience olarak, bu geçiş sürecini <strong>"Kusursuz Entegrasyon"</strong> prensibiyle yönetiyoruz.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Sıfır Kesinti:</strong> Sistemleriniz güncellenirken bile kullanıcılarınız hizmet almaya devam eder.</li>
+        <li><strong>Teknoloji Bağımsızlığı:</strong> Her servis, ihtiyacına en uygun dille (Node.js, Go, Python) yazılabilir.</li>
+        <li><strong>Hızlı Debug:</strong> Hata hangi servisteyse sadece orayı izole edip çözüyoruz.</li>
+      </ul>
+    </section>
   </div>
 </DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
+    font-size: 1.1rem;
+  }
+
+  .feature-list li strong {
+    color: #fff;
+  }
+</style>

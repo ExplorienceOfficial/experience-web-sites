@@ -8,34 +8,106 @@ const t = useTranslations(lang);
 ---
 
 <DetailLayout 
-  title="Data Engineering & Pipeline | Explorience"
-  description="Seamless and real-time data flow systems. We process complex data sources in seconds to make them ready for analytics."
   lang={lang}
+  title={`Data Engineering & Pipeline - Explorience`}
+  description="Seamless and real-time data flow systems. We process complex data sources in seconds to make them ready for analytics."
 >
   <div slot="showcase">
     <ScrollyServerRack />
   </div>
 
-  <div class="detail-section">
-    <span class="category-tag">DATA ENGINEERING</span>
-    <h1 class="giant-text">Data Pipeline</h1>
-    <p class="subtitle-text">
-      We build the highways that turn raw data into action. In modern data architectures, speed and reliability are everything.
-    </p>
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">DATA ARCHITECTURE</span>
+      <h1 class="detail-title">Data Pipeline & Engineering</h1>
+      <p class="detail-intro">
+        We build the digital highways that turn raw data into action. In modern data architectures, speed, scalability, and reliability are everything.
+      </p>
+    </section>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3>ETL & ELT</h3>
-        <p>Collecting, cleaning, and centralizing scattered data points.</p>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>End-to-End ETL/ELT</h3>
+        <p>Collecting, cleaning, and centralizing scattered data points into a single Data Warehouse/Lakehouse. Your data is always clean and ready for analysis.</p>
       </div>
-      <div class="feature-card">
+
+      <div class="detail-card">
         <h3>Real-time Streaming</h3>
-        <p>Milling-second data processing with Kafka and RabbitMQ technologies.</p>
+        <p>Millisecond data processing with technologies like Kafka and RabbitMQ. Let your systems respond instantly with event-driven architectures.</p>
       </div>
-      <div class="feature-card">
-        <h3>Data Lakehouse</h3>
-        <p>Flexible and performant modern storage solutions.</p>
+
+      <div class="detail-card">
+        <h3>Modern Data Lakehouse</h3>
+        <p>Flexible and highly performant storage solutions. Don't just store big data; query it as fast as possible.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Data Quality & Governance</h3>
+        <p>Track where data comes from and how it's processed (lineage). Block faulty data from entering your systems with automated controls.</p>
       </div>
     </div>
+
+    <section class="long-form-section">
+      <div class="section-badge">OUR STRATEGY</div>
+      <h2>Why is Data Your Business's Fuel?</h2>
+      <p>
+        Data engineering is the foundation of any modern AI or analytics project. You can't build a skyscraper on a broken foundation. At Explorience, we embrace a <strong>"Data-First"</strong> approach that keeps your data's security and accuracy at his highest level.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Seamless Integration:</strong> Perfect data bonds with your existing ERP, CRM, and third-party systems.</li>
+        <li><strong>Cost Optimization:</strong> Intelligent architectures that reduce unnecessary storage and compute costs.</li>
+        <li><strong>Future-Ready:</strong> Systems built today scale automatically to tomorrow's data growth.</li>
+      </ul>
+    </section>
   </div>
 </DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
+    font-size: 1.1rem;
+  }
+
+  .feature-list li strong {
+    color: #fff;
+  }
+</style>

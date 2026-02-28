@@ -8,34 +8,106 @@ const t = useTranslations(lang);
 ---
 
 <DetailLayout 
-  title="Veri Analitiği & İçgörü | Explorience"
-  description="Karar alma süreçlerinizi veriyle güçlendirin. Kompleks verileri anlamlı hikayelere dönüştürüyoruz."
   lang={lang}
+  title={`Veri Analitiği & İçgörü - Explorience`}
+  description="Karar alma süreçlerinizi veriyle güçlendirin. Kompleks verileri anlamlı hikayelere dönüştürüyoruz."
 >
   <div slot="showcase">
     <ScrollyAnalytics />
   </div>
 
-  <div class="detail-section">
-    <span class="category-tag">ANALİTİK</span>
-    <h1 class="giant-text">Yeni Nesil İçgörü</h1>
-    <p class="subtitle-text">
-      Karmaşık veri setlerinden anlamlı kararlar çıkarın. Raporlamak yetmez; verinin ne anlattığını anlamak gerekir.
-    </p>
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">BİLGİDEN AKSİYONA</span>
+      <h1 class="detail-title">Veri Analitiği & İçgörü</h1>
+      <p class="detail-intro">
+        Sadece raporlamıyor, verinin içindeki gizli kalmış fırsatları buluyoruz. Doğru içgörü, stratejik üstünlük demektir.
+      </p>
+    </section>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3>Power BI & Tableau</h3>
-        <p>Gelişmiş görselleştirme araçlarıyla verinizi konuşturuyoruz.</p>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Power BI & Tableau Görselleştirme</h3>
+        <p>Statik excel tablolarından kurtulun. Etkileşimli, canlı ve her cihazdan erişilebilir akıllı dashboard'larla operasyonunuzu anlık izleyin.</p>
       </div>
-      <div class="feature-card">
-        <h3>Tahminleme Modelleri</h3>
-        <p>Geçmiş veriden geleceği öngören istatistiksel analizler.</p>
+
+      <div class="detail-card">
+        <h3>İleri Seviye Tahminleme</h3>
+        <p>Geçmiş veriden geleceği öngörün. Talep tahminleme, finansal projeksiyonlar ve pazar trendlerini istatistiksel modellerimizle analiz edin.</p>
       </div>
-      <div class="feature-card">
-        <h3>Otonom Dashboard</h3>
-        <p>Kendi kendine güncellenen akıllı raporlama sistemleri.</p>
+
+      <div class="detail-card">
+        <h3>Müşteri Analitiği</h3>
+        <p>Müşterilerinizin davranışlarını anlamlandırın. Segmentasyon, Churn analizi ve "Lifetime Value" hesaplamalarıyla pazarlama bütçenizi optimize edin.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Otonom Karar Sistemleri</h3>
+        <p>Belli koşullar gerçekleştiğinde otomatik uyarı veren veya aksiyon alan (actionable analytics) sistemler tasarlıyoruz.</p>
       </div>
     </div>
+
+    <section class="long-form-section">
+      <div class="section-badge">STRATEJİMİZ</div>
+      <h2>Rakamların Ötesini Görün</h2>
+      <p>
+        Veri analitiği bir varış noktası değil, bir yolculuktur. Explorience olarak, ham verilerin temizlenmesinden, en üst düzey yöneticiye sunulan stratejik raporlara kadar tüm süreci uçtan uca yönetiyoruz.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Kullanıcı Odaklı Tasarım:</strong> Dashboard'larımız sadece teknik ekipler için değil, iş sahipleri için de kolay ve anlaşılır tasarlanır.</li>
+        <li><strong>Derinlemesine Analiz:</strong> Sadece "ne oldu" sorusuna değil, "neden oldu" ve "ne olacak" sorularına da yanıt arıyoruz.</li>
+        <li><strong>Veri Kültürü:</strong> İşletmenizde veriye dayalı karar alma kültürünün oluşması için gereken altyapıyı sağlıyoruz.</li>
+      </ul>
+    </section>
   </div>
 </DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
+    font-size: 1.1rem;
+  }
+
+  .feature-list li strong {
+    color: #fff;
+  }
+</style>

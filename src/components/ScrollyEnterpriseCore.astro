@@ -1,142 +1,99 @@
 ---
 // ScrollyEnterpriseCore.astro - A massive cinematic 3D Enterprise/ERP Cube
 ---
-<div class="enterprise-core-canvas">
-  <div class="cube-transformer">
-    <div class="main-cube">
-      <!-- 6 faces of the main transparent cube -->
-      <div class="face front"></div>
-      <div class="face back"></div>
-      <div class="face right"></div>
-      <div class="face left"></div>
-      <div class="face top"></div>
-      <div class="face bottom"></div>
+<div class="enterprise-vault-canvas">
+  <div class="vault-cluster">
+    <!-- Main Core Vault -->
+    <div class="vault-main" id="enterprise-main-vault">
+      <div class="v-face v-front"></div>
+      <div class="v-face v-back"></div>
+      <div class="v-face v-right"></div>
+      <div class="v-face v-left"></div>
+      <div class="v-face v-top"></div>
+      <div class="v-face v-bottom"></div>
       
-      <!-- Internal "Data Blocks" -->
-      <div class="data-block b1"></div>
-      <div class="data-block b2"></div>
-      <div class="data-block b3"></div>
-      <div class="data-block b4"></div>
-      <div class="inner-core"></div>
+      <!-- Central Data Core -->
+      <div class="v-core" id="enterprise-inner-core"></div>
     </div>
     
-    <!-- Floating satellite modules -->
-    <div class="satellite s1"></div>
-    <div class="satellite s2"></div>
-    <div class="satellite s3"></div>
+    <!-- Outer Satellite Modules -->
+    <div class="v-sat vs1" id="enterprise-sat-1"></div>
+    <div class="v-sat vs2" id="enterprise-sat-2"></div>
+    <div class="v-sat vs3" id="enterprise-sat-3"></div>
   </div>
 </div>
 
 <style>
-  .enterprise-core-canvas {
+  .enterprise-vault-canvas {
     width: 600px;
     height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 2000px;
-    filter: drop-shadow(0 0 50px rgba(0, 245, 255, 0.2));
+    perspective: 2500px;
   }
 
-  .cube-transformer {
-    width: 100%;
-    height: 100%;
+  .vault-cluster {
     position: relative;
+    width: 250px;
+    height: 250px;
     transform-style: preserve-3d;
   }
 
-  .main-cube {
+  /* Main hardware vault */
+  .vault-main {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 260px;
-    height: 260px;
-    margin: -130px;
+    width: 100%; height: 100%;
     transform-style: preserve-3d;
-    animation: rotateCube 20s linear infinite;
   }
 
-  .face {
+  .v-face {
     position: absolute;
-    width: 260px;
-    height: 260px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 245, 255, 0.05));
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 4px;
+    box-shadow: inset 0 0 40px rgba(0, 245, 255, 0.1);
   }
 
-  .front  { transform: translateZ(130px); }
-  .back   { transform: rotateY(180deg) translateZ(130px); }
-  .right  { transform: rotateY(90deg) translateZ(130px); }
-  .left   { transform: rotateY(-90deg) translateZ(130px); }
-  .top    { transform: rotateX(90deg) translateZ(130px); }
-  .bottom { transform: rotateX(-90deg) translateZ(130px); }
+  .v-front  { transform: translateZ(125px); border-color: rgba(0, 245, 255, 0.4); }
+  .v-back   { transform: rotateY(180deg) translateZ(125px); }
+  .v-right  { transform: rotateY(90deg) translateZ(125px); }
+  .v-left   { transform: rotateY(-90deg) translateZ(125px); }
+  .v-top    { transform: rotateX(90deg) translateZ(125px); }
+  .v-bottom { transform: rotateX(-90deg) translateZ(125px); }
 
-  .inner-core {
+  .v-core {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 80px;
-    margin: -40px;
+    top: 50%; left: 50%;
+    width: 100px; height: 100px;
+    margin: -50px;
     background: var(--highlight-color);
-    box-shadow: 0 0 100px var(--highlight-color);
-    border-radius: 10px;
+    box-shadow: 0 0 120px var(--highlight-color), 0 0 240px var(--highlight-color);
+    border-radius: 12px;
     transform: translateZ(0);
-    animation: corePulse 3s ease-in-out infinite;
+    z-index: -1;
   }
 
-  .data-block {
+  .v-sat {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--highlight-color);
+    width: 60px; height: 60px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
     transform-style: preserve-3d;
   }
 
-  .b1 { transform: translate3d(60px, 60px, 60px); }
-  .b2 { transform: translate3d(-100px, 40px, -60px); }
-  .b3 { transform: translate3d(40px, -100px, -40px); }
-  .b4 { transform: translate3d(-60px, -60px, 80px); }
+  .vs1 { transform: translate3d(240px, -100px, 150px); }
+  .vs2 { transform: translate3d(-240px, 80px, -100px); }
+  .vs3 { transform: translate3d(50px, 200px, -200px); }
 
-  .satellite {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    top: 50%;
-    left: 50%;
-    margin: -15px;
-  }
-
-  .s1 { animation: orbit1 15s linear infinite; }
-  .s2 { animation: orbit2 12s linear infinite; }
-  .s3 { animation: orbit3 18s linear infinite; }
-
-  @keyframes rotateCube {
-    from { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-    to { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
-  }
-
-  @keyframes corePulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 150px var(--highlight-color); }
-  }
-
-  @keyframes orbit1 {
-    from { transform: rotateY(0deg) translateX(300px) rotateY(0deg); }
-    to { transform: rotateY(360deg) translateX(300px) rotateY(-360deg); }
-  }
-
-  @keyframes orbit2 {
-    from { transform: rotateX(0deg) translateY(280px) rotateX(0deg); }
-    to { transform: rotateX(360deg) translateY(280px) rotateX(-360deg); }
-  }
-
-  @keyframes orbit3 {
-    from { transform: rotateZ(0deg) translateX(-250px) rotateZ(0deg); }
-    to { transform: rotateZ(360deg) translateX(-250px) rotateZ(-360deg); }
+  /* Interactive Pulse */
+  @keyframes vaultGlow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
   }
 </style>

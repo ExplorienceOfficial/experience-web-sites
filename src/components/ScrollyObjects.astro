@@ -86,7 +86,10 @@ function initScrollyObjects() {
       'globe': document.getElementById('obj-globe'),
       'phone': document.getElementById('obj-phone'),
       'location': document.getElementById('obj-location'),
-      'comms': document.getElementById('obj-comms')
+      'comms': document.getElementById('obj-comms'),
+      'enterprise': document.getElementById('obj-enterprise'),
+      'analytics': document.getElementById('obj-analytics'),
+      'network': document.getElementById('obj-network')
    };
 
    let currentObjId = null;
@@ -265,46 +268,40 @@ function initScrollyObjects() {
             }
 
             // Handle UI Background & Internal App Scrolling changes smoothly
-            // Interactive scroll physics for Enterprise Core
+            // Interactive scroll physics for Enterprise Vault
             if(objId === 'enterprise') {
-                const cube = document.querySelector('.enterprise-core-canvas .main-cube') as HTMLElement;
-                const inner = document.querySelector('.enterprise-core-canvas .inner-core') as HTMLElement;
-                const sats = document.querySelectorAll('.enterprise-core-canvas .satellite');
+                const vault = document.getElementById('enterprise-main-vault');
+                const core = document.getElementById('enterprise-inner-core');
                 
-                if (cube && inner) {
-                    // Cube faces separate (Disassemble) based on scroll
-                    cube.style.transform = `scale(${1 + Math.max(0, clampedProgress * 0.5)}) rotateX(${clampedProgress * 20}deg)`;
-                    inner.style.transform = `translateZ(${clampedProgress * 100}px) scale(${1 + Math.abs(clampedProgress) * 0.3})`;
+                if (vault && core) {
+                    // Vault expands and rotates heavily
+                    vault.style.transform = `scale(${1 + Math.max(0, clampedProgress * 0.3)}) rotateY(${clampedProgress * 45}deg) rotateX(${clampedProgress * 20}deg)`;
+                    core.style.transform = `translateZ(${clampedProgress * 150}px) scale(${1 + Math.abs(clampedProgress) * 0.5})`;
                 }
             }
 
-            // Interactive scroll physics for Analytics
+            // Interactive scroll physics for Analytics Terminal
             if(objId === 'analytics') {
-                const bars = document.querySelectorAll('.analytics-canvas .bar');
-                const sphere = document.querySelector('.analytics-canvas .insight-sphere') as HTMLElement;
-                if(bars.length > 0 && sphere) {
-                    // Bars heighten based on scroll intensity
+                const bars = document.querySelectorAll('.analytics-terminal-canvas .h-bar');
+                const panel = document.querySelector('.analytics-terminal-canvas .holo-panel') as HTMLElement;
+                if(bars.length > 0 && panel) {
+                    // Bars heighten based on scroll
                     bars.forEach((bar, i) => {
-                        (bar as HTMLElement).style.height = `${160 + (i * 10) + (Math.abs(clampedProgress) * 40)}px`;
+                        const baseH = 120 + (i * 20);
+                        (bar as HTMLElement).style.height = `${baseH + (Math.abs(clampedProgress) * 60)}px`;
                     });
-                    sphere.style.transform = `scale(${1 + Math.abs(clampedProgress) * 0.2}) translateZ(${clampedProgress * 50}px)`;
+                    panel.style.transform = `rotateX(${-20 + clampedProgress * 20}deg) translateZ(${80 + clampedProgress * 40}px) scale(${1 + Math.abs(clampedProgress) * 0.1})`;
                 }
             }
 
-            // Interactive scroll physics for Network Mesh
+            // Interactive scroll physics for Satellite Hub
             if(objId === 'network') {
-                const nodes = document.querySelectorAll('.network-canvas .node');
-                const core = document.querySelector('.network-canvas .power-core') as HTMLElement;
-                if(nodes.length > 0 && core) {
-                    // Nodes expand outwards (Network Expansion)
-                    nodes.forEach((node, i) => {
-                        const basePos = 150 + (Math.abs(clampedProgress) * 50);
-                        const x = (i % 2 === 0 ? 1 : -1) * basePos;
-                        const y = (i % 3 === 0 ? 1 : -1) * basePos;
-                        const z = (i % 5 === 0 ? 1 : -1) * basePos;
-                        (node as HTMLElement).style.transform = `translate3d(${x}px, ${y}px, ${z}px) scale(${1 + Math.abs(clampedProgress) * 0.5})`;
-                    });
-                    core.style.transform = `scale(${1 + Math.abs(clampedProgress) * 1.5})`;
+                const hub = document.querySelector('.satellite-canvas .satellite-hub') as HTMLElement;
+                const dish = document.querySelector('.satellite-canvas .sat-dish') as HTMLElement;
+                if(hub && dish) {
+                    // Satellite tilts to face the "audience"
+                    hub.style.transform = `rotateY(${clampedProgress * 60}deg) rotateX(${clampedProgress * 30}deg) scale(${1 + Math.abs(clampedProgress) * 0.2})`;
+                    dish.style.transform = `rotateX(${45 + clampedProgress * 30}deg) translateZ(20px)`;
                 }
             }
 
