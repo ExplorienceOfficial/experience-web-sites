@@ -108,19 +108,7 @@ const { lang, currentPath, t } = Astro.props;
     });
   }
 
-  // Custom cursor
-  const cursorDot = document.querySelector('.cursor-dot') as HTMLElement;
-  if (cursorDot) {
-    window.addEventListener('mousemove', (e) => {
-      cursorDot.style.left = `${e.clientX}px`;
-      cursorDot.style.top = `${e.clientY}px`;
-    });
 
-    document.querySelectorAll('a, button, .progress-label, .social-link').forEach((el) => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    });
-  }
 
   // Navbar scroll behavior
   const nav = document.querySelector('.navbar') as HTMLElement;
