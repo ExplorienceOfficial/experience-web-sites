@@ -321,10 +321,10 @@
 
 @media (max-width: 768px) {
     .scrolly-card-wrapper {
-        justify-content: center !important;
-        align-items: flex-end !important;
-        /* Padding pushed strongly to the bottom to force texts away from top center 3d objects */
-        padding: 40vh 5% 5vh 5% !important;
+        justify-content: center;
+        align-items: center;
+        padding: 10vh 5% !important;
+        flex-direction: column !important;
     }
 
     .scrolly-card {

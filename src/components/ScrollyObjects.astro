@@ -101,6 +101,49 @@ function initScrollyObjects() {
    let targetX = 0, targetY = 0, targetScale = 1;
    let targetRotX = 0, targetRotY = 0, targetRotZ = 0;
 
+   // MOBILE STATIC OVERRIDE
+   if (window.innerWidth <= 768) {
+       const canvas = document.getElementById('apple-scrolly-canvas');
+       if (canvas) {
+           canvas.style.position = 'static';
+           canvas.style.height = '0';
+           canvas.style.overflow = 'visible';
+       }
+
+       document.querySelectorAll('.scrolly-container').forEach(c => {
+           c.style.height = 'auto'; // Remove massive 1100vh constraints
+       });
+
+       const cards = document.querySelectorAll('.scrolly-card-wrapper');
+       cards.forEach(card => {
+           card.style.height = 'auto';
+           card.style.minHeight = '100vh'; // Normal full screen section
+
+           const objId = card.getAttribute('data-obj');
+           if (objId && objs[objId]) {
+               const elem = objs[objId];
+               // Reset properties to become a static element block
+               elem.style.position = 'relative';
+               elem.style.top = '0';
+               elem.style.left = '0';
+               elem.style.transform = 'scale(0.8)'; // Make it fit nicely above text
+               elem.style.opacity = '1';
+               elem.style.pointerEvents = 'auto';
+               elem.classList.remove('scrolly-item');
+               elem.style.display = 'flex';
+               elem.style.justifyContent = 'center';
+               elem.style.marginBottom = '2rem';
+               elem.style.zIndex = '5';
+               
+               // Inject before the text block
+               card.prepend(elem);
+           }
+       });
+
+       // Completely abort the 3D scroll physics loop for mobile
+       return;
+   }
+
    // Lerp states for ultra-smooth 60fps interpolation (Apple feel)
    let cx=0, cy=0, cs=1, crx=0, cry=0, crz=0;
 

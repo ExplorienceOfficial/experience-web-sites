@@ -77,6 +77,13 @@ const { lang, currentPath, t } = Astro.props;
         </a>
       ))}
     </div>
+
+    <!-- Mobile Hamburger -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" class="hamburger-icon">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
   </div>
 </nav>
 
@@ -123,12 +130,25 @@ const { lang, currentPath, t } = Astro.props;
       const currentScrollY = window.scrollY;
       nav.classList.toggle('scrolled', currentScrollY > 50);
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        nav.classList.add('hidden');
+        // Automatically hide navbar only if menu is not open
+        if (!document.querySelector('.nav-links').classList.contains('active')) {
+           nav.classList.add('hidden');
+        }
       } else {
         nav.classList.remove('hidden');
       }
       lastScrollY = currentScrollY;
     });
+  }
+
+  // Mobile Menu Logic
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+      });
   }
 </script>
 
@@ -244,9 +264,75 @@ const { lang, currentPath, t } = Astro.props;
     gap: 0.5rem;
   }
 
+  .mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+  .hamburger-icon {
+    width: 28px;
+    height: 28px;
+  }
+
   @media (max-width: 1024px) {
     .nav-links {
-      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.4s ease;
+      z-index: 900;
+      padding: 2rem;
+    }
+    
+    .nav-links.active {
+      right: 0;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .nav-link {
+      font-size: 1.5rem;
+      padding: 1rem 0;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .nav-dropdown {
+      width: 100%;
+      text-align: center;
+    }
+
+    .dropdown-content {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+      box-shadow: none;
+      background: transparent;
+      border: none;
+      padding: 0;
+      display: none; /* Can be handled with JS if requested, or just show list */
+    }
+    .nav-dropdown:hover .dropdown-content, .nav-dropdown:active .dropdown-content {
+      display: block;
+      animation: none;
     }
   }
 </style>
