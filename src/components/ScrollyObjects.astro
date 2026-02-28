@@ -274,34 +274,33 @@ function initScrollyObjects() {
                 const core = document.getElementById('enterprise-inner-core');
                 
                 if (vault && core) {
-                    // Vault expands and rotates heavily
-                    vault.style.transform = `scale(${1 + Math.max(0, clampedProgress * 0.3)}) rotateY(${clampedProgress * 45}deg) rotateX(${clampedProgress * 20}deg)`;
-                    core.style.transform = `translateZ(${clampedProgress * 150}px) scale(${1 + Math.abs(clampedProgress) * 0.5})`;
+                    vault.style.transform = `scale(${1 + Math.max(0, clampedProgress * 0.2)}) rotateY(${clampedProgress * 30}deg) rotateX(${clampedProgress * 15}deg)`;
+                    core.style.transform = `scale(${1 + Math.abs(clampedProgress) * 0.5})`;
                 }
             }
 
             // Interactive scroll physics for Analytics Terminal
             if(objId === 'analytics') {
-                const bars = document.querySelectorAll('.analytics-terminal-canvas .h-bar');
-                const panel = document.querySelector('.analytics-terminal-canvas .holo-panel') as HTMLElement;
-                if(bars.length > 0 && panel) {
-                    // Bars heighten based on scroll
+                const station = document.querySelector('.scrolly-station-3d') as HTMLElement;
+                const bars = document.querySelectorAll('.scrolly-station-3d .bar-fill');
+                if(station && bars.length > 0) {
+                    station.style.transform = `scale(${1 + Math.abs(clampedProgress) * 0.2}) rotateY(${clampedProgress * 40}deg) rotateX(${clampedProgress * 15}deg)`;
                     bars.forEach((bar, i) => {
-                        const baseH = 120 + (i * 20);
-                        (bar as HTMLElement).style.height = `${baseH + (Math.abs(clampedProgress) * 60)}px`;
+                        (bar as HTMLElement).style.height = `${40 + (i * 10) + (Math.abs(clampedProgress) * 30)}%`;
                     });
-                    panel.style.transform = `rotateX(${-20 + clampedProgress * 20}deg) translateZ(${80 + clampedProgress * 40}px) scale(${1 + Math.abs(clampedProgress) * 0.1})`;
                 }
             }
 
             // Interactive scroll physics for Satellite Hub
             if(objId === 'network') {
-                const hub = document.querySelector('.satellite-canvas .satellite-hub') as HTMLElement;
-                const dish = document.querySelector('.satellite-canvas .sat-dish') as HTMLElement;
-                if(hub && dish) {
-                    // Satellite tilts to face the "audience"
-                    hub.style.transform = `rotateY(${clampedProgress * 60}deg) rotateX(${clampedProgress * 30}deg) scale(${1 + Math.abs(clampedProgress) * 0.2})`;
-                    dish.style.transform = `rotateX(${45 + clampedProgress * 30}deg) translateZ(20px)`;
+                const sat = document.getElementById('network-satellite');
+                const wings = document.querySelectorAll('.solar-wing');
+                if(sat) {
+                    sat.style.transform = `scale(${1 + Math.abs(clampedProgress) * 0.2}) rotateY(${clampedProgress * 60}deg) rotateX(${clampedProgress * 25}deg) translateZ(${Math.abs(clampedProgress) * 50}px)`;
+                }
+                if(wings.length === 2) {
+                    (wings[0] as HTMLElement).style.transform = `translateY(-50%) rotateY(${15 + clampedProgress * 45}deg)`;
+                    (wings[1] as HTMLElement).style.transform = `translateY(-50%) rotateY(${-15 - clampedProgress * 45}deg)`;
                 }
             }
 

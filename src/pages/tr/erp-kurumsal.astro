@@ -48,24 +48,18 @@ const t = useTranslations(lang);
       </div>
     </div>
 
-    <!-- Long form content -->
+    <!-- Long form content for trust -->
     <section class="long-form-section">
       <div class="section-badge">KURUMSAL DİJİTALLEŞME</div>
       <h2>Süreçlerinizi Neden Dijitalleştirmelisiniz?</h2>
       <p>
         Büyüyen işletmelerde insan hatası ve veri siloları en büyük gizli maliyettir. Explorience olarak, <strong>"Kağıtsız ve Hatasız Operasyon"</strong> vizyonuyla kurumsal dijitalleşme yolculuğunuzda yanınızda yer alıyoruz.
       </p>
-      <div class="erp-benefits">
-        <div class="benefit-item">
-          <strong>%30+ Verimlilik Artışı:</strong> Tekrarlayan manuel girişleri ortadan kaldırarak ekibinizin daha stratejik işlere odaklanmasını sağlıyoruz.
-        </div>
-        <div class="benefit-item">
-          <strong>Gerçek Zamanlı Karar Verme:</strong> Anlık envanter, nakit akışı ve operasyon durumunu görerek veri odaklı kararlar alın.
-        </div>
-        <div class="benefit-item">
-          <strong>Kesintisiz Ölçeklenme:</strong> İşiniz büyüdükçe yazılımınız da sizinle birlikte, performans kaybı yaşamadan büyür.
-        </div>
-      </div>
+      <ul class="feature-list">
+        <li><strong>%30+ Verimlilik Artışı:</strong> Tekrarlayan manuel girişleri ortadan kaldırarak ekibinizin daha stratejik işlere odaklanmasını sağlıyoruz.</li>
+        <li><strong>Gerçek Zamanlı Karar Verme:</strong> Anlık envanter, nakit akışı ve operasyon durumunu görerek veri odaklı kararlar alın.</li>
+        <li><strong>Kesintisiz Ölçeklenme:</strong> İşiniz büyüdükçe uygulamanız da sizinle birlikte, performans kaybı yaşamadan sınır tanımadan büyür.</li>
+      </ul>
     </section>
   </div>
 </DetailLayout>
@@ -97,29 +91,25 @@ const t = useTranslations(lang);
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.8;
+    margin-bottom: 2rem;
   }
 
-  .erp-benefits {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 3rem;
+  .feature-list {
+    list-style: none;
+    padding: 0;
   }
 
-  .benefit-item {
+  .feature-list li {
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.02);
-    padding: 2rem;
     border-radius: 16px;
-    border-left: 4px solid var(--highlight-color);
+    margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
     font-size: 1.1rem;
-    line-height: 1.6;
   }
 
-  .benefit-item strong {
-    color: var(--highlight-color);
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
+  .feature-list li strong {
+    color: #fff;
   }
 </style>

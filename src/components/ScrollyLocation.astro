@@ -1,205 +1,162 @@
----
-// Mega Cinematic 3D Location Pin
----
-<div class="mega-location-3d">
-  <div class="scene-3d">
-    <!-- Floating Pin -->
-    <div class="pin-group">
-      <div class="pin-top">
-        <div class="pin-glass">
+<div class="location-wrapper" style="--loc-color: #f59e0b; --loc-glow: rgba(245, 158, 11, 0.5); --loc-dark: rgba(245, 158, 11, 0.05);">
+  <div class="mega-location-3d">
+    <div class="loc-scene">
+      
+      <!-- Floating Pin & Radar Hologram -->
+      <div class="hologram-map">
+        <div class="pin-group">
+          <div class="pin-top">
             <div class="inner-data-grid"></div>
+            <div class="pin-core-light"></div>
+          </div>
+          <div class="pin-point"></div>
         </div>
-        <div class="pin-core-light"></div>
+
+        <div class="orbit-rings">
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <div class="ring r3"></div>
+        </div>
+
+        <div class="ground-radar">
+          <div class="radar-circle"></div>
+          <div class="radar-circle delay-1"></div>
+          <div class="radar-circle delay-2"></div>
+          <div class="scan-line"></div>
+        </div>
       </div>
-      <div class="pin-point"></div>
-    </div>
 
-    <!-- Orbiting Rings -->
-    <div class="orbit-rings">
-      <div class="ring r1"></div>
-      <div class="ring r2"></div>
-      <div class="ring r3"></div>
-    </div>
-
-    <!-- Ground Radar -->
-    <div class="ground-radar">
-      <div class="radar-circle"></div>
-      <div class="radar-circle delay-1"></div>
-      <div class="radar-circle delay-2"></div>
-      <div class="scan-line"></div>
+      <!-- Hardware Device Background -->
+      <div class="device-casing-mega">
+        <div class="casing-grid"></div>
+        <div class="casing-scanner"></div>
+        <div class="device-bezel"></div>
+      </div>
+      
     </div>
   </div>
 </div>
 
 <style>
+/* ========================================
+   MEGA CINEMATIC 3D LOCATION TERMINAL
+   ======================================== */
+.location-wrapper {
+  width: 100%; display: flex; justify-content: center; align-items: center;
+  padding: 60px 20px; background: transparent;
+}
+
 .mega-location-3d {
-  width: 100%;
-  max-width: 500px;
-  height: 400px;
-  position: relative;
-  perspective: 2000px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  z-index: 50;
+  width: 100%; max-width: 500px; height: 400px;
+  position: relative; perspective: 1500px; display: flex; align-items: center; justify-content: center;
+  z-index: 50; cursor: pointer;
 }
 
-.scene-3d {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.loc-scene {
+  width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
+  display: flex; align-items: center; justify-content: center;
+  transform: rotateX(15deg) rotateY(0deg);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Floating Pin */
+/* HOVER EFFECT */
+.mega-location-3d:hover .loc-scene {
+  transform: rotateX(5deg) rotateY(15deg) scale3d(1.1, 1.1, 1.1);
+}
+
+/* Device Background Card */
+.device-casing-mega {
+  position: absolute; width: 320px; height: 380px;
+  border: 1px solid var(--loc-glow);
+  background: linear-gradient(180deg, var(--loc-dark), #020617);
+  backdrop-filter: blur(5px); border-radius: 20px;
+  transform: translateZ(-120px); z-index: 1; overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(245, 158, 11, 0.1);
+  transition: all 0.5s ease;
+}
+.mega-location-3d:hover .device-casing-mega {
+  border-color: var(--loc-color);
+  box-shadow: 0 0 40px #020617, inset 0 0 60px var(--loc-glow);
+}
+.casing-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(245,158,11,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.1) 1px, transparent 1px);
+  background-size: 20px 20px; opacity: 0.5;
+}
+.casing-scanner {
+  position: absolute; top: -10%; left: 0; width: 100%; height: 30px;
+  background: linear-gradient(to bottom, transparent, var(--loc-glow)); opacity: 0; transition: opacity 0.3s;
+}
+.mega-location-3d:hover .casing-scanner {
+  opacity: 0.5; animation: loc-scan 3s ease-in-out infinite;
+}
+.device-bezel {
+   position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+   width: 80px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;
+}
+
+/* Hologram Map Elements */
+.hologram-map {
+  position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
+  display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+
 .pin-group {
-  position: relative;
-  transform-style: preserve-3d;
-  animation: mega-float 4s ease-in-out infinite alternate;
-  z-index: 10;
+  position: relative; transform-style: preserve-3d;
+  animation: mega-float 4s ease-in-out infinite alternate; z-index: 10;
 }
-
 .pin-top {
-  width: 120px;
-  height: 120px;
-  background: rgba(0, 245, 255, 0.2);
-  border: 3px solid #00f5ff;
-  border-radius: 50% 50% 50% 5px;
-  transform: rotate(-45deg);
-  backdrop-filter: blur(10px);
-  position: relative;
-  box-shadow: 0 0 40px rgba(0, 245, 255, 0.6), inset 0 0 20px rgba(0, 245, 255, 0.4);
+  width: 120px; height: 120px; background: rgba(245, 158, 11, 0.2);
+  border: 3px solid var(--loc-color); border-radius: 50% 50% 50% 5px;
+  transform: rotate(-45deg); backdrop-filter: blur(5px); position: relative;
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.6), inset 0 0 20px rgba(245, 158, 11, 0.4);
   overflow: hidden;
 }
-
 .inner-data-grid {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image: 
-    linear-gradient(rgba(0, 245, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 245, 255, 0.2) 1px, transparent 1px);
-  background-size: 15px 15px;
-  transform: rotate(45deg);
-  animation: grid-move 20s linear infinite;
+  position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
+  background-image: linear-gradient(rgba(245, 158, 11, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 158, 11, 0.3) 1px, transparent 1px);
+  background-size: 15px 15px; transform: rotate(45deg); animation: grid-move 10s linear infinite;
 }
-
 .pin-core-light {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  background: #fff;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 30px 10px #00f5ff, 0 0 60px 20px rgba(0, 245, 255, 0.4);
-  z-index: 2;
+  position: absolute; width: 35px; height: 35px; background: #fff;
+  border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  box-shadow: 0 0 30px 10px var(--loc-color), 0 0 60px 20px var(--loc-glow); z-index: 2;
 }
-
 .pin-point {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 60px;
-  background: linear-gradient(to bottom, var(--highlight-color), transparent);
-  box-shadow: 0 0 15px var(--highlight-color);
+  position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 60px; background: linear-gradient(to bottom, var(--loc-color), transparent);
+  box-shadow: 0 0 15px var(--loc-color);
 }
 
 /* Orbiting Rings */
-.orbit-rings {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  transform-style: preserve-3d;
-  pointer-events: none;
-}
-
-.ring {
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(0, 245, 255, 0.2);
-  border-radius: 50%;
-  transform-style: preserve-3d;
-}
-
+.orbit-rings { position: absolute; width: 300px; height: 300px; transform-style: preserve-3d; pointer-events: none; }
+.ring { position: absolute; inset: 0; border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 50%; transform-style: preserve-3d; }
 .r1 { transform: rotateX(75deg) rotateY(10deg); animation: ring-rotate 10s linear infinite; }
 .r2 { transform: rotateX(75deg) rotateY(-20deg) scale(1.3); animation: ring-rotate 15s linear infinite reverse; }
-.r3 { transform: rotateX(-10deg) rotateY(75deg) scale(0.8); animation: ring-rotate 20s linear infinite; }
+.r3 { transform: rotateX(-10deg) rotateY(75deg) scale(0.8); animation: ring-rotate 20s linear infinite; border-style: dashed; }
 
 /* Ground Radar */
 .ground-radar {
-  position: absolute;
-  bottom: 0px;
-  width: 500px;
-  height: 120px;
-  transform: rotateX(75deg);
-  transform-style: preserve-3d;
+  position: absolute; bottom: -20px; width: 400px; height: 120px;
+  transform: rotateX(75deg); transform-style: preserve-3d;
 }
-
 .radar-circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid var(--highlight-color);
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  opacity: 0;
-  animation: radar-pulse 4s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  border: 2px solid var(--loc-color); border-radius: 50%; width: 10px; height: 10px; opacity: 0;
+  animation: radar-pulse 3s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
-
 .scan-line {
-  position: absolute;
-  width: 50%;
-  height: 2px;
-  background: linear-gradient(to right, var(--highlight-color), transparent);
-  top: 50%;
-  left: 50%;
-  transform-origin: left center;
-  animation: scan-rotate 4s linear infinite;
+  position: absolute; width: 50%; height: 2px;
+  background: linear-gradient(to right, var(--loc-color), transparent);
+  top: 50%; left: 50%; transform-origin: left center; animation: scan-rotate 3s linear infinite;
 }
+.delay-1 { animation-delay: 1s; } .delay-2 { animation-delay: 2s; }
 
-.delay-1 { animation-delay: 1.3s; }
-.delay-2 { animation-delay: 2.6s; }
-
-@keyframes mega-float {
-  0% { transform: translateY(20px) scale(1); }
-  100% { transform: translateY(-20px) scale(1.05); }
-}
-
-@keyframes grid-move {
-  0% { transform: rotate(45deg) translateY(0); }
-  100% { transform: rotate(45deg) translateY(100px); }
-}
-
-@keyframes radar-pulse {
-  0% { width: 0; height: 0; opacity: 1; border-width: 4px; }
-  100% { width: 500px; height: 500px; opacity: 0; border-width: 1px; }
-}
-
-@keyframes ring-rotate {
-  from { transform: rotateX(75deg) rotateZ(0deg); }
-  to { transform: rotateX(75deg) rotateZ(360deg); }
-}
-
-@keyframes scan-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@media (max-width: 768px) {
-  .mega-location-3d {
-    transform: scale(0.7);
-  }
-}
+/* KEYFRAMES */
+@keyframes mega-float { 0% { transform: translateY(15px) scale(1); } 100% { transform: translateY(-15px) scale(1.05); } }
+@keyframes grid-move { 0% { transform: rotate(45deg) translateY(0); } 100% { transform: rotate(45deg) translateY(100px); } }
+@keyframes radar-pulse { 0% { width: 0; height: 0; opacity: 1; border-width: 4px; } 100% { width: 400px; height: 400px; opacity: 0; border-width: 1px; } }
+@keyframes ring-rotate { from { transform: rotateX(75deg) rotateZ(0deg); } to { transform: rotateX(75deg) rotateZ(360deg); } }
+@keyframes scan-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes loc-scan { 0% { top: -10%; } 50% { top: 110%; } 100% { top: -10%; } }
 </style>

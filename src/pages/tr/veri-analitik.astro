@@ -55,29 +55,11 @@ const t = useTranslations(lang);
       <p>
         Pek çok işletme, elinde devasa miktarda veri olmasına rağmen bu veriden anlamlı bir sonuç çıkaramıyor. Biz buna "bilgi obezitesi" diyoruz. Explorience olarak, işletmenizin en kritik sorularına yanıt verecek <strong>Sinyalleri Gürültüden (Signal vs Noise)</strong> ayırıyoruz.
       </p>
-      <div class="process-steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h4>Entegrasyon</h4>
-            <p>Farklı ERP, CRM, bulut ve yerel kaynaklarınızı tek bir güvenli noktaya bağlıyoruz.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h4>Kalite Kontrol</h4>
-            <p>Eksik, hatalı veya mükerrer verileri temizleyerek analizlerinizin doğruluğunu %100'e yaklaştırıyoruz.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h4>Anlamlandırma</h4>
-            <p>Karmaşık algoritmalarımızla verinizdeki gizli örüntüleri, fırsatları ve riskleri raporluyoruz.</p>
-          </div>
-        </div>
-      </div>
+      <ul class="feature-list">
+        <li><strong>Entegrasyon:</strong> Farklı ERP, CRM, bulut ve yerel kaynaklarınızı tek bir güvenli noktaya bağlıyoruz.</li>
+        <li><strong>Kalite Kontrol:</strong> Eksik, hatalı veya mükerrer verileri temizleyerek analizlerinizin doğruluğunu %100'e yaklaştırıyoruz.</li>
+        <li><strong>Anlamlandırma:</strong> Karmaşık algoritmalarımızla verinizdeki gizli örüntüleri, fırsatları ve riskleri raporluyoruz.</li>
+      </ul>
     </section>
   </div>
 </DetailLayout>
@@ -85,7 +67,7 @@ const t = useTranslations(lang);
 <style>
   .long-form-section {
     margin-top: 10rem;
-    max-width: 1000px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -109,56 +91,25 @@ const t = useTranslations(lang);
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.8;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
-  .process-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  .feature-list {
+    list-style: none;
+    padding: 0;
   }
 
-  .step {
-    display: flex;
-    gap: 2.5rem;
+  .feature-list li {
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.02);
-    padding: 2.5rem;
-    border-radius: 20px;
-    align-items: center;
-    border: 1px solid rgba(255,255,255,0.03);
-    transition: all 0.3s ease;
-  }
-
-  .step:hover {
-    border-color: var(--highlight-color);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .step-num {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--highlight-color);
-    opacity: 0.5;
-    font-family: 'Outfit', sans-serif;
-  }
-
-  .step-content h4 {
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-
-  .step-content p {
-    margin: 0;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.5);
   }
 
-  @media (max-width: 768px) {
-    .step {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-    }
+  .feature-list li strong {
+    color: #fff;
   }
 </style>

@@ -55,17 +55,11 @@ const t = useTranslations(lang);
       <p>
         Human error and data silos are the biggest hidden costs in growing businesses. At Explorience, we are with you on your corporate digitalization journey with the vision of <strong>"Paperless and Error-Free Operation."</strong>
       </p>
-      <div class="erp-benefits">
-        <div class="benefit-item">
-          <strong>30%+ Efficiency Increase:</strong> We enable your team to focus on more strategic tasks by eliminating repetitive manual entries.
-        </div>
-        <div class="benefit-item">
-          <strong>Real-Time Decision Making:</strong> Take data-driven decisions by seeing instantaneous inventory, cash flow, and operation status.
-        </div>
-        <div class="benefit-item">
-          <strong>Seamless Scaling:</strong> As your business grows, your software grows along with you without loss of performance.
-        </div>
-      </div>
+      <ul class="feature-list">
+        <li><strong>30%+ Efficiency Increase:</strong> We enable your team to focus on more strategic tasks by eliminating repetitive manual entries.</li>
+        <li><strong>Real-Time Decision Making:</strong> Take data-driven decisions by seeing instantaneous inventory, cash flow, and operation status.</li>
+        <li><strong>Seamless Scaling:</strong> As your business grows, your software grows along with you without loss of performance.</li>
+      </ul>
     </section>
   </div>
 </DetailLayout>
@@ -97,29 +91,25 @@ const t = useTranslations(lang);
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.8;
+    margin-bottom: 2rem;
   }
 
-  .erp-benefits {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 3rem;
+  .feature-list {
+    list-style: none;
+    padding: 0;
   }
 
-  .benefit-item {
+  .feature-list li {
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.02);
-    padding: 2rem;
     border-radius: 16px;
-    border-left: 4px solid var(--highlight-color);
+    margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
     font-size: 1.1rem;
-    line-height: 1.6;
   }
 
-  .benefit-item strong {
-    color: var(--highlight-color);
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
+  .feature-list li strong {
+    color: #fff;
   }
 </style>

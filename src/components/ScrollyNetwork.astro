@@ -1,112 +1,192 @@
 ---
 // ScrollyNetwork.astro - Cinematic 3D Network Nodes / API Systems
 ---
-<div class="satellite-canvas">
-  <div class="satellite-hub">
-    <!-- Main Body -->
-    <div class="sat-body">
-      <div class="s-face s-front"></div>
-      <div class="s-face s-back"></div>
-      <div class="s-face s-right"></div>
-      <div class="s-face s-left"></div>
-    </div>
-    
-    <!-- Dish -->
-    <div class="sat-dish"></div>
-    <div class="sat-transmitter"></div>
-    
-    <!-- Solar Panels -->
-    <div class="solar-panel sp-left"></div>
-    <div class="solar-panel sp-right"></div>
-    
-    <!-- Orbiting signals -->
-    <div class="signal s1"></div>
-    <div class="signal s2"></div>
-  </div>
+<div class="network-satellite-3d" id="network-satellite">
+   <div class="sat-glow"></div>
+   
+   <!-- Core Body -->
+   <div class="sat-core">
+      <div class="core-chassis">
+         <div class="chassis-texture"></div>
+         <!-- Central Glowing Eye -->
+         <div class="sat-eye">
+            <div class="eye-lens"></div>
+            <div class="eye-ring"></div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Solar Panels (Wings) -->
+   <div class="solar-wing left-wing">
+      <div class="wing-arm"></div>
+      <div class="panel-grid">
+         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      </div>
+   </div>
+   
+   <div class="solar-wing right-wing">
+      <div class="wing-arm"></div>
+      <div class="panel-grid">
+         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      </div>
+   </div>
+
+   <!-- Dish / Antenna Array -->
+   <div class="sat-dish-assembly">
+       <div class="dish-arm"></div>
+       <div class="dish-bowl">
+          <div class="dish-inner"></div>
+       </div>
+       <div class="dish-antenna">
+          <div class="signal-wave sw1"></div>
+          <div class="signal-wave sw2"></div>
+       </div>
+   </div>
 </div>
 
 <style>
-  .satellite-canvas {
-    width: 600px;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 2500px;
-  }
+/* ========================================
+   PREMIUM 3D NETWORK SATELLITE
+   ======================================== */
+.network-satellite-3d {
+   width: 400px;
+   height: 400px;
+   position: relative;
+   transform-style: preserve-3d;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   animation: sat-float 8s ease-in-out infinite alternate;
+}
 
-  .satellite-hub {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    transform-style: preserve-3d;
-  }
+.sat-glow {
+   position: absolute; width: 250px; height: 250px;
+   background: radial-gradient(circle, rgba(0, 245, 255, 0.2) 0%, transparent 60%);
+   transform: translateZ(-80px); filter: blur(30px);
+   animation: sat-pulse-ambient 4s infinite alternate;
+}
 
-  .sat-body {
-    position: absolute;
-    width: 80px; height: 120px;
-    top: 50%; left: 50%;
-    margin-left: -40px; margin-top: -60px;
-    transform-style: preserve-3d;
-    background: #333;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
+/* 1. Core Body */
+.sat-core {
+   width: 100px; height: 140px;
+   position: relative;
+   transform-style: preserve-3d;
+   z-index: 10;
+}
+.core-chassis {
+   width: 100%; height: 100%;
+   background: linear-gradient(145deg, #475569, #1e293b, #0f172a);
+   border-radius: 20px 20px 40px 40px;
+   border: 2px solid #64748b;
+   box-shadow: 
+      inset -10px -10px 20px rgba(0,0,0,0.8),
+      inset 10px 10px 20px rgba(255,255,255,0.1),
+      0 20px 40px rgba(0,0,0,0.6);
+   position: relative; overflow: hidden;
+}
+.chassis-texture {
+   position: absolute; inset: 0;
+   background-image: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(0,0,0,0.2) 10px, rgba(0,0,0,0.2) 12px);
+   opacity: 0.5;
+}
 
-  .s-face { position: absolute; width: 80px; height: 120px; background: #222; border: 1px solid rgba(255, 255, 255, 0.1); }
-  .s-front { transform: translateZ(40px); }
-  .s-back  { transform: rotateY(180deg) translateZ(40px); }
-  .s-right { width: 80px; transform: rotateY(90deg) translateZ(40px); }
-  .s-left  { width: 80px; transform: rotateY(-90deg) translateZ(40px); }
+.sat-eye {
+   position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+   width: 50px; height: 50px;
+   background: #020617; border-radius: 50%;
+   border: 3px solid #334155;
+   box-shadow: inset 0 5px 10px rgba(0,0,0,1);
+   display: flex; justify-content: center; align-items: center;
+}
+.eye-lens {
+   width: 24px; height: 24px; border-radius: 50%;
+   background: radial-gradient(circle at 30% 30%, #fff, #00f5ff, #0284c7);
+   box-shadow: 0 0 15px #00f5ff, inset 0 0 5px #fff;
+   animation: eye-scan 4s infinite;
+}
+.eye-ring {
+   position: absolute; width: 36px; height: 36px; border-radius: 50%;
+   border: 1px dashed rgba(0, 245, 255, 0.5);
+   animation: ring-spin 10s linear infinite;
+}
 
-  .sat-dish {
-    position: absolute;
-    top: -80px; left: 50%;
-    width: 140px; height: 140px;
-    margin-left: -70px;
-    background: radial-gradient(circle, #444, #111);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50% 50% 10% 10%;
-    transform: rotateX(45deg) translateZ(20px);
-    box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
-  }
+/* 2. Solar Wings */
+.solar-wing {
+   position: absolute; top: 50%; height: 120px; width: 180px;
+   transform-style: preserve-3d; display: flex; align-items: center;
+}
+.left-wing { right: 50%; transform-origin: right center; transform: translateY(-50%) rotateY(15deg); justify-content: flex-end; }
+.right-wing { left: 50%; transform-origin: left center; transform: translateY(-50%) rotateY(-15deg); }
 
-  .sat-transmitter {
-    position: absolute;
-    top: -100px; left: 50%;
-    width: 10px; height: 40px;
-    margin-left: -5px;
-    background: var(--highlight-color);
-    box-shadow: 0 0 20px var(--highlight-color);
-    transform: translateZ(60px);
-  }
+.wing-arm {
+   width: 40px; height: 12px;
+   background: linear-gradient(to bottom, #94a3b8, #475569);
+   border-top: 1px solid #cbd5e1; border-bottom: 2px solid #1e293b;
+}
 
-  .solar-panel {
-    position: absolute;
-    top: 50%;
-    width: 180px; height: 80px;
-    margin-top: -40px;
-    background: linear-gradient(90deg, #1a3a5a, #0d1a2a);
-    border: 1px solid rgba(0, 245, 255, 0.3);
-    background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
+.panel-grid {
+   width: 140px; height: 100%;
+   background: #0f172a; border: 2px solid #3b82f6; border-radius: 4px;
+   display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 2px; padding: 2px;
+   box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1), inset 0 0 20px rgba(0, 245, 255, 0.2);
+}
+.cell {
+   background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+   border: 1px solid #3b82f6;
+   position: relative; overflow: hidden;
+}
+.cell::after {
+   content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+   animation: solar-glare 6s infinite;
+}
 
-  .sp-left { right: 80px; transform: rotateY(-20deg); }
-  .sp-right { left: 80px; transform: rotateY(20deg); }
+/* 3. Dish Antenna */
+.sat-dish-assembly {
+   position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+   display: flex; flex-direction: column; align-items: center;
+   transform-style: preserve-3d;
+}
+.dish-arm {
+   width: 8px; height: 40px; background: linear-gradient(to right, #64748b, #334155);
+   border-radius: 4px; z-index: 1;
+}
+.dish-bowl {
+   width: 100px; height: 40px; background: linear-gradient(180deg, #94a3b8, #475569);
+   border-radius: 50%; margin-top: -20px;
+   border: 2px solid #cbd5e1; border-bottom-width: 4px; border-bottom-color: #334155;
+   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+   display: flex; justify-content: center; align-items: center; z-index: 2;
+   transform: rotateX(60deg);
+}
+.dish-inner {
+   width: 80px; height: 30px; border-radius: 50%; background: #1e293b;
+   box-shadow: inset 0 5px 10px rgba(0,0,0,0.8);
+}
+.dish-antenna {
+   width: 4px; height: 50px; background: #cbd5e1; position: absolute; top: -40px; z-index: 3;
+   border-radius: 2px; box-shadow: 0 0 5px rgba(255,255,255,0.5);
+   transform: translateZ(20px);
+}
+.dish-antenna::before { content:''; position: absolute; top: -4px; left: -3px; width: 10px; height: 10px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 10px #ef4444; animation: blink-red 1s infinite alternate; }
 
-  .signal {
-    position: absolute;
-    width: 8px; height: 8px;
-    background: var(--highlight-color);
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--highlight-color);
-  }
+.signal-wave {
+   position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+   border: 2px solid rgba(0, 245, 255, 0.8); border-radius: 50%;
+   opacity: 0;
+}
+.sw1 { width: 40px; height: 40px; animation: broadcast 2s infinite; }
+.sw2 { width: 40px; height: 40px; animation: broadcast 2s infinite 1s; }
 
-  .s1 { animation: orbitX 4s linear infinite; }
-  .s2 { animation: orbitY 6s linear infinite; }
 
-  @keyframes orbitX {
-    from { transform: rotateY(0deg) translateX(250px); }
-    to { transform: rotateY(360deg) translateX(250px); }
-  }
+/* KEYFRAMES */
+@keyframes sat-float { 0% { transform: translateY(-15px) rotateZ(-2deg); } 100% { transform: translateY(15px) rotateZ(2deg); } }
+@keyframes sat-pulse-ambient { 0% { opacity: 0.5; transform: translateZ(-80px) scale(0.9); } 100% { opacity: 0.8; transform: translateZ(-80px) scale(1.1); } }
+@keyframes eye-scan { 0%, 100% { box-shadow: 0 0 15px #00f5ff, inset 0 0 5px #fff; opacity: 1; } 50% { box-shadow: 0 0 5px #00f5ff, inset 0 0 2px #fff; opacity: 0.5; } }
+@keyframes ring-spin { 100% { transform: rotateZ(360deg); } }
+@keyframes solar-glare { 0% { left: -100%; } 20%, 100% { left: 200%; } }
+@keyframes blink-red { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+@keyframes broadcast { 0% { width: 10px; height: 10px; opacity: 1; top: -5px; } 100% { width: 150px; height: 60px; opacity: 0; top: -80px; } }
 </style>

@@ -55,29 +55,11 @@ const t = useTranslations(lang);
       <p>
         Many businesses fail to get meaningful results despite having vast amounts of data. We call this "information obesity." At Explorience, we separate <strong>Signals from Noise</strong> to answer your business's most critical questions.
       </p>
-      <div class="process-steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h4>Integration</h4>
-            <p>Connect your different ERP, CRM, cloud, and local sources into a single secure point.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h4>Quality Control</h4>
-            <p>Clean up missing, incorrect, or duplicate data to bring the accuracy of your analysis closer to 100%.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h4>Interpretation</h4>
-            <p>Report the hidden patterns, opportunities, and risks in your data with our complex algorithms.</p>
-          </div>
-        </div>
-      </div>
+      <ul class="feature-list">
+        <li><strong>Integration:</strong> Connect your different ERP, CRM, cloud, and local sources into a single secure point.</li>
+        <li><strong>Quality Control:</strong> Clean up missing, incorrect, or duplicate data to bring the accuracy of your analysis closer to 100%.</li>
+        <li><strong>Interpretation:</strong> Report the hidden patterns, opportunities, and risks in your data with our complex algorithms.</li>
+      </ul>
     </section>
   </div>
 </DetailLayout>
@@ -85,7 +67,7 @@ const t = useTranslations(lang);
 <style>
   .long-form-section {
     margin-top: 10rem;
-    max-width: 1000px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -109,56 +91,25 @@ const t = useTranslations(lang);
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.8;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
-  .process-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  .feature-list {
+    list-style: none;
+    padding: 0;
   }
 
-  .step {
-    display: flex;
-    gap: 2.5rem;
+  .feature-list li {
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.02);
-    padding: 2.5rem;
-    border-radius: 20px;
-    align-items: center;
-    border: 1px solid rgba(255,255,255,0.03);
-    transition: all 0.3s ease;
-  }
-
-  .step:hover {
-    border-color: var(--highlight-color);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .step-num {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--highlight-color);
-    opacity: 0.5;
-    font-family: 'Outfit', sans-serif;
-  }
-
-  .step-content h4 {
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 0.5rem;
-  }
-
-  .step-content p {
-    margin: 0;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.5);
   }
 
-  @media (max-width: 768px) {
-    .step {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-    }
+  .feature-list li strong {
+    color: #fff;
   }
 </style>

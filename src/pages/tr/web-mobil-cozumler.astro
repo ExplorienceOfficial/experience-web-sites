@@ -55,20 +55,11 @@ const t = useTranslations(lang);
       <p>
         Günümüzde kullanıcıların bir web sayfasının veya mobil uygulamanın yüklenmesi için bekleme süresi maksimum 2-3 saniyedir. Explorience olarak, <strong>"Performans Bir Lükstür Değil, Gerekliliktir"</strong> prensibini benimsiyoruz.
       </p>
-      <div class="tech-stack-showcase">
-        <div class="tech-item">
-          <div class="tech-icon">Next.js</div>
-          <p>Hızlı render edilen, SEO gücü yüksek kurumsal web siteleri.</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">React Native</div>
-          <p>Native performansında hibrit mobil uygulama çözümleri.</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">Three.js</div>
-          <p>Büyüleyici interaktif görselleştirme ve 3D deneyimler.</p>
-        </div>
-      </div>
+      <ul class="feature-list">
+        <li><strong>Next.js & Astro:</strong> Hızlı render edilen, SEO gücü inanılmaz yüksek, sıfır gecikmeli kurumsal web siteleri.</li>
+        <li><strong>React Native & Flutter:</strong> Native uygulama hissiyatında, tüm cihazlarda kusursuz çalışan hibrit mobil uygulama çözümleri.</li>
+        <li><strong>Three.js & WebGL:</strong> Kullanıcılarınızı ilk saniyede büyüleyecek, interaktif, 3 boyutlu ürün sergileme ve dijital deneyimler.</li>
+      </ul>
     </section>
   </div>
 </DetailLayout>
@@ -76,7 +67,7 @@ const t = useTranslations(lang);
 <style>
   .long-form-section {
     margin-top: 10rem;
-    max-width: 1000px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -100,40 +91,25 @@ const t = useTranslations(lang);
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.8;
+    margin-bottom: 2rem;
   }
 
-  .tech-stack-showcase {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 4rem;
+  .feature-list {
+    list-style: none;
+    padding: 0;
   }
 
-  .tech-item {
+  .feature-list li {
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.02);
-    padding: 2.5rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  .tech-item:hover {
-    border-color: var(--highlight-color);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .tech-icon {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--highlight-color);
+    border-radius: 16px;
     margin-bottom: 1rem;
-    font-family: 'Outfit', sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
+    font-size: 1.1rem;
   }
 
-  .tech-item p {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.5;
+  .feature-list li strong {
+    color: #fff;
   }
 </style>

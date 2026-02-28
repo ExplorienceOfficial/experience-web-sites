@@ -1,91 +1,220 @@
 ---
 // ScrollyAnalytics.astro - Cinematic 3D Data Visualization / Analytics
 ---
-<div class="analytics-terminal-canvas">
-  <div class="data-terminal">
-    <!-- Solid Hardware Base -->
-    <div class="terminal-base">
-      <div class="base-face b-top"></div>
-      <div class="base-face b-front"></div>
-    </div>
-    
-    <!-- Growing Bars -->
-    <div class="bars-cluster">
-      <div class="h-bar hb1"></div>
-      <div class="h-bar hb2"></div>
-      <div class="h-bar hb3"></div>
-      <div class="h-bar hb4"></div>
-      <div class="h-bar hb5"></div>
-    </div>
-    
-    <!-- Holographic Control Panel -->
-    <div class="holo-panel"></div>
-  </div>
+<div class="scrolly-station-3d">
+   <div class="station-glow"></div>
+   
+   <!-- Monitor Main Body -->
+   <div class="monitor-chassis">
+      <div class="monitor-screen">
+         <!-- Screen Content (Analytics Dashboard) -->
+         <div class="screen-bg"></div>
+         <div class="data-grid"></div>
+         
+         <div class="dashboard-ui">
+            <div class="ui-header">
+               <div class="ui-dot red"></div><div class="ui-dot yellow"></div><div class="ui-dot green"></div>
+            </div>
+            <div class="chart-container">
+               <div class="chart-bar cb1"><div class="bar-fill"></div><div class="bar-value">84%</div></div>
+               <div class="chart-bar cb2"><div class="bar-fill"></div><div class="bar-value">62%</div></div>
+               <div class="chart-bar cb3"><div class="bar-fill"></div><div class="bar-value">95%</div></div>
+               <div class="chart-bar cb4"><div class="bar-fill"></div><div class="bar-value">48%</div></div>
+               <div class="chart-bar cb5"><div class="bar-fill"></div><div class="bar-value">76%</div></div>
+            </div>
+            <div class="ui-footer">
+               <div class="status-line"></div>
+               <div class="status-line short"></div>
+            </div>
+         </div>
+
+         <div class="screen-glare"></div>
+      </div>
+      
+      <div class="monitor-bezel-bottom">
+         <div class="brand-logo"></div>
+         <div class="power-led"></div>
+      </div>
+   </div>
+
+   <!-- Monitor Stand -->
+   <div class="monitor-neck">
+      <div class="neck-detail"></div>
+   </div>
+   <div class="monitor-base-plate"></div>
 </div>
 
 <style>
-  .analytics-terminal-canvas {
-    width: 600px;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 2500px;
-  }
+/* ========================================
+   PREMIUM 3D ANALYTICS WORKSTATION
+   ======================================== */
+.scrolly-station-3d {
+   width: 400px;
+   height: 350px;
+   position: relative;
+   transform-style: preserve-3d;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
 
-  .data-terminal {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    transform-style: preserve-3d;
-  }
+.station-glow {
+   position: absolute; top: 0; left: -10%; width: 120%; height: 80%;
+   background: radial-gradient(ellipse, rgba(0, 245, 255, 0.4) 0%, transparent 70%);
+   transform: translateZ(-50px); filter: blur(20px);
+   animation: screen-pulse 4s infinite alternate;
+}
 
-  .terminal-base {
-    position: absolute;
-    bottom: 0;
-    width: 300px;
-    height: 40px;
-    transform-style: preserve-3d;
-  }
+/* 1. MONITOR CHASSIS */
+.monitor-chassis {
+   width: 100%;
+   height: 250px;
+   background: linear-gradient(145deg, #1e293b, #0f172a);
+   border: 2px solid #334155;
+   border-radius: 12px;
+   padding: 10px;
+   position: relative;
+   transform-style: preserve-3d;
+   box-shadow: 
+      0 30px 60px rgba(0,0,0,0.8),
+      inset 0 2px 4px rgba(255,255,255,0.1);
+   z-index: 10;
+}
 
-  .base-face {
-    position: absolute;
-    background: #1a1a1a;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-  }
+.monitor-screen {
+   width: 100%;
+   height: calc(100% - 25px);
+   background: #020617;
+   border-radius: 6px;
+   position: relative;
+   overflow: hidden;
+   border: 2px solid #000;
+   box-shadow: inset 0 0 20px rgba(0,0,0,1);
+}
 
-  .b-top { width: 300px; height: 100px; transform: rotateX(-90deg) translateZ(50px); background: #222; }
-  .b-front { width: 300px; height: 40px; transform: translateZ(50px); }
+.screen-bg {
+   position: absolute; inset: 0;
+   background: radial-gradient(circle at 50% 120%, rgba(0, 245, 255, 0.2), transparent 70%);
+}
 
-  .h-bar {
-    position: absolute;
-    bottom: 40px;
-    width: 40px;
-    background: linear-gradient(to top, var(--highlight-color), transparent);
-    border: 1px solid var(--highlight-color);
-    box-shadow: 0 0 20px var(--highlight-color);
-    transform-style: preserve-3d;
-    transform-origin: bottom;
-    transition: height 0.3s ease;
-  }
+.data-grid {
+   position: absolute; inset: 0;
+   background-image: 
+      linear-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+   background-size: 20px 20px;
+   opacity: 0.5;
+}
 
-  .hb1 { left: 20px;  height: 120px; transform: translateZ(20px); }
-  .hb2 { left: 80px;  height: 180px; transform: translateZ(-10px); }
-  .hb3 { left: 140px; height: 140px; transform: translateZ(40px); }
-  .hb4 { left: 200px; height: 220px; transform: translateZ(10px); }
-  .hb5 { left: 260px; height: 160px; transform: translateZ(-20px); }
+.screen-glare {
+   position: absolute;
+   top: -50%; left: -50%; width: 200%; height: 200%;
+   background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
+   transform: rotate(15deg);
+   pointer-events: none;
+}
 
-  .holo-panel {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    width: 200px;
-    height: 100px;
-    margin-left: -100px;
-    background: rgba(0, 245, 255, 0.05);
-    border: 1px solid rgba(0, 245, 255, 0.3);
-    backdrop-filter: blur(4px);
-    transform: rotateX(-20deg) translateZ(80px);
-    box-shadow: 0 0 30px rgba(0, 245, 255, 0.1);
-  }
+.monitor-bezel-bottom {
+   width: 100%; height: 25px;
+   display: flex; justify-content: center; align-items: center;
+   position: relative;
+}
+
+.brand-logo {
+   width: 30px; height: 4px;
+   background: #475569; border-radius: 2px;
+}
+
+.power-led {
+   position: absolute; right: 10px; top: 10px;
+   width: 6px; height: 6px; border-radius: 50%;
+   background: #00f5ff; box-shadow: 0 0 8px #00f5ff;
+}
+
+/* 2. DASHBOARD UI INSIDE SCREEN */
+.dashboard-ui {
+   position: absolute; inset: 15px;
+   display: flex; flex-direction: column;
+   z-index: 2;
+}
+
+.ui-header { display: flex; gap: 6px; margin-bottom: 20px; }
+.ui-dot { width: 8px; height: 8px; border-radius: 50%; }
+.ui-dot.red { background: #ef4444; }
+.ui-dot.yellow { background: #eab308; }
+.ui-dot.green { background: #22c55e; }
+
+.chart-container {
+   flex-grow: 1;
+   display: flex; align-items: flex-end; justify-content: space-around;
+   border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+   padding-bottom: 5px;
+}
+
+.chart-bar {
+   width: 30px; height: 100%;
+   display: flex; flex-direction: column; justify-content: flex-end;
+   position: relative;
+}
+
+.bar-fill {
+   width: 100%;
+   background: linear-gradient(to top, rgba(0, 245, 255, 0.2), #00f5ff);
+   border-radius: 3px 3px 0 0;
+   box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+   transition: height 0.5s ease;
+}
+
+.cb1 .bar-fill { height: 84%; animation: bar-bump 3s infinite 0.1s; }
+.cb2 .bar-fill { height: 62%; animation: bar-bump 3s infinite 0.4s; }
+.cb3 .bar-fill { height: 95%; animation: bar-bump 3s infinite 0.2s; }
+.cb4 .bar-fill { height: 48%; animation: bar-bump 3s infinite 0.6s; }
+.cb5 .bar-fill { height: 76%; animation: bar-bump 3s infinite 0.3s; }
+
+.bar-value {
+   position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+   color: #00f5ff; font-size: 0.7rem; font-family: monospace; font-weight: bold;
+   opacity: 0.8;
+}
+
+.ui-footer { margin-top: 15px; }
+.status-line { width: 100%; height: 4px; background: rgba(0, 245, 255, 0.2); border-radius: 2px; margin-bottom: 8px; }
+.status-line.short { width: 60%; }
+
+/* 3. MONITOR STAND */
+.monitor-neck {
+   width: 60px; height: 70px;
+   background: linear-gradient(to right, #1e293b, #334155, #1e293b);
+   position: relative;
+   transform-style: preserve-3d;
+   border-left: 2px solid #0f172a;
+   border-right: 2px solid #0f172a;
+   box-shadow: inset 0 10px 20px rgba(0,0,0,0.8);
+   z-index: 5;
+}
+
+.neck-detail {
+   position: absolute; top: 10px; bottom: 10px; left: 50%; width: 20px; transform: translateX(-50%);
+   background: repeating-linear-gradient(to bottom, #0f172a, #0f172a 2px, transparent 2px, transparent 6px);
+}
+
+.monitor-base-plate {
+   width: 220px; height: 30px;
+   background: linear-gradient(to bottom, #334155, #0f172a);
+   border-radius: 15px 15px 4px 4px;
+   box-shadow: 
+      0 15px 20px rgba(0,0,0,0.8),
+      inset 0 2px 2px rgba(255,255,255,0.2);
+   border: 1px solid #475569;
+   border-bottom: 3px solid #020617;
+   z-index: 4;
+   transform: translateZ(-20px) rotateX(20deg);
+}
+
+/* KEYFRAMES */
+@keyframes screen-pulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
+@keyframes bar-bump {
+   0%, 100% { transform: scaleY(1); }
+   50% { transform: scaleY(0.95); }
+}
 </style>
