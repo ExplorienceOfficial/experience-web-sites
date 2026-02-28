@@ -1,0 +1,125 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyGlobe from '../../components/ScrollyGlobe.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+---
+
+<DetailLayout
+  lang={lang}
+  title={`ERP & Kurumsal Çözümler - Explorience`}
+  description={t.solutions.erpDesc}
+>
+  <div slot="showcase">
+    <ScrollyGlobe />
+  </div>
+
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">KURUMSAL VERİMLİLİK</span>
+      <h1 class="detail-title">{t.solutions.erpTitle}</h1>
+      <p class="detail-intro">
+        İşletmenizin tüm kaynaklarını tek merkezden, uçtan uca yönetin. 
+        Legacy sistemlerinizi modern microservis mimarileriyle geleceğe hazırlıyor, operasyonel mükemmelliği kodluyoruz.
+      </p>
+    </section>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Özel ERP Modülleri</h3>
+        <p>Paket programların hantallığından kurtulun. Sadece ihtiyacınız olan süreçleri kapsayan, esnek ve ölçeklenebilir özel ERP modülleri geliştiriyoruz.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>CRM & Müşteri Yönetimi</h3>
+        <p>Müşteri yolculuğunu her adımda takip edin. Satış kanallarınızdan satış sonrası desteğe kadar tüm iletişimi tek bir noktada anlamlandırın.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Entegrasyon Katmanları</h3>
+        <p>Eski (legacy) sistemlerinizi modern dünyayla konuşturuyoruz. SAP, Salesforce ve diğer üçüncü parti yazılımlarla kusursuz ve güvenli API entegrasyonları kuruyoruz.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>İç Veri Güvenliği</h3>
+        <p>Kurumsal verilerinizin yetkilendirme ve audit süreçlerini tasarlıyoruz. Hassas verileriniz sadece izin verilen ölçüde, güvenle dolaşıma girer.</p>
+      </div>
+    </div>
+
+    <!-- Long form content -->
+    <section class="long-form-section">
+      <div class="section-badge">KURUMSAL DİJİTALLEŞME</div>
+      <h2>Süreçlerinizi Neden Dijitalleştirmelisiniz?</h2>
+      <p>
+        Büyüyen işletmelerde insan hatası ve veri siloları en büyük gizli maliyettir. Explorience olarak, <strong>"Kağıtsız ve Hatasız Operasyon"</strong> vizyonuyla kurumsal dijitalleşme yolculuğunuzda yanınızda yer alıyoruz.
+      </p>
+      <div class="erp-benefits">
+        <div class="benefit-item">
+          <strong>%30+ Verimlilik Artışı:</strong> Tekrarlayan manuel girişleri ortadan kaldırarak ekibinizin daha stratejik işlere odaklanmasını sağlıyoruz.
+        </div>
+        <div class="benefit-item">
+          <strong>Gerçek Zamanlı Karar Verme:</strong> Anlık envanter, nakit akışı ve operasyon durumunu görerek veri odaklı kararlar alın.
+        </div>
+        <div class="benefit-item">
+          <strong>Kesintisiz Ölçeklenme:</strong> İşiniz büyüdükçe yazılımınız da sizinle birlikte, performans kaybı yaşamadan büyür.
+        </div>
+      </div>
+    </section>
+  </div>
+</DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+  }
+
+  .erp-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .benefit-item {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--highlight-color);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .benefit-item strong {
+    color: var(--highlight-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+</style>

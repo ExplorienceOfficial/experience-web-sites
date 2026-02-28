@@ -1,4 +1,21 @@
-.wrangler/
+# build output
+dist/
+
+# dependencies
 node_modules/
+
+# logs
+npm-debug.log*
+
+# environment variables
 .env
-*.log
+.env.production
+
+# macOS
+.DS_Store
+
+# Astro
+.astro/
+
+# Cloudflare
+.wrangler/

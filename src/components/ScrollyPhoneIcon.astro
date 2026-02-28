@@ -1,0 +1,189 @@
+---
+// Mega Cinematic 3D Communication Hub / Hologram
+---
+<div class="mega-comms-3d">
+  <div class="comms-scene">
+    <!-- Floating Central Orb -->
+    <div class="comms-core">
+      <div class="core-inner"></div>
+      <div class="core-pulse"></div>
+      
+      <!-- Orbiting Communication Particles -->
+      <div class="data-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+      </div>
+    </div>
+
+    <!-- Holographic Data Rings -->
+    <div class="data-rings">
+      <div class="data-ring r1">
+        <div class="ring-text">CONNECTING...</div>
+      </div>
+      <div class="data-ring r2"></div>
+      <div class="data-ring r3"></div>
+    </div>
+
+    <!-- Receiver Silhouette (Subtle and Large) -->
+    <div class="receiver-3d-mega">
+        <div class="mega-shell"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.mega-comms-3d {
+  width: 100%;
+  max-width: 500px;
+  height: 450px;
+  position: relative;
+  perspective: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 50;
+}
+
+.comms-scene {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Floating Central Orb */
+.comms-core {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  transform-style: preserve-3d;
+  animation: float-orb 5s ease-in-out infinite alternate;
+  z-index: 10;
+}
+
+.core-inner {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, #fff, #00f5ff, #00d2ff);
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(0, 245, 255, 1), inset 0 0 40px rgba(255, 255, 255, 0.8);
+  animation: glow-breathe 3s ease-in-out infinite alternate;
+}
+
+.core-pulse {
+  position: absolute;
+  inset: -20px;
+  border: 1px solid var(--highlight-color);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: orb-pulse 2s ease-out infinite;
+}
+
+/* Orbiting Particles */
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--highlight-color);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--highlight-color);
+}
+
+.p1 { animation: orbit-p 10s linear infinite; }
+.p2 { animation: orbit-p 14s linear infinite reverse; }
+.p3 { animation: orbit-p 18s linear infinite; }
+
+/* Data Rings */
+.data-rings {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  transform-style: preserve-3d;
+}
+
+.data-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(0, 245, 255, 0.3);
+  border-radius: 50%;
+  transform: rotateX(75deg);
+}
+
+.r1 { transform: rotateX(75deg) rotateY(10deg); animation: rotate-data 20s linear infinite; }
+.r2 { transform: rotateX(75deg) rotateY(-15deg) scale(1.4); animation: rotate-data 30s linear infinite reverse; border-color: rgba(255,255,255,0.1); }
+.r3 { transform: rotateX(20deg) rotateY(75deg) scale(0.6); animation: rotate-data 25s linear infinite; }
+
+.ring-text {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: var(--highlight-color);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+/* Receiver Silhouette (Stylized) */
+.receiver-3d-mega {
+    position: absolute;
+    width: 250px;
+    height: 350px;
+    border: 2px solid rgba(0, 245, 255, 0.1);
+    background: rgba(0, 245, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    transform: rotateX(10deg) rotateY(-15deg) translateZ(-50px);
+    z-index: 1;
+}
+
+.mega-shell::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: rgba(0, 245, 255, 0.2);
+    border-radius: 4px;
+}
+
+@keyframes float-orb {
+  0% { transform: translateY(30px); }
+  100% { transform: translateY(-30px); }
+}
+
+@keyframes glow-breathe {
+  0% { transform: scale(0.9); box-shadow: 0 0 30px rgba(0, 245, 255, 0.5); }
+  100% { transform: scale(1.1); box-shadow: 0 0 80px rgba(0, 245, 255, 0.9); }
+}
+
+@keyframes orb-pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes orbit-p {
+  from { transform: rotateY(0deg) translateZ(120px) rotateX(0deg); }
+  to { transform: rotateY(360deg) translateZ(120px) rotateX(360deg); }
+}
+
+@keyframes rotate-data {
+  from { transform: rotateX(75deg) rotateZ(0deg); }
+  to { transform: rotateX(75deg) rotateZ(360deg); }
+}
+
+@media (max-width: 768px) {
+  .mega-comms-3d {
+    transform: scale(0.65);
+  }
+}
+</style>

@@ -1,0 +1,131 @@
+---
+export interface Props {
+  t: Record<string, any>;
+  lang: string;
+}
+
+const { t, lang } = Astro.props;
+---
+
+<!-- Timeline Progress Bar -->
+<div class="scroll-progress-container" aria-hidden="true">
+  <div class="progress-labels">
+    <a href="#sec-intro" class="progress-label active" data-target="0">
+      <span class="main">{t.nav.home}</span>
+    </a>
+    <a href="#sec-vision" class="progress-label" data-target="15">
+      <span class="main">{t.nav.about}</span>
+    </a>
+    <a href="#sec-mission-slide" class="progress-label child-label" data-target="20">
+      <span class="main">{t.nav.mission}</span>
+    </a>
+    <a href="#sec-vision-slide" class="progress-label child-label" data-target="25">
+      <span class="main">{t.nav.vision}</span>
+    </a>
+    <a href="#sec-solutions" class="progress-label" data-target="35">
+      <span class="main">{t.nav.solutions}</span>
+    </a>
+    <a href="#sec-ai" class="progress-label child-label" data-target="45">
+      <span class="main">{t.nav.ai}</span>
+    </a>
+    <a href="#sec-data" class="progress-label child-label" data-target="55">
+      <span class="main">{t.nav.data}</span>
+    </a>
+    <a href="#sec-erp" class="progress-label child-label" data-target="65">
+      <span class="main">{t.nav.erp}</span>
+    </a>
+    <a href="#sec-apps" class="progress-label child-label" data-target="75">
+      <span class="main">{t.nav.apps}</span>
+    </a>
+    <a href="#sec-webgl" class="progress-label child-label" data-target="85">
+      <span class="main">{t.nav.webgl}</span>
+    </a>
+    <a href="#sec-contact" class="progress-label" data-target="95">
+      <span class="main">{t.nav.contact}</span>
+    </a>
+  </div>
+
+  <!-- The Line -->
+  <div class="progress-track">
+    <div class="scroll-progress-bar"></div>
+  </div>
+</div>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>('.fullscreen-text-slide, .scrolly-card');
+  const progressBar = document.querySelector<HTMLElement>('.scroll-progress-bar');
+  const timelineContainer = document.querySelector<HTMLElement>('.scroll-progress-container');
+  const footer = document.querySelector('footer');
+  const labels = document.querySelectorAll<HTMLElement>('.progress-label');
+
+  labels.forEach((label) => {
+    label.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = label.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+  });
+
+  const handleScroll = () => {
+    const windowHeight = window.innerHeight;
+    const scrollY = window.scrollY;
+    const bodyHeight = document.body.scrollHeight;
+    const totalHeight = bodyHeight - windowHeight;
+
+    let progress = (scrollY / totalHeight) * 100;
+    progress = Math.max(0, Math.min(100, progress));
+    if (progressBar) progressBar.style.height = `${progress}%`;
+
+    if (footer && timelineContainer) {
+      const footerRect = footer.getBoundingClientRect();
+      timelineContainer.classList.toggle('hide-timeline', footerRect.top < windowHeight * 0.8);
+    }
+
+    const viewportCenter = windowHeight / 2;
+    let activeLabel: HTMLElement | null = null;
+    let maxTop = -Infinity;
+
+    labels.forEach((label) => {
+      const targetId = label.getAttribute('href');
+      if (targetId && targetId.startsWith('#') && targetId !== '#') {
+        const targetEl = document.querySelector<HTMLElement>(targetId);
+        if (targetEl) {
+          const rect = targetEl.getBoundingClientRect();
+          if (rect.top <= viewportCenter + 50 && rect.top > maxTop) {
+            maxTop = rect.top;
+            activeLabel = label;
+          }
+        }
+      }
+    });
+
+    if (!activeLabel && labels.length > 0 && window.scrollY < windowHeight) {
+      activeLabel = labels[0];
+    }
+
+    labels.forEach((l) => l.classList.remove('active'));
+    if (activeLabel) (activeLabel as HTMLElement).classList.add('active');
+
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const screenCenter = windowHeight / 2;
+      const dist = Math.abs(cardCenter - screenCenter);
+      const maxDist = windowHeight * 0.8;
+      let opacity = 1 - dist / maxDist;
+      opacity = Math.max(0, Math.min(1, opacity));
+      const scale = 0.8 + 0.3 * opacity;
+      card.style.opacity = String(opacity);
+      card.style.transform = `scale(${scale})`;
+      card.style.filter = opacity < 0.5 ? `blur(${(1 - opacity) * 5}px)` : 'none';
+    });
+  };
+
+  window.addEventListener('scroll', () => window.requestAnimationFrame(handleScroll));
+  handleScroll(); // initial trigger
+</script>

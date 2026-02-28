@@ -1,0 +1,277 @@
+---
+// Apple-style Scrolly Object Controller (Pure High-End CSS 3D Edition)
+import ScrollyAiCore from './ScrollyAiCore.astro';
+import ScrollyServerRack from './ScrollyServerRack.astro';
+import ScrollyGlobe from './ScrollyGlobe.astro';
+import ScrollyPhone from './ScrollyPhone.astro';
+import ScrollyLocation from './ScrollyLocation.astro';
+import ScrollyPhoneIcon from './ScrollyPhoneIcon.astro';
+---
+<div id="apple-scrolly-canvas">
+   
+   <!-- 1. AI Core (Premium Quantum AI Processor) -->
+   <div id="obj-ai" class="scrolly-item" style="opacity: 0;">
+      <ScrollyAiCore />
+   </div>
+
+   <!-- 2. Server / Big Data (Premium 3D Server Rack) -->
+   <div id="obj-data" class="scrolly-item" style="opacity: 0;">
+      <ScrollyServerRack />
+   </div>
+
+   <!-- 3. Globe / Network (3D Wireframe Sphere) -->
+   <div id="obj-globe" class="scrolly-item" style="opacity: 0;">
+      <ScrollyGlobe />
+   </div>
+
+   <!-- 4. Mobile Phone App (Photorealistic Pure CSS 3D iPhone) -->
+   <div id="obj-phone" class="scrolly-item" style="opacity: 0;">
+      <ScrollyPhone />
+   </div>
+
+   <!-- 5. Location / Radar (Premium 3D Location Marker) -->
+   <div id="obj-location" class="scrolly-item" style="opacity: 0;">
+      <ScrollyLocation />
+   </div>
+
+   <!-- 6. Communication Hub (Premium Holographic Sphere) -->
+   <div id="obj-comms" class="scrolly-item" style="opacity: 0;">
+      <ScrollyPhoneIcon />
+   </div>
+</div>
+
+<style>
+#apple-scrolly-canvas {
+   position: fixed;
+   top: 0; left: 0; width: 100%; height: 100vh;
+   pointer-events: none;
+   z-index: 5;
+   perspective: 2500px; /* Deep perspective for drastic hardware feel */
+   transform-style: preserve-3d;
+}
+
+.scrolly-item {
+   position: absolute;
+   top: 50%; left: 50%;
+   transform-origin: center center;
+   transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+   will-change: transform, opacity;
+   transform-style: preserve-3d;
+}
+</style>
+
+<script>
+function initScrollyObjects() {
+   const objs = {
+      'ai': document.getElementById('obj-ai'),
+      'data': document.getElementById('obj-data'),
+      'globe': document.getElementById('obj-globe'),
+      'phone': document.getElementById('obj-phone'),
+      'location': document.getElementById('obj-location'),
+      'comms': document.getElementById('obj-comms')
+   };
+
+   let currentObjId = null;
+   let targetX = 0, targetY = 0, targetScale = 1;
+   let targetRotX = 0, targetRotY = 0, targetRotZ = 0;
+
+   // Lerp states for ultra-smooth 60fps interpolation (Apple feel)
+   let cx=0, cy=0, cs=1, crx=0, cry=0, crz=0;
+
+   function lerp(start, end, amt) {
+      return (1 - amt) * start + amt * end;
+   }
+
+   function render() {
+      // Fluid easing interpolation
+      cx = lerp(cx, targetX, 0.06);
+      cy = lerp(cy, targetY, 0.06);
+      cs = lerp(cs, targetScale, 0.06);
+      crx = lerp(crx, targetRotX, 0.06);
+      cry = lerp(cry, targetRotY, 0.06);
+      crz = lerp(crz, targetRotZ, 0.06);
+
+      if (currentObjId && objs[currentObjId]) {
+         // Apply to actual element (true 3D rotation)
+         objs[currentObjId].style.transform = `translate(calc(-50% + ${cx}vw), calc(-50% + ${cy}vh)) scale(${cs}) rotateX(${crx}deg) rotateY(${cry}deg) rotateZ(${crz}deg)`;
+      }
+      requestAnimationFrame(render);
+   }
+   render();
+
+   const cards = document.querySelectorAll('.scrolly-card-wrapper');
+   window.addEventListener('scroll', () => {
+      const wh = window.innerHeight;
+      
+      let activeCard = null;
+      for (let i=0; i < cards.length; i++) {
+         const rect = cards[i].getBoundingClientRect();
+         // Broad trigger zone
+         if (rect.top <= wh * 0.75 && rect.bottom >= wh * 0.25) {
+            activeCard = cards[i];
+            break;
+         }
+      }
+
+      if (activeCard) {
+         const rect = activeCard.getBoundingClientRect();
+         const centerOffset = rect.top + (rect.height / 2) - (wh / 2);
+         // Dynamic Progress Scrubbing
+         const progress = -(centerOffset / (wh / 2)); 
+         const clampedProgress = Math.max(-2, Math.min(2, progress));
+
+         // CUSTOM OPACITY LOGIC for better transitions
+         let dynamicOpacity = 1;
+         const objId = activeCard.getAttribute('data-obj');
+
+         // Fade out as the card moves up (progress > 0)
+         if (progress > 0.2 && objId === 'comms') {
+             // Comms leaves earlier as requested
+             dynamicOpacity = Math.max(0, 1 - (progress - 0.2) * 2.5);
+         } else if (progress > 0.4) {
+             // Default fade out for others
+             dynamicOpacity = Math.max(0, 1 - (progress - 0.4) * 2);
+         }
+
+         // Fade in as the card moves to center (progress < 0)
+         if (progress < -0.6) {
+             dynamicOpacity = Math.max(0, 1 - (-0.6 - progress) * 2);
+         }
+
+         if (objId && objs[objId]) {
+            if (currentObjId !== objId) {
+               if(currentObjId && objs[currentObjId]) objs[currentObjId].style.opacity = '0';
+               currentObjId = objId;
+            }
+            objs[currentObjId].style.opacity = dynamicOpacity.toString();
+
+            const clampedProgress = Math.max(-2, Math.min(2, progress));
+
+            // Pull attributes, note: Phone defaults to spin to show off 3D back!
+            const tx = parseFloat(activeCard.getAttribute('data-tx')) || 0;
+            const ty = parseFloat(activeCard.getAttribute('data-ty')) || 0;
+            const scale = parseFloat(activeCard.getAttribute('data-scale')) || 1;
+            const baseRx = parseFloat(activeCard.getAttribute('data-rx')) || 0;
+            const baseRy = parseFloat(activeCard.getAttribute('data-ry')) || 0;
+            const baseRz = parseFloat(activeCard.getAttribute('data-rz')) || 0;
+
+            const scrubRot = parseFloat(activeCard.getAttribute('data-scrub-rot')) || 25;
+            const scrubY = parseFloat(activeCard.getAttribute('data-scrub-y')) || 0;
+
+            // Target position calculations
+            targetX = tx;
+            targetY = ty + (clampedProgress * scrubY); 
+            targetScale = scale;
+            
+            // 2D objelerin yan dönüp düz (flat) görünmemesi için tüm açıları çok dar bir aralığa (max ~15-20 derece) hapsettik
+            let safeRx = baseRx * 0.2;
+            let safeRy = baseRy * 0.2;
+            let safeScrub = scrubRot * 0.15;
+            
+            targetRotX = safeRx + (clampedProgress * safeScrub); 
+            targetRotY = safeRy + (clampedProgress * safeScrub * 1.5); 
+            targetRotZ = baseRz * 0.2;
+
+            // Interactive scroll physics for AI Core
+            if(objId === 'ai') {
+                const orb = document.getElementById('ai-scroll-orb');
+                const rings = document.getElementById('ai-scroll-rings');
+                const core = document.getElementById('ai-scroll-core');
+                
+                if (orb && rings && core) {
+                    // Glass CPU jumps out of its socket (Z-axis Extrusion) when scrolling
+                    const coreZ = 25 + Math.max(0, clampedProgress * 60); 
+                    core.style.transform = `translate(-50%, -50%) translateZ(${coreZ}px) rotateZ(${clampedProgress * 15}deg)`;
+                    
+                    // Holograms expand outwards and scale up to envelop the screen
+                    rings.style.transform = `scale(${1 + Math.abs(clampedProgress) * 0.3}) translateZ(${clampedProgress * 40}px)`;
+                    orb.style.transform = `translate(-50%, -50%) scale(${1 + Math.abs(clampedProgress) * 0.2})`;
+                }
+            }
+
+            // Interactive scroll physics for Server Rack
+            if(objId === 'data') {
+                const b1 = document.getElementById('server-blade-1');
+                const b2 = document.getElementById('server-blade-2');
+                const b3 = document.getElementById('server-blade-3');
+                
+                if (b1 && b2 && b3) {
+                    // Physical Blades pull out sequentially based on scroll (Hot-swap illusion)
+                    // The lower the progress drops, the more the blades slide out!
+                    const pullOutMaster = Math.max(0, clampedProgress * 50); 
+                    const pullOutStorage = Math.max(0, (clampedProgress - 0.5) * 60); 
+                    const pullOutCompute = Math.max(0, (clampedProgress - 1) * 70); 
+
+                    b1.style.transform = `translateZ(${pullOutMaster}px)`;
+                    b2.style.transform = `translateZ(${pullOutStorage}px)`;
+                    b3.style.transform = `translateZ(${pullOutCompute}px)`;
+                }
+            }
+
+            // Interactive scroll physics for Globe
+            if(objId === 'globe') {
+                const rings = document.getElementById('globe-rings');
+                const nodes = document.getElementById('globe-nodes');
+                
+                if (rings && nodes) {
+                    // Rotating internal structures opposite to the main globe rotation for a gyroscopic effect
+                    const gyroRot = clampedProgress * 40; 
+                    rings.style.transform = `rotateX(${gyroRot}deg) rotateY(${-gyroRot * 0.5}deg) scale(${1 + Math.abs(clampedProgress) * 0.05})`;
+                    nodes.style.transform = `rotateY(${gyroRot * 2}deg) translateZ(${clampedProgress * 20}px)`;
+                }
+            }
+
+            // Interactive scroll physics for Location (Radar)
+            if(objId === 'location') {
+               const pin = document.querySelector('.mega-location-3d .pin-group') as HTMLElement;
+               const scanLine = document.querySelector('.mega-location-3d .scan-line') as HTMLElement;
+               if(pin && scanLine) {
+                  // Pin tilts and leans based on scroll direction
+                  pin.style.transform = `translateY(${clampedProgress * 20}px) rotateY(${clampedProgress * 30}deg)`;
+                  // Radar scan speeds up as we scroll past center
+                  const speed = 4 / (1 + Math.abs(clampedProgress));
+                  scanLine.style.animationDuration = `${speed}s`;
+               }
+            }
+
+            // Interactive scroll physics for Comms (Hologram)
+            if(objId === 'comms') {
+               const core = document.querySelector('.mega-comms-3d .comms-core') as HTMLElement;
+               const rings = document.querySelector('.mega-comms-3d .data-rings') as HTMLElement;
+               if(core && rings) {
+                  // Core pulses and scales based on scroll depth
+                  core.style.transform = `scale(${1 + Math.abs(clampedProgress) * 0.2}) rotateZ(${clampedProgress * 20}deg)`;
+                  // Rings shift perspective
+                  rings.style.transform = `rotateX(${75 + clampedProgress * 10}deg) rotateZ(${clampedProgress * 45}deg)`;
+               }
+            }
+
+            // Handle UI Background & Internal App Scrolling changes smoothly
+            if(objId === 'phone') {
+                const screen = document.getElementById('phone-screen-inner');
+                const scrollView = document.getElementById('phone-scroll-view');
+                const theme = activeCard.getAttribute('data-phone-color');
+                
+                if(theme && screen) {
+                   screen.style.background = theme;
+                }
+                
+                if(scrollView) {
+                   // Map the overarching clampedProgress (-2 to 2) to an internal scroll Y value in pixels!
+                   // Reverse the math so as we scroll down the page, we scroll down the app.
+                   // clampedProgress goes from positive to negative usually, let's just multiply by roughly 100px.
+                   const innerScrollY = Math.max(0, (clampedProgress + 1.5) * 80); 
+                   scrollView.style.transform = `translateY(-${innerScrollY}px)`;
+                }
+            }
+         } else {
+             if(currentObjId && objs[currentObjId]) {
+                 objs[currentObjId].style.opacity = '0';
+                 currentObjId = null;
+             }
+         }
+      }
+   });
+}
+document.addEventListener('DOMContentLoaded', initScrollyObjects);
+</script>

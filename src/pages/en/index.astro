@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import ScrollProgress from '../../components/ScrollProgress.astro';
+import Footer from '../../components/Footer.astro';
+import ScrollyObjects from '../../components/ScrollyObjects.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+const currentPath = '/en/';
+---
+
+<BaseLayout
+  lang={lang}
+  title={t.site.title}
+  description={t.site.description}
+  keywords={t.site.keywords}
+  canonicalPath={currentPath}
+>
+  <Navbar lang={lang} currentPath={currentPath} t={t} />
+  <ScrollProgress t={t} lang={lang} />
+  <ScrollyObjects />
+
+  <!-- 1. INTRO -->
+  <div class="scrolly-container" style="height: 400vh;">
+    <div class="scrolly-text-content">
+      <div class="scrolly-card-wrapper center-force" id="sec-intro">
+        <div class="fullscreen-text-slide">
+          <h1 class="giant-text">{t.hero.title}</h1>
+          <p class="subtitle-text">{t.hero.subtitle}</p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper center-force">
+        <div class="fullscreen-text-slide">
+          <span class="category-tag">{t.intro.tagNewGen}</span>
+          <h2 class="giant-text">{t.intro.dynamicTitle}</h2>
+          <p class="subtitle-text" set:html={t.intro.dynamicDesc}></p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper center-force">
+        <div class="fullscreen-text-slide">
+          <span class="category-tag">{t.intro.tagVision}</span>
+          <h2 class="giant-text">{t.intro.discoveryTitle}</h2>
+          <p class="subtitle-text">{t.intro.discoveryDesc}</p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper center-force">
+        <div class="fullscreen-text-slide">
+          <p class="subtitle-text" style="opacity: 0.6; font-size: 1rem;">{t.intro.scrollToExplore}</p>
+          <div style="width: 2px; height: 50px; background: rgba(255,255,255,0.5); margin: 20px auto;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. VISION / ABOUT -->
+  <div class="scrolly-container" style="height: 500vh;">
+    <div class="scrolly-text-content">
+      <div class="scrolly-card-wrapper center-force" id="sec-vision" data-obj="globe" data-tx="0" data-scale="0.8" data-ry="0" data-rx="20" data-scrub-rot="30">
+        <div class="fullscreen-text-slide">
+          <h2 class="giant-text">{t.about.storyTitle}</h2>
+          <p class="subtitle-text">{t.about.storySubtitle}</p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper" style="justify-content: flex-end; padding-right: 15vw;" id="sec-mission-slide" data-obj="globe" data-tx="-20" data-scale="1" data-ry="-10" data-scrub-y="-10" data-scrub-rot="45">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.about.tagMission}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.about.transformationTitle}</h2>
+          <p class="subtitle-text">{t.about.transformationDesc}</p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper" style="justify-content: flex-start; padding-left: 15vw;" id="sec-vision-slide" data-obj="globe" data-tx="20" data-scale="1.2" data-ry="15" data-scrub-rot="-30">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.intro.tagVision}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.about.globalTitle}</h2>
+          <p class="subtitle-text">{t.about.globalDesc}</p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper center-force" data-obj="globe" data-tx="0" data-scale="1.5" data-ry="0" data-rx="40" data-scrub-rot="60">
+        <div class="fullscreen-text-slide">
+          <span class="category-tag">{t.about.tagApproach}</span>
+          <h2 class="giant-text">{t.about.passionTitle}</h2>
+          <p class="subtitle-text">{t.about.passionDesc}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SOLUTIONS -->
+  <div class="scrolly-container" style="height: 1100vh;">
+    <div class="scrolly-text-content">
+      <div class="scrolly-card-wrapper center-force" id="sec-solutions">
+        <div class="fullscreen-text-slide">
+          <h2 class="giant-text">{t.solutions.title}</h2>
+          <p class="subtitle-text">{t.solutions.subtitle}</p>
+        </div>
+      </div>
+
+      <!-- AI CORE -->
+      <div class="scrolly-card-wrapper" style="justify-content: flex-end; padding-right: 15vw;" id="sec-ai" data-obj="ai" data-tx="-25" data-scale="1" data-ry="15" data-scrub-rot="60">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.solutions.aiTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.aiTitle}</h2>
+          <p class="subtitle-text">{t.solutions.aiDesc}</p>
+          <a href={`/${lang}/ai-solutions`} class="explore-detail-btn">
+            Explore Details
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper" style="justify-content: flex-start; padding-left: 15vw;" data-obj="ai" data-tx="25" data-scale="0.8" data-ry="-15" data-rx="20" data-scrub-rot="-45">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.solutions.aiTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.predictionTitle}</h2>
+          <p class="subtitle-text">{t.solutions.predictionDesc}</p>
+        </div>
+      </div>
+
+      <!-- BIG DATA -->
+      <div class="scrolly-card-wrapper" style="justify-content: flex-end; padding-right: 15vw;" id="sec-data" data-obj="data" data-tx="-20" data-scale="1" data-ry="35" data-rx="-10" data-scrub-rot="30" data-scrub-y="10">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.solutions.bigDataTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.architectureTitle}</h2>
+          <p class="subtitle-text">{t.solutions.architectureDesc}</p>
+          <a href={`/${lang}/data-analytics`} class="explore-detail-btn">
+            View Architecture
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper" style="justify-content: flex-start; padding-left: 15vw;" data-obj="data" data-tx="20" data-scale="1.2" data-ry="-25" data-rx="10" data-scrub-rot="-40" data-scrub-y="-10">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.solutions.dataEngTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.pipelineTitle}</h2>
+          <p class="subtitle-text">{t.solutions.pipelineDesc}</p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper center-force" data-obj="data" data-tx="0" data-scale="0.6" data-ry="0" data-rx="50" data-scrub-rot="90">
+        <div class="fullscreen-text-slide">
+          <span class="category-tag">{t.solutions.analyticsTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.insightTitle}</h2>
+          <p class="subtitle-text">{t.solutions.insightDesc}</p>
+        </div>
+      </div>
+
+      <!-- ERP -->
+      <div class="scrolly-card-wrapper center-force" id="sec-erp" data-obj="globe" data-tx="0" data-scale="1" data-ry="0" data-rx="0" data-scrub-rot="45">
+        <div class="fullscreen-text-slide">
+          <span class="category-tag">{t.solutions.erpTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.erpTitle}</h2>
+          <p class="subtitle-text">{t.solutions.erpDesc}</p>
+          <a href={`/${lang}/erp-enterprise`} class="explore-detail-btn">
+            View Processes
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper" style="justify-content: flex-start; padding-left: 15vw;" data-obj="globe" data-tx="25" data-scale="1" data-ry="-25" data-scrub-rot="-60">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.solutions.integrationTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.microservicesTitle}</h2>
+          <p class="subtitle-text">{t.solutions.microservicesDesc}</p>
+        </div>
+      </div>
+
+      <!-- APPS -->
+      <div class="scrolly-card-wrapper" style="justify-content: flex-end; padding-right: 15vw;" id="sec-apps" data-obj="phone" data-phone-color="linear-gradient(135deg, #4f46e5, #ec4899)" data-tx="-20" data-scale="0.9" data-ry="15" data-rx="-5" data-scrub-rot="30" data-scrub-y="-5">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.solutions.appsTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.appsTitle}</h2>
+          <p class="subtitle-text">{t.solutions.appsDesc}</p>
+          <a href={`/${lang}/web-mobile-solutions`} class="explore-detail-btn">
+            See Solutions
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper" style="justify-content: flex-start; padding-left: 15vw;" id="sec-webgl" data-obj="phone" data-phone-color="linear-gradient(135deg, #10b981, #064e3b)" data-tx="20" data-scale="1.1" data-ry="-25" data-rx="5" data-scrub-rot="-40" data-scrub-y="10">
+        <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
+          <span class="category-tag">{t.solutions.appsTag}</span>
+          <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.webglTitle}</h2>
+          <p class="subtitle-text">{t.solutions.webglDesc}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CONTACT -->
+  <div class="scrolly-container" style="height: 350vh;">
+    <div class="scrolly-text-content">
+      <div class="scrolly-card-wrapper center-force" id="sec-contact" data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000">
+        <div class="fullscreen-text-slide">
+          <h2 class="giant-text">{t.contact.readyTitle}</h2>
+          <p class="subtitle-text">{t.contact.readySubtitle}</p>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper center-force" data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" data-obj="comms" data-scale="1.2" data-rx="10" data-ry="20" data-scrub-rot="60">
+        <div class="fullscreen-text-slide">
+          <h2 class="giant-text">{t.contact.joinTitle}</h2>
+          <a
+            href={`mailto:${t.contact.officeInfo}`}
+            class="contact-btn"
+            style="margin-top: 30px; transform: scale(1.5);"
+          >
+            {t.contact.contactBtn}
+          </a>
+        </div>
+      </div>
+
+      <div class="scrolly-card-wrapper center-force" data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" data-obj="location" data-scale="1" data-rx="15" data-ry="-15" data-scrub-rot="-45">
+        <div class="fullscreen-text-slide">
+          <span class="category-tag">{t.contact.officeTag}</span>
+          <h2 class="giant-text" style="font-size: 4rem; margin-top: 1rem;">{t.contact.locationTitle}</h2>
+          <p class="subtitle-text" set:html={t.contact.locationDesc}></p>
+          <div style="margin-top: 2rem; font-size: 1.2rem; color: rgba(255,255,255,0.7);">
+            {t.contact.officeInfo}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer lang={lang} t={t} />
+</BaseLayout>

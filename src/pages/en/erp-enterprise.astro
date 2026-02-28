@@ -1,0 +1,125 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyGlobe from '../../components/ScrollyGlobe.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<DetailLayout
+  lang={lang}
+  title={`ERP & Enterprise Solutions - Explorience`}
+  description={t.solutions.erpDesc}
+>
+  <div slot="showcase">
+    <ScrollyGlobe />
+  </div>
+
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">CORPORATE EFFICIENCY</span>
+      <h1 class="detail-title">{t.solutions.erpTitle}</h1>
+      <p class="detail-intro">
+        Manage all your business resources from a single center, end-to-end. 
+        We prepare your legacy systems for the future with modern microservices architectures and code operational excellence.
+      </p>
+    </section>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Custom ERP Modules</h3>
+        <p>Get rid of the clumsiness of package programs. We develop flexible and scalable custom ERP modules that cover only the processes you need.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>CRM & Customer Management</h3>
+        <p>Track the customer journey at every step. Interpret all communications from your sales channels to after-sales support in a single point.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Integration Layers</h3>
+        <p>We make your legacy systems talk to the modern world. We establish flawless and secure API integrations with SAP, Salesforce, and other third-party software.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Internal Data Security</h3>
+        <p>We design authorization and audit processes for your corporate data. Your sensitive data enters circulation securely, only to the extent permitted.</p>
+      </div>
+    </div>
+
+    <!-- Long form content -->
+    <section class="long-form-section">
+      <div class="section-badge">CORPORATE DIGITALIZATION</div>
+      <h2>Why Should You Digitalize Your Processes?</h2>
+      <p>
+        Human error and data silos are the biggest hidden costs in growing businesses. At Explorience, we are with you on your corporate digitalization journey with the vision of <strong>"Paperless and Error-Free Operation."</strong>
+      </p>
+      <div class="erp-benefits">
+        <div class="benefit-item">
+          <strong>30%+ Efficiency Increase:</strong> We enable your team to focus on more strategic tasks by eliminating repetitive manual entries.
+        </div>
+        <div class="benefit-item">
+          <strong>Real-Time Decision Making:</strong> Take data-driven decisions by seeing instantaneous inventory, cash flow, and operation status.
+        </div>
+        <div class="benefit-item">
+          <strong>Seamless Scaling:</strong> As your business grows, your software grows along with you without loss of performance.
+        </div>
+      </div>
+    </section>
+  </div>
+</DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+  }
+
+  .erp-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .benefit-item {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--highlight-color);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .benefit-item strong {
+    color: var(--highlight-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+</style>

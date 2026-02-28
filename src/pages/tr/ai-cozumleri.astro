@@ -1,0 +1,115 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyAiCore from '../../components/ScrollyAiCore.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+---
+
+<DetailLayout
+  lang={lang}
+  title={`${t.solutions.aiTitle} - Explorience`}
+  description={t.solutions.aiDesc}
+>
+  <div slot="showcase">
+    <ScrollyAiCore />
+  </div>
+
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">TEKNOLOJİ KATMANI</span>
+      <h1 class="detail-title">{t.solutions.aiTitle}</h1>
+      <p class="detail-intro">
+        Sadece veriyi işlemekle kalmıyor, işletmenizin DNA'sını anlayan akıllı sistemler kurguluyoruz. 
+        Yeni nesil yapay zeka modelleriyle karar verme süreçlerinizi saniyelere indiriyoruz.
+      </p>
+    </section>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Özel LLM Modelleri</h3>
+        <p>Kurum içi verilerinizin güvenliğini koruyarak size özel eğitilmiş geniş dil modelleri (LLM) geliştiriyoruz. RAG (Retrieval-Augmented Generation) altyapımız ile yapay zekanız halüsinasyon görmeden, sadece sizin belgelerinizden beslenir.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Otonom İş Akışları</h3>
+        <p>Bürokrasiden kurtulun. Tekrarlayan görevleri kendi kendine yürüten, belgeleri analiz edip özetleyen ve aksiyon alan agentic (temsilci) sistemler kuruyoruz.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Prediktif Analitik</h3>
+        <p>Gelecek artık sürpriz değil. Talep tahminleme, operasyonel risk analizi ve müşteri kaybı (churn) senaryolarını ileri seviye makine öğrenimi modellerimizle öngörüyoruz.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Doğal Dil İşleme (NLP)</h3>
+        <p>Müşterilerinizle sadece konuşan değil, onları anlayan sistemler. Duygu analizi, otomatik biletleme ve sesli asistan çözümlerimizle iletişimde mükemmelliğe ulaşın.</p>
+      </div>
+    </div>
+
+    <!-- Long form content for SEO and trust -->
+    <section class="long-form-section">
+      <div class="section-badge">STRATEJİMİZ</div>
+      <h2>Yapay Zekayı İşinizin Merkezine Nasıl Yerleştiriyoruz?</h2>
+      <p>
+        Explorience olarak, yapay zekayı sadece bir "trend" olarak değil, somut bir verimlilik aracı olarak görüyoruz. Projelerimize her zaman derinlemesine bir <strong>veri analizi</strong> ile başlıyoruz. Mevcut veri altyapınızı inceliyor, hangi noktalarda yapay zekanın en yüksek ROI (yatırım getirisi) sağlayacağını belirliyoruz.
+      </p>
+      <ul class="feature-list">
+        <li><strong>Güvenlik Öncelikli Mimari:</strong> Tüm yapay zeka çözümlerimiz "Privacy-by-Design" prensibiyle, verilerinizin dışarı sızmayacağı kapalı devre sistemler üzerine kurulur.</li>
+        <li><strong>Ölçeklenebilirlik:</strong> Bugün bir departmanınızda çalışan yapay zeka, yarın tüm global operasyonunuzu sırtlayabilecek şekilde bulut tabanlı hazır altyapıyla tasarlanır.</li>
+        <li><strong>Sürekli Öğrenme:</strong> Sistemlerimiz statik değildir; akan yeni verilerle kendini optimize eder ve her geçen gün daha doğru sonuçlar üretir.</li>
+      </ul>
+    </section>
+  </div>
+</DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 4px solid var(--highlight-color);
+    font-size: 1.1rem;
+  }
+
+  .feature-list li strong {
+    color: #fff;
+  }
+</style>

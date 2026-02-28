@@ -1,0 +1,96 @@
+{
+    "site": {
+        "title": "Explorience - Dijital Geleceği Keşfet",
+        "description": "Explorience ile dijital geleceği keşfedin. Yapay zeka, veri analitiği ve modern web çözümleriyle işinizi dönüştürün.",
+        "keywords": "Explorience, Dijital Dönüşüm, Yapay Zeka, Web Tasarım, Veri Analitiği, ERP, Yazılım Çözümleri, Ankara Yazılım Firması"
+    },
+    "nav": {
+        "home": "Giriş",
+        "about": "Hakkımızda",
+        "mission": "Misyon",
+        "vision": "Vizyon",
+        "solutions": "Çözümler",
+        "ai": "Yapay Zeka",
+        "data": "Veri & Analitik",
+        "erp": "ERP & Kurumsal",
+        "apps": "Web & Mobil",
+        "webgl": "WebGL & 3D",
+        "contact": "İletişim"
+    },
+    "hero": {
+        "title": "EXPLORIENCE",
+        "subtitle": "Deneyimi Keşfet. Sınırları Yeniden Çiz."
+    },
+    "intro": {
+        "tagNewGen": "YENİ NESİL",
+        "dynamicTitle": "DİNAMİK",
+        "dynamicDesc": "Teknoloji dünyasına taze, cesur ve<br>yenilikçi bir bakış açısı getiriyoruz.",
+        "tagVision": "VİZYON",
+        "discoveryTitle": "KEŞİF",
+        "discoveryDesc": "Bilinmeyeni görünür kılan dijital çözümler.",
+        "scrollToExplore": "KEŞFETMEK İÇİN KAYDIR"
+    },
+    "about": {
+        "storyTitle": "HİKAYEMİZ",
+        "storySubtitle": "Yeni bir yolculuk başlıyor.",
+        "tagMission": "MİSYON",
+        "transformationTitle": "Dönüşüm",
+        "transformationDesc": "Kuralları yeniden yazmak ve işletmeleri geleceğe taşımak için buradayız.",
+        "globalTitle": "Global",
+        "globalDesc": "Henüz başlangıçtayız ama hedefimiz dünya.",
+        "tagApproach": "YAKLAŞIM",
+        "passionTitle": "Tutku",
+        "passionDesc": "Genç, dinamik ve başarıya aç bir ekibiz."
+    },
+    "solutions": {
+        "title": "ÇÖZÜMLER",
+        "subtitle": "Modern Sorunlara Yeni Nesil Yanıtlar",
+        "aiTag": "YAPAY ZEKA",
+        "aiTitle": "GenAI & LLM",
+        "aiDesc": "İş süreçlerinizi otonomlaştıran akıllı asistanlar ve özel modeller. RAG mimarisiyle, kurum içi verilerinizi güvenle kullanan yapay zeka çözümleri geliştiriyoruz.",
+        "predictionTitle": "Tahmin",
+        "predictionDesc": "Geleceği öngören gelişmiş makine öğrenimi algoritmaları. Talep tahmini, müşteri kaybı analizi ve dinamik fiyatlama modelleriyle belirsizliği ortadan kaldırın.",
+        "bigDataTag": "BÜYÜK VERİ",
+        "architectureTitle": "Mimari",
+        "architectureDesc": "Ölçeklenebilir Data Warehouse ve Lakehouse tasarımları. Verilerinizi silolardan kurtarıyor, modern bulut mimarileri üzerinde tek bir gerçeklik kaynağı (SSOT) yaratıyoruz.",
+        "dataEngTag": "VERİ MÜHENDİSLİĞİ",
+        "pipelineTitle": "Pipeline",
+        "pipelineDesc": "Kesintisiz ve gerçek zamanlı veri akış sistemleri (ETL/ELT). Karmaşık veri kaynaklarını saniyeler içinde işleyerek analitiğe hazır hale getiriyoruz.",
+        "analyticsTag": "ANALİTİK",
+        "insightTitle": "İçgörü",
+        "insightDesc": "Ham veriden stratejik kararlara giden en kısa yol. Power BI ve Tableau entegrasyonlarıyla, verinin anlattığı hikayeyi herkesin anlamasını sağlıyoruz.",
+        "erpTag": "KURUMSAL",
+        "erpTitle": "ERP & CRM",
+        "erpDesc": "Şirket kaynaklarınızı tek merkezden yönetin, verimliliği artırın. İhtiyaca özel modüllerle süreçlerinizi dijitalleştiriyor, insan hatasını minimize ediyoruz.",
+        "integrationTag": "ENTEGRASYON",
+        "microservicesTitle": "API & Microservis",
+        "microservicesDesc": "Dağınık sistemleri birbirine bağlayan güçlü altyapılar. Eski (legacy) sistemlerinizi modern dünyayla konuşturuyor, esnek ve güvenli entegrasyonlar kuruyoruz.",
+        "appsTag": "DİJİTAL YÜZÜNÜZ",
+        "appsTitle": "Web & Mobil",
+        "appsDesc": "iOS, Android ve Web'de kullanıcı deneyimini zirveye taşıyan arayüzler. React Native ve Flutter ile cross-platform, Next.js ile ultra hızlı web deneyimleri sunuyoruz.",
+        "webglTitle": "WebGL & 3D Deneyimler",
+        "webglDesc": "Tarayıcı sınırlarını zorlayan interaktif 3D çözümler. Ürünlerinizi ve vizyonunuzu WebGL teknolojisiyle derinlemesine yaşatın."
+    },
+    "contact": {
+        "readyTitle": "HAZIR MISIN?",
+        "readySubtitle": "Geleceği bugünden inşa etmeye başla.",
+        "joinTitle": "BİZE KATIL",
+        "contactBtn": "Hemen İletişime Geç",
+        "officeTag": "OFİSİMİZ",
+        "locationTitle": "ANKARA",
+        "locationDesc": "Çankaya, Teknoloji Vadisi<br>No: 123, Kat: 5",
+        "officeInfo": "info@explorience.com"
+    },
+    "footer": {
+        "catchphrase": "Geleceği kodluyoruz.",
+        "home": "Ana Sayfa",
+        "solutions": "Çözümler",
+        "contact": "İletişim",
+        "rights": "© 2026 Explorience. Tüm hakları saklıdır."
+    },
+    "error404": {
+        "title": "Sayfa Bulunamadı - Explorience",
+        "message": "Üzgünüz, aradığınız sayfa uzay boşluğunda kaybolmuş olabilir.",
+        "btn": "Ana Sayfaya Dön"
+    }
+}

@@ -1,0 +1,139 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyPhone from '../../components/ScrollyPhone.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+---
+
+<DetailLayout
+  lang={lang}
+  title={`Web & Mobil Geliştirme - Explorience`}
+  description={t.solutions.appsDesc}
+>
+  <div slot="showcase">
+    <ScrollyPhone />
+  </div>
+
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">DİJİTAL YÜSÜMÜZ</span>
+      <h1 class="detail-title">Gelecek Nesil Web & Mobil Deneyimler</h1>
+      <p class="detail-intro">
+        Sadece kod değil, performans ve estetiğin mükemmel dengesini sunuyoruz. 
+        Kullanıcı dostu arayüzleri, yüksek performanslı altyapılarla birleştirerek markanızı dijital dünyada bir adım öne çıkarıyoruz.
+      </p>
+    </section>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Özel Web Teknolojileri</h3>
+        <p>Astro, Next.js ve React gibi modern framework'lerle ultra hızlı, SEO dostu ve dinamik web siteleri geliştiriyoruz. Performansı saniyelerin altına indiriyoruz.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Mobil Uygulama (Native & Cross)</h3>
+        <p>iOS ve Android dünyasına yönelik React Native ve Flutter ile tek kod tabanından çift platform desteği sağlıyoruz. Kullanıcılarınıza akıcı bir deneyim sunuyoruz.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>WebGL & İnteraktif 3D</h3>
+        <p>Tarayıcıda sınırları zorlayın. Ürünlerinizi veya hizmetlerinizi Three.js ve WebGL altyapısıyla 3 boyutlu, etkileşimli ve büyüleyici bir şekilde sergileyin.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Yüksek Güvenlikli API</h3>
+        <p>Uygulamalarınızın kalbi olan backend sistemlerini sağlam, güvenli ve ölçeklenebilir mikroservis mimarileri üzerine kuruyoruz. Kesintisiz bir veri akışı sağlıyoruz.</p>
+      </div>
+    </div>
+
+    <!-- Long form content for trust -->
+    <section class="long-form-section">
+      <div class="section-badge">TEKNİK VİZYON</div>
+      <h2>Dijitalde Fark Yaratmanın Anahtarı: Performans ve UX</h2>
+      <p>
+        Günümüzde kullanıcıların bir web sayfasının veya mobil uygulamanın yüklenmesi için bekleme süresi maksimum 2-3 saniyedir. Explorience olarak, <strong>"Performans Bir Lükstür Değil, Gerekliliktir"</strong> prensibini benimsiyoruz.
+      </p>
+      <div class="tech-stack-showcase">
+        <div class="tech-item">
+          <div class="tech-icon">Next.js</div>
+          <p>Hızlı render edilen, SEO gücü yüksek kurumsal web siteleri.</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">React Native</div>
+          <p>Native performansında hibrit mobil uygulama çözümleri.</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">Three.js</div>
+          <p>Büyüleyici interaktif görselleştirme ve 3D deneyimler.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+  }
+
+  .tech-stack-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .tech-item {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .tech-item:hover {
+    border-color: var(--highlight-color);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .tech-icon {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .tech-item p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+  }
+</style>

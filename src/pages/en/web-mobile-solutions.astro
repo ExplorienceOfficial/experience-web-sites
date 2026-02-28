@@ -1,0 +1,139 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyPhone from '../../components/ScrollyPhone.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<DetailLayout
+  lang={lang}
+  title={`Web & Mobile Development - Explorience`}
+  description={t.solutions.appsDesc}
+>
+  <div slot="showcase">
+    <ScrollyPhone />
+  </div>
+
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">YOUR DIGITAL FACE</span>
+      <h1 class="detail-title">Next-Gen Web & Mobile Experiences</h1>
+      <p class="detail-intro">
+        We offer more than just code; we provide the perfect balance of performance and aesthetics. 
+        Combine user-friendly interfaces with high-performance infrastructure to take your brand one step ahead in the digital world.
+      </p>
+    </section>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Custom Web Tech</h3>
+        <p>Develop ultra-fast, SEO-friendly, and dynamic websites with modern frameworks like Astro, Next.js, and React. We bring performance down to sub-seconds.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Mobile Apps (Native & Cross)</h3>
+        <p>Provide dual-platform support from a single codebase with React Native and Flutter for iOS and Android. Offer your users a seamless experience.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>WebGL & Interactive 3D</h3>
+        <p>Push boundaries in the browser. Showcase your products or services in 3D, interactively, and mesmerizingly with Three.js and WebGL infrastructure.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>High-Security APIs</h3>
+        <p>Build the core backend systems of your applications on solid, secure, and scalable microservices architectures. Ensure a seamless flow of data.</p>
+      </div>
+    </div>
+
+    <!-- Long form content -->
+    <section class="long-form-section">
+      <div class="section-badge">TECHNICAL VISION</div>
+      <h2>Making a Difference in Digital: Performance and UX</h2>
+      <p>
+        Today, the maximum time a user will wait for a web page or mobile app to load is 2-3 seconds. At Explorience, we embrace the principle: <strong>"Performance is not a Luxury, it's a Necessity."</strong>
+      </p>
+      <div class="tech-stack-showcase">
+        <div class="tech-item">
+          <div class="tech-icon">Next.js</div>
+          <p>Fast-rendering corporate websites with strong SEO power.</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">React Native</div>
+          <p>Hybrid mobile app solutions with native performance.</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">Three.js</div>
+          <p>Breathtaking interactive visualisations and 3D experiences.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+  }
+
+  .tech-stack-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .tech-item {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .tech-item:hover {
+    border-color: var(--highlight-color);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .tech-icon {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .tech-item p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+  }
+</style>

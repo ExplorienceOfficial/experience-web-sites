@@ -1,0 +1,230 @@
+---
+// Photorealistic Pure CSS 3D iPhone
+---
+<div class="phone-mockup-3d">
+   <!-- Titanium Edge (Extruded Sides) -->
+   <div class="phone-edge edge-top"></div>
+   <div class="phone-edge edge-bottom"></div>
+   <div class="phone-edge edge-left"></div>
+   <div class="phone-edge edge-right"></div>
+   
+   <!-- Back Panel -->
+   <div class="phone-back">
+       <div class="camera-bump">
+           <div class="cam-lens l1"></div>
+           <div class="cam-lens l2"></div>
+           <div class="cam-lens l3"></div>
+       </div>
+       <div class="apple-logo"></div>
+   </div>
+
+   <!-- Front Display -->
+   <div class="phone-front">
+      <div class="phone-frame">
+         <div class="phone-notch">
+            <div class="camera-sensor"></div>
+            <div class="speaker-grill"></div>
+         </div>
+         <div class="phone-screen" id="phone-screen-inner">
+            <div class="app-ui">
+               <div class="app-header"></div>
+               <div class="app-scroll-view" id="phone-scroll-view">
+                   <!-- Mock App Content that will move based on window scroll -->
+                   <div class="app-card highlight-card">
+                       <div class="card-title"></div>
+                       <div class="card-line"></div>
+                       <div class="card-line short"></div>
+                       <div class="shimmer"></div>
+                   </div>
+                   <div class="app-card glass-card">
+                       <div class="circle-avatar"></div>
+                       <div class="card-lines">
+                           <div class="card-line"></div>
+                           <div class="card-line short"></div>
+                       </div>
+                   </div>
+                   <div class="app-card glass-card">
+                       <div class="circle-avatar"></div>
+                       <div class="card-lines">
+                           <div class="card-line"></div>
+                           <div class="card-line short"></div>
+                       </div>
+                   </div>
+                   <div class="app-card glass-card dim"></div>
+                   <div class="app-card glass-card dim"></div>
+               </div>
+               <div class="app-fab"></div>
+               <div class="app-bottom-bar"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<style>
+/* ========================================
+   4. PREMIUM IPHONE 3D MOCKUP (Pure CSS Extrusion)
+   ======================================== */
+.phone-mockup-3d {
+   width: 320px; height: 650px;
+   position: relative;
+   transform-style: preserve-3d;
+}
+
+/* The Front Face */
+.phone-front {
+   position: absolute; width: 100%; height: 100%;
+   transform: translateZ(15px); /* Half thickness */
+   background: #000;
+   border-radius: 50px;
+   padding: 12px; /* Bezel width */
+   box-shadow: inset 0 0 10px rgba(0,0,0,1);
+   transform-style: preserve-3d;
+   /* Outer shiny lip */
+   border: 2px solid #52525b;
+}
+
+/* Screen */
+.phone-frame {
+   width: 100%; height: 100%; background: #000; border-radius: 38px;
+   position: relative; overflow: hidden;
+}
+
+.phone-screen {
+   width: 100%; height: 100%;
+   background: linear-gradient(135deg, #0ea5e9, #6366f1, #d946ef);
+   background-size: 200% 200%;
+   position: relative; padding: 60px 20px 20px;
+   transition: background 1.5s ease-in-out;
+   animation: gradient-shift 10s ease infinite alternate;
+}
+
+/* Glass Reflection over screen */
+.phone-frame::after {
+   content: ''; position: absolute; top: 0; left: -50%; width: 200%; height: 200%;
+   background: linear-gradient(105deg, rgba(255,255,255,0.2) 0%, transparent 35%);
+   pointer-events: none; z-index: 50; transform: translateZ(1px);
+}
+
+.phone-notch {
+   position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+   width: 110px; height: 32px; background: #000; border-radius: 16px;
+   z-index: 100; display: flex; align-items: center; justify-content: flex-end; padding-right: 15px;
+   box-shadow: inset 0 0 2px rgba(255,255,255,0.05);
+}
+.camera-sensor {
+   width: 12px; height: 12px; border-radius: 50%;
+   background: radial-gradient(circle at 40% 40%, #292942, #000);
+   box-shadow: inset 0 0 4px rgba(45,45,200,0.5); border: 1px solid #111;
+}
+
+/* UI Elements */
+.app-ui { width: 100%; height: 100%; display: flex; flex-direction: column; position: relative; z-index: 10; overflow: hidden; }
+.app-header { 
+    width: 100%; height: 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); 
+    border-radius: 20px; flex-shrink: 0; z-index: 20; 
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.app-scroll-view {
+    width: 100%; display: flex; flex-direction: column; gap: 15px; padding-top: 15px;
+    transition: transform 0.1s linear; /* Smooth scrolling mapped to JS */
+}
+
+/* Reusable Mock App Components */
+.app-card { 
+   width: 100%; height: 110px; 
+   background: rgba(255,255,255,0.1); 
+   backdrop-filter: blur(15px);
+   border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+   position: relative; overflow: hidden;
+   display: flex; align-items: center; padding: 15px; gap: 15px;
+   flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.highlight-card { height: 160px; background: rgba(255,255,255,0.2); flex-direction: column; align-items: flex-start; justify-content: flex-end; }
+.glass-card { background: rgba(255,255,255,0.05); }
+.dim { opacity: 0.3; }
+
+/* Mock Content Shapes */
+.circle-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+.card-lines { flex-grow: 1; display: flex; flex-direction: column; gap: 8px; }
+.card-line { width: 100%; height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; }
+.card-line.short { width: 60%; }
+.card-title { width: 50%; height: 14px; background: rgba(255,255,255,0.4); border-radius: 7px; margin-bottom: 5px; }
+
+.app-fab { position: absolute; bottom: 85px; right: 10px; width: 55px; height: 55px; border-radius: 50%; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 20; }
+.app-bottom-bar {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 5px; background: rgba(255,255,255,0.4); border-radius: 3px; z-index: 20;
+}
+
+.shimmer {
+   position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+   background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+   transform: skewX(-20deg); animation: shimmer-anim 4s infinite;
+}
+
+/* The Back Face */
+.phone-back {
+   position: absolute; width: 100%; height: 100%;
+   transform: translateZ(-15px) rotateY(180deg);
+   background: #18181b; /* Matte space grey */
+   border-radius: 50px;
+   border: 2px solid #52525b;
+   box-shadow: inset 0 0 60px rgba(0,0,0,0.8);
+   transform-style: preserve-3d;
+}
+
+.camera-bump {
+   position: absolute; top: 30px; left: 30px;
+   width: 100px; height: 100px;
+   background: rgba(255,255,255,0.03);
+   border-radius: 25px;
+   border: 1px solid rgba(255,255,255,0.1);
+   box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 2px 2px 5px rgba(255,255,255,0.05);
+   transform: translateZ(5px);
+   display: flex; flex-wrap: wrap; gap: 8px; padding: 12px;
+}
+
+.cam-lens {
+   width: 34px; height: 34px; border-radius: 50%;
+   background: radial-gradient(circle at 30% 30%, #444, #050505);
+   border: 3px solid #3f3f46;
+   box-shadow: 0 4px 6px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,255,0.2);
+}
+.l3 { margin-left: 20px; }
+
+.apple-logo {
+   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+   width: 40px; height: 48px;
+   background: linear-gradient(135deg, #71717a, #3f3f46);
+   -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.3 48.6-.7 90.4-84.3 103-119.6-37.4-15-62.2-50.5-62.1-91zM207.6 105.5c20.8-25.1 34.3-59.8 30.5-93.5-26 1.1-62 16.5-84.1 41.6-19.1 21.6-34.5 57.3-29.6 91.5 29.5 2.2 60.5-13.6 83.2-39.6z"/></svg>') no-repeat center;
+   mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.3 48.6-.7 90.4-84.3 103-119.6-37.4-15-62.2-50.5-62.1-91zM207.6 105.5c20.8-25.1 34.3-59.8 30.5-93.5-26 1.1-62 16.5-84.1 41.6-19.1 21.6-34.5 57.3-29.6 91.5 29.5 2.2 60.5-13.6 83.2-39.6z"/></svg>') no-repeat center;
+}
+
+/* Edges (Extrusion to give 3D Thickness of 30px) */
+.phone-edge {
+   position: absolute; background: #3f3f46;
+   box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+/* Top & Bottom */
+.edge-top {
+   width: 220px; height: 30px; top: -15px; left: 50px;
+   transform: rotateX(90deg) translateZ(0px);
+}
+.edge-bottom {
+   width: 220px; height: 30px; bottom: -15px; left: 50px;
+   transform: rotateX(-90deg) translateZ(0px);
+}
+/* Left & Right */
+.edge-left {
+   width: 30px; height: 550px; left: -15px; top: 50px;
+   transform: rotateY(-90deg) translateZ(0px);
+}
+.edge-right {
+   width: 30px; height: 550px; right: -15px; top: 50px;
+   transform: rotateY(90deg) translateZ(0px);
+}
+
+@keyframes gradient-shift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+@keyframes shimmer-anim { 0% { left: -100%; } 100% { left: 200%; } }
+</style>

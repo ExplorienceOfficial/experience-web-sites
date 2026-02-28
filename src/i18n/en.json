@@ -1,0 +1,96 @@
+{
+    "site": {
+        "title": "Explorience - Discover the Digital Future",
+        "description": "Discover the digital future with Explorience. Transform your business with AI, data analytics, and modern web solutions.",
+        "keywords": "Explorience, Digital Transformation, Artificial Intelligence, Web Design, Data Analytics, ERP, Software Solutions, Ankara Software Company"
+    },
+    "nav": {
+        "home": "Home",
+        "about": "About Us",
+        "mission": "Mission",
+        "vision": "Vision",
+        "solutions": "Solutions",
+        "ai": "AI",
+        "data": "Data & Analytics",
+        "erp": "ERP & Enterprise",
+        "apps": "Web & Mobile",
+        "webgl": "WebGL & 3D",
+        "contact": "Contact"
+    },
+    "hero": {
+        "title": "EXPLORIENCE",
+        "subtitle": "Discover the Experience. Redraw the Boundaries."
+    },
+    "intro": {
+        "tagNewGen": "NEW GENERATION",
+        "dynamicTitle": "DYNAMIC",
+        "dynamicDesc": "We bring a fresh, bold, and<br>innovative perspective to the technology world.",
+        "tagVision": "VISION",
+        "discoveryTitle": "DISCOVERY",
+        "discoveryDesc": "Digital solutions that make the unknown visible.",
+        "scrollToExplore": "SCROLL TO EXPLORE"
+    },
+    "about": {
+        "storyTitle": "OUR STORY",
+        "storySubtitle": "A new journey begins.",
+        "tagMission": "MISSION",
+        "transformationTitle": "Transformation",
+        "transformationDesc": "We are here to rewrite the rules and carry businesses into the future.",
+        "globalTitle": "Global",
+        "globalDesc": "We are just at the beginning, but our goal is the world.",
+        "tagApproach": "APPROACH",
+        "passionTitle": "Passion",
+        "passionDesc": "We are a young, dynamic, and hungry-for-success team."
+    },
+    "solutions": {
+        "title": "SOLUTIONS",
+        "subtitle": "New Generation Answers to Modern Problems",
+        "aiTag": "ARTIFICIAL INTELLIGENCE",
+        "aiTitle": "GenAI & LLM",
+        "aiDesc": "Intelligent assistants and custom models that automate your business processes. We develop AI solutions that securely use your internal data with RAG architecture.",
+        "predictionTitle": "Prediction",
+        "predictionDesc": "Advanced machine learning algorithms that foresee the future. Eliminate uncertainty with demand forecasting, churn analysis, and dynamic pricing models.",
+        "bigDataTag": "BIG DATA",
+        "architectureTitle": "Architecture",
+        "architectureDesc": "Scalable Data Warehouse and Lakehouse designs. We rescue your data from silos and create a single source of truth (SSOT) on modern cloud architectures.",
+        "dataEngTag": "DATA ENGINEERING",
+        "pipelineTitle": "Pipeline",
+        "pipelineDesc": "Seamless and real-time data flow systems (ETL/ELT). We process complex data sources in seconds and make them ready for analytics.",
+        "analyticsTag": "ANALYTICS",
+        "insightTitle": "Insight",
+        "insightDesc": "The shortest path from raw data to strategic decisions. With Power BI and Tableau integrations, we ensure everyone understands the story the data tells.",
+        "erpTag": "ENTERPRISE",
+        "erpTitle": "ERP & CRM",
+        "erpDesc": "Manage your company resources from a single center, increase efficiency. We digitalize your processes with custom modules and minimize human error.",
+        "integrationTag": "INTEGRATION",
+        "microservicesTitle": "API & Microservices",
+        "microservicesDesc": "Strong infrastructures connecting scattered systems. We make your legacy systems talk to the modern world and establish flexible and secure integrations.",
+        "appsTag": "YOUR DIGITAL FACE",
+        "appsTitle": "Web & Mobile",
+        "appsDesc": "Interfaces that take user experience to the peak on iOS, Android, and Web. We offer cross-platform with React Native and Flutter, ultra-fast web experiences with Next.js.",
+        "webglTitle": "WebGL & 3D Experiences",
+        "webglDesc": "Interactive 3D solutions that push the boundaries of the browser. Immerse your products and vision with WebGL technology."
+    },
+    "contact": {
+        "readyTitle": "READY?",
+        "readySubtitle": "Start building the future today.",
+        "joinTitle": "JOIN US",
+        "contactBtn": "Contact Now",
+        "officeTag": "OUR OFFICE",
+        "locationTitle": "ANKARA",
+        "locationDesc": "Cankaya, Technology Valley<br>No: 123, Floor: 5",
+        "officeInfo": "info@explorience.com"
+    },
+    "footer": {
+        "catchphrase": "Coding the future.",
+        "home": "Home",
+        "solutions": "Solutions",
+        "contact": "Contact",
+        "rights": "© 2026 Explorience. All rights reserved."
+    },
+    "error404": {
+        "title": "Page Not Found - Explorience",
+        "message": "Sorry, the page you are looking for might be lost in space.",
+        "btn": "Return Home"
+    }
+}

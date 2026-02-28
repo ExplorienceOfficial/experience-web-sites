@@ -1,0 +1,164 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyServerRack from '../../components/ScrollyServerRack.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+---
+
+<DetailLayout
+  lang={lang}
+  title={`${t.solutions.bigDataTag} & Analitik - Explorience`}
+  description={t.solutions.architectureDesc}
+>
+  <div slot="showcase">
+    <ScrollyServerRack />
+  </div>
+
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">VERİ EKOSİSTEMİ</span>
+      <h1 class="detail-title">{t.solutions.bigDataTag} ve Analitik Çözümler</h1>
+      <p class="detail-intro">
+        Ham verinin gürültüsünü kesiyor, işletmeniz için stratejik bir pusula oluşturuyoruz. 
+        Modern veri ambarlarından gerçek zamanlı analitik panellere kadar verinizin gerçek potansiyelini açığa çıkarıyoruz.
+      </p>
+    </section>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Lakehouse Mimari</h3>
+        <p>Verinizi silolardan kurtarıyoruz. Veri göllerinin (Data Lake) esnekliğini ve veri ambarlarının (Data Warehouse) gücünü birleştiren Lakehouse mimarileriyle tek bir doğru kaynağa (SSOT) ulaşın.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Gerçek Zamanlı Pipeline</h3>
+        <p>Veri aktıkça kararlarınız şekillensin. Apache Kafka ve modern ETL/ELT araçlarıyla saniyeler içinde işlenen, temizlenen ve analitiğe hazır hale gelen veri akış sistemleri kuruyoruz.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>İleri Seviye Görselleştirme</h3>
+        <p>Verinin anlattığı hikayeyi herkes anlasın. Power BI, Tableau veya özel geliştirilmiş WebGL tabanlı interaktif dashboard çözümlerimizle kritik metrikleri canlı olarak takip edin.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Veri Yönetişimi & Güvenlik</h3>
+        <p>Veriniz en değerli varlığınızdır. KVKK ve uluslararası regülasyonlara tam uyumlu veri anonimleştirme, erişim kontrolü ve veri kalitesi (Data Quality) süreçlerini tasarlıyoruz.</p>
+      </div>
+    </div>
+
+    <!-- Long form content for trust -->
+    <section class="long-form-section">
+      <div class="section-badge">YAKLAŞIMIMIZ</div>
+      <h2>Neden Sadece Veri Değil, 'Doğru Veri' Önemli?</h2>
+      <p>
+        Pek çok işletme, elinde devasa miktarda veri olmasına rağmen bu veriden anlamlı bir sonuç çıkaramıyor. Biz buna "bilgi obezitesi" diyoruz. Explorience olarak, işletmenizin en kritik sorularına yanıt verecek <strong>Sinyalleri Gürültüden (Signal vs Noise)</strong> ayırıyoruz.
+      </p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>Entegrasyon</h4>
+            <p>Farklı ERP, CRM, bulut ve yerel kaynaklarınızı tek bir güvenli noktaya bağlıyoruz.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>Kalite Kontrol</h4>
+            <p>Eksik, hatalı veya mükerrer verileri temizleyerek analizlerinizin doğruluğunu %100'e yaklaştırıyoruz.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>Anlamlandırma</h4>
+            <p>Karmaşık algoritmalarımızla verinizdeki gizli örüntüleri, fırsatları ve riskleri raporluyoruz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 4rem;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2.5rem;
+    border-radius: 20px;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.03);
+    transition: all 0.3s ease;
+  }
+
+  .step:hover {
+    border-color: var(--highlight-color);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .step-num {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--highlight-color);
+    opacity: 0.5;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .step-content h4 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-content p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .step {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  }
+</style>

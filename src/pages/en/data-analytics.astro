@@ -1,0 +1,164 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyServerRack from '../../components/ScrollyServerRack.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<DetailLayout
+  lang={lang}
+  title={`${t.solutions.bigDataTag} & Analytics - Explorience`}
+  description={t.solutions.architectureDesc}
+>
+  <div slot="showcase">
+    <ScrollyServerRack />
+  </div>
+
+  <div class="content">
+    <section class="detail-hero">
+      <span class="detail-category">DATA ECOSYSTEM</span>
+      <h1 class="detail-title">{t.solutions.bigDataTag} and Analytics</h1>
+      <p class="detail-intro">
+        We cut through the noise of raw data and build a strategic compass for your business. 
+        Unlock the true potential of your data from modern data warehouses to real-time analytics dashboards.
+      </p>
+    </section>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Lakehouse Architecture</h3>
+        <p>We rescue your data from silos. Gain a single source of truth (SSOT) with Lakehouse architectures that combine the flexibility of data lakes and the power of data warehouses.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Real-time Pipelines</h3>
+        <p>Let your decisions take shape as the data flows. We build data flow systems processed, cleaned, and made ready for analytics in seconds using Apache Kafka and modern ETL/ELT tools.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Advanced Visualization</h3>
+        <p>Ensuring everyone understands the story the data tells. Follow critical metrics live with our Power BI, Tableau, or custom-developed interactive dashboard solutions.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Governance & Security</h3>
+        <p>Your data is your most valuable asset. We design data anonymization, access control, and Data Quality processes that are fully compliant with GDPR and international regulations.</p>
+      </div>
+    </div>
+
+    <!-- Long form content -->
+    <section class="long-form-section">
+      <div class="section-badge">OUR APPROACH</div>
+      <h2>Why Not Just Data, but 'Right Data' Matters?</h2>
+      <p>
+        Many businesses fail to get meaningful results despite having vast amounts of data. We call this "information obesity." At Explorience, we separate <strong>Signals from Noise</strong> to answer your business's most critical questions.
+      </p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>Integration</h4>
+            <p>Connect your different ERP, CRM, cloud, and local sources into a single secure point.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>Quality Control</h4>
+            <p>Clean up missing, incorrect, or duplicate data to bring the accuracy of your analysis closer to 100%.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>Interpretation</h4>
+            <p>Report the hidden patterns, opportunities, and risks in your data with our complex algorithms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</DetailLayout>
+
+<style>
+  .long-form-section {
+    margin-top: 10rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-badge {
+    color: var(--highlight-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .long-form-section h2 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .long-form-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 4rem;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2.5rem;
+    border-radius: 20px;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.03);
+    transition: all 0.3s ease;
+  }
+
+  .step:hover {
+    border-color: var(--highlight-color);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .step-num {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--highlight-color);
+    opacity: 0.5;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .step-content h4 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-content p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .step {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  }
+</style>

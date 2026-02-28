@@ -1,0 +1,197 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+  lang: 'tr' | 'en';
+  title: string;
+  description: string;
+}
+
+const { lang, title, description } = Astro.props;
+const t = useTranslations(lang);
+const currentPath = `/${lang}/`;
+---
+
+<BaseLayout
+  lang={lang}
+  title={title}
+  description={description}
+  canonicalPath={currentPath}
+>
+  <Navbar lang={lang} currentPath={currentPath} t={t} />
+  
+  <div class="detail-scrolly-canvas">
+    <slot name="showcase" />
+  </div>
+
+  <main class="detail-page-main">
+    <div class="glow-top"></div>
+    <div class="content-container">
+      <slot />
+    </div>
+  </main>
+
+  <Footer lang={lang} t={t} />
+</BaseLayout>
+
+<script>
+  function initDetailScrolly() {
+    const showcase = document.querySelector('.detail-scrolly-canvas > div') as HTMLElement;
+    if (!showcase) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const wh = window.innerHeight;
+      
+      // Progress from 0 to 1 over first screen height
+      const progress = Math.min(1, scrollY / (wh * 0.8));
+      
+      // Cinematic "Receding" effect
+      const scale = 1.2 - (progress * 0.6);
+      const ty = progress * -30; // Moves up
+      const tx = progress * 25;  // Moves right
+      const rx = 15 + (progress * 45);
+      const ry = progress * 90;
+      const opacity = 1 - (progress * 1.2);
+      const blur = progress * 15;
+
+      showcase.style.transform = `translate(calc(-50% + ${tx}vw), calc(-50% + ${ty}vh)) scale(${scale}) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      showcase.style.opacity = Math.max(0, opacity).toString();
+      showcase.style.filter = `blur(${blur}px)`;
+    });
+  }
+  document.addEventListener('DOMContentLoaded', initDetailScrolly);
+</script>
+
+<style>
+  .detail-scrolly-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 5;
+    perspective: 2500px;
+    transform-style: preserve-3d;
+  }
+
+  .detail-scrolly-canvas > :global(div) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+  }
+
+  .detail-page-main {
+    min-height: 100vh;
+    padding-top: 50vh; /* Start content lower to show off 3D object */
+    position: relative;
+    background: #020617;
+    overflow-x: hidden;
+  }
+
+  .glow-top {
+    position: absolute;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Detail Section Typography Settings */
+  :global(.detail-hero) {
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+
+  :global(.detail-category) {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid var(--highlight-color);
+    color: var(--highlight-color);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+
+  :global(.detail-title) {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to bottom, #fff 30%, rgba(255,255,255,0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  :global(.detail-intro) {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  :global(.detail-grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    margin-top: 6rem;
+  }
+
+  :global(.detail-card) {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  :global(.detail-card:hover) {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--highlight-color);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+
+  :global(.detail-card h3) {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  :global(.detail-card p) {
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .content-container {
+      padding: 2rem 1.5rem;
+    }
+    :global(.detail-grid) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

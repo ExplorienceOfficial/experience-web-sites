@@ -1,0 +1,119 @@
+---
+import { getAlternateLinks, type Lang } from '../i18n/utils';
+import '../styles/theme.css';
+import '../styles/base.css';
+import '../styles/components.css';
+import '../styles/footer.css';
+import '../styles/scrolly.css';
+import '../styles/preloader.css';
+import '../styles/darkTheme.css';
+
+export interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+  canonicalPath?: string;
+}
+
+const {
+  lang,
+  title,
+  description,
+  keywords = '',
+  ogImage = '/assets/og-image.jpg',
+  canonicalPath = '/',
+} = Astro.props;
+
+const canonicalUrl = `https://www.explorience.com.tr${canonicalPath}`;
+const alternateLinks = getAlternateLinks(canonicalPath);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content="Explorience" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Hreflang for multilanguage SEO -->
+    {alternateLinks.map(({ lang: l, href }) => (
+      <link rel="alternate" hreflang={l} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`https://www.explorience.com.tr/tr/`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`https://www.explorience.com.tr${ogImage}`} />
+    <meta property="og:locale" content={lang === 'tr' ? 'tr_TR' : 'en_US'} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={`https://www.explorience.com.tr${ogImage}`} />
+
+    <!-- Icons & Manifest -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader-content">
+        <div class="loader-logo">Explorience<span>.</span></div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+
+    <slot />
+
+    <!-- Theme and Language scripts (inline to prevent FOUC) -->
+    <script is:inline>
+      (function () {
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.body.classList.add('theme-' + theme);
+        if (theme === 'light') {
+          const link = document.createElement('link');
+          link.id = 'theme-link';
+          link.rel = 'stylesheet';
+          link.href = '/themeLightDark/lightTheme.css';
+          document.head.appendChild(link);
+        }
+      })();
+    </script>
+
+    <!-- Preloader Logic -->
+    <script is:inline>
+      window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+          preloader.classList.add('loaded');
+          document.body.style.overflow = 'auto';
+        }, 800);
+      });
+    </script>
+  </body>
+</html>

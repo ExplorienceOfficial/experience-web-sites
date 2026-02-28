@@ -1,0 +1,247 @@
+---
+import type { Lang } from '../i18n/utils';
+import { languages, getLocalizedPath } from '../i18n/utils';
+
+export interface Props {
+  lang: Lang;
+  currentPath: string;
+  t: Record<string, any>;
+}
+
+const { lang, currentPath, t } = Astro.props;
+---
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href={`/${lang}/`} class="logo" aria-label="Explorience Home">
+    Explorience<span class="highlight">.</span>
+  </a>
+
+  <div class="nav-links">
+    <a href={`/${lang}/`} class="nav-link">{t.nav.home}</a>
+    <div class="nav-dropdown">
+      <span class="nav-link">{t.nav.solutions} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+      <div class="dropdown-content">
+        <a href={`/${lang}/${lang === 'tr' ? 'ai-cozumleri' : 'ai-solutions'}`}>{t.nav.ai}</a>
+        <a href={`/${lang}/${lang === 'tr' ? 'veri-analitik' : 'data-analytics'}`}>{t.nav.data}</a>
+        <a href={`/${lang}/${lang === 'tr' ? 'erp-kurumsal' : 'erp-enterprise'}`}>{t.nav.erp}</a>
+        <a href={`/${lang}/${lang === 'tr' ? 'web-mobil-cozumler' : 'web-mobile-solutions'}`}>{t.nav.apps}</a>
+      </div>
+    </div>
+    <a href={`/${lang}/#sec-contact`} class="nav-link">{t.nav.contact}</a>
+  </div>
+
+  <div class="nav-controls">
+    <!-- Theme Toggle -->
+    <div class="theme-switcher-container" id="theme-switcher-container">
+      <div
+        class="theme-toggle-track"
+        role="button"
+        aria-label="Toggle theme"
+        tabindex="0"
+        id="theme-toggle"
+      >
+        <div class="toggle-stars">
+          <span class="star" style="top:8px;left:12px;width:2px;height:2px;animation-delay:0s;"></span>
+          <span class="star" style="top:14px;left:6px;width:1.5px;height:1.5px;animation-delay:0.4s;"></span>
+          <span class="star" style="top:5px;left:22px;width:1px;height:1px;animation-delay:0.8s;"></span>
+          <span class="star" style="top:18px;left:18px;width:1.5px;height:1.5px;animation-delay:1.2s;"></span>
+        </div>
+        <div class="toggle-clouds">
+          <span class="cloud" style="top:7px;left:8px;"></span>
+          <span class="cloud" style="top:14px;left:16px;"></span>
+        </div>
+        <div class="toggle-thumb">
+          <div class="crater" style="top:5px;left:8px;width:4px;height:4px;"></div>
+          <div class="crater" style="top:10px;left:14px;width:3px;height:3px;"></div>
+          <div class="crater" style="top:12px;left:6px;width:2px;height:2px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher" role="navigation" aria-label="Language switcher">
+      {Object.entries(languages).map(([l]) => (
+        <a
+          href={getLocalizedPath(currentPath, l as Lang)}
+          class={`lang-btn ${lang === l ? 'active' : ''}`}
+          hreflang={l}
+          aria-label={`Switch to ${l.toUpperCase()}`}
+          aria-current={lang === l ? 'true' : undefined}
+        >
+          {l === 'tr' ? '🇹🇷' : '🇬🇧'}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Theme toggle logic
+  const toggle = document.getElementById('theme-toggle');
+  if (toggle) {
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') toggle.classList.add('is-light');
+
+    toggle.addEventListener('click', () => {
+      const theme = document.body.classList.contains('theme-light') ? 'dark' : 'light';
+      document.body.classList.remove('theme-dark', 'theme-light');
+      document.body.classList.add('theme-' + theme);
+      localStorage.setItem('theme', theme);
+      toggle.classList.toggle('is-light', theme === 'light');
+
+      const oldLink = document.getElementById('theme-link');
+      if (oldLink) oldLink.remove();
+      if (theme === 'light') {
+        const link = document.createElement('link');
+        link.id = 'theme-link';
+        link.rel = 'stylesheet';
+        link.href = '/themeLightDark/lightTheme.css';
+        document.head.appendChild(link);
+      }
+    });
+
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle.click();
+      }
+    });
+  }
+
+  // Custom cursor
+  const cursorDot = document.querySelector('.cursor-dot') as HTMLElement;
+  if (cursorDot) {
+    window.addEventListener('mousemove', (e) => {
+      cursorDot.style.left = `${e.clientX}px`;
+      cursorDot.style.top = `${e.clientY}px`;
+    });
+
+    document.querySelectorAll('a, button, .progress-label, .social-link').forEach((el) => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+  }
+
+  // Navbar scroll behavior
+  const nav = document.querySelector('.navbar') as HTMLElement;
+  if (nav) {
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      nav.classList.toggle('scrolled', currentScrollY > 50);
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        nav.classList.add('hidden');
+      } else {
+        nav.classList.remove('hidden');
+      }
+      lastScrollY = currentScrollY;
+    });
+  }
+</script>
+
+<style>
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-link:hover {
+    opacity: 1;
+    color: var(--highlight-color);
+  }
+  
+  /* Dropdown Styles */
+  .nav-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    min-width: 200px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+  /* Invisible bridge to prevent dropdown from closing when moving mouse to it */
+  .dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+  }
+  .dropdown-content a {
+    color: var(--text-color);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+  }
+  .dropdown-content a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--highlight-color);
+    opacity: 1;
+    transform: translateX(5px);
+  }
+  .nav-dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeInDown 0.3s ease forwards;
+  }
+  
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(10px); }
+  }
+
+  /* Language Switcher */
+  .lang-btn {
+    font-size: 1.2rem;
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+  .lang-btn.active {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  .lang-btn:hover {
+    opacity: 1;
+  }
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>
