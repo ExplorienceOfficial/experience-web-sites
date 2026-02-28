@@ -75,7 +75,11 @@ import ScrollyNetwork from './ScrollyNetwork.astro';
    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
    will-change: transform, opacity;
    transform-style: preserve-3d;
-   pointer-events: auto;
+   pointer-events: none;
+}
+
+.scrolly-item > :global(*) {
+   pointer-events: auto !important; /* Force all hitboxes inside to work */
 }
 </style>
 
@@ -126,21 +130,33 @@ function initScrollyObjects() {
       const wh = window.innerHeight;
       
       let activeCard = null;
-      for (let i=0; i < cards.length; i++) {
+      let minDistance = Infinity;
+      
+      // Select the card that is closest to screen center.
+      // Modifying trigger logic so objects appear *before* the text block physically occupies the screen fully!
+      for (let i = 0; i < cards.length; i++) {
+         const objAttr = cards[i].getAttribute('data-obj');
+         if (!objAttr) continue; // skip text-only slides
+         
          const rect = cards[i].getBoundingClientRect();
-         // Broad trigger zone
-         if (rect.top <= wh * 0.75 && rect.bottom >= wh * 0.25) {
-            activeCard = cards[i];
-            break;
+         const cardCenter = rect.top + (rect.height / 2);
+         const screenCenter = wh / 2;
+         const dist = Math.abs(cardCenter - screenCenter);
+         
+         // Generous trigger zone ensures early startup
+         if (dist < minDistance && dist < wh * 1.5) {
+             minDistance = dist;
+             activeCard = cards[i];
          }
       }
 
       if (activeCard) {
          const rect = activeCard.getBoundingClientRect();
          const centerOffset = rect.top + (rect.height / 2) - (wh / 2);
-         // Dynamic Progress Scrubbing
-         const progress = -(centerOffset / (wh / 2)); 
-         const clampedProgress = Math.max(-2, Math.min(2, progress));
+         
+         // Dynamic Progress Scrubbing. Spread out over huge area for "early" component starts
+         const progress = -(centerOffset / wh); 
+         const clampedProgress = Math.max(-2.5, Math.min(2.5, progress));
 
          // CUSTOM OPACITY LOGIC for better transitions
          let dynamicOpacity = 1;
