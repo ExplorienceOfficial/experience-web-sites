@@ -1,162 +1,157 @@
-<div class="location-wrapper" style="--loc-color: #f59e0b; --loc-glow: rgba(245, 158, 11, 0.5); --loc-dark: rgba(245, 158, 11, 0.05);">
-  <div class="mega-location-3d">
-    <div class="loc-scene">
+---
+// Photorealistic 3D Location Map Pin
+---
+<div class="mega-location-3d">
+  <!-- The Base Platform / Ground -->
+  <div class="ground-platform">
+      <div class="platform-edge top"></div>
+      <div class="platform-edge bottom"></div>
+      <div class="platform-edge left"></div>
+      <div class="platform-edge right"></div>
       
-      <!-- Floating Pin & Radar Hologram -->
-      <div class="hologram-map">
-        <div class="pin-group">
-          <div class="pin-top">
-            <div class="inner-data-grid"></div>
-            <div class="pin-core-light"></div>
-          </div>
-          <div class="pin-point"></div>
-        </div>
-
-        <div class="orbit-rings">
-          <div class="ring r1"></div>
-          <div class="ring r2"></div>
-          <div class="ring r3"></div>
-        </div>
-
-        <div class="ground-radar">
-          <div class="radar-circle"></div>
-          <div class="radar-circle delay-1"></div>
-          <div class="radar-circle delay-2"></div>
-          <div class="scan-line"></div>
-        </div>
+      <!-- Surface details -->
+      <div class="platform-surface">
+         <div class="radar-rings">
+            <div class="radar r1"></div>
+            <div class="radar r2"></div>
+            <div class="radar r3"></div>
+            <!-- The sweep animation -->
+            <div class="scan-line"></div>
+         </div>
+         <div class="cardinal-points">
+            <span>N</span><span>E</span><span>S</span><span>W</span>
+         </div>
       </div>
+  </div>
 
-      <!-- Hardware Device Background -->
-      <div class="device-casing-mega">
-        <div class="casing-grid"></div>
-        <div class="casing-scanner"></div>
-        <div class="device-bezel"></div>
+  <!-- The Heavy Map Pin -->
+  <div class="pin-group">
+      <!-- Shadow on the platform -->
+      <div class="pin-shadow"></div>
+      
+      <!-- The Pin Shaft / Base -->
+      <div class="pin-shaft">
+         <div class="shaft-front"></div>
+         <div class="shaft-back"></div>
+         <div class="shaft-left"></div>
+         <div class="shaft-right"></div>
       </div>
       
-    </div>
+      <!-- The Pin Head (Glossy Sphere) -->
+      <div class="pin-head">
+         <div class="pin-glass">
+            <div class="pin-glare"></div>
+         </div>
+         <div class="pin-core"></div>
+         <div class="pin-hologram"></div>
+      </div>
   </div>
 </div>
 
 <style>
 /* ========================================
-   MEGA CINEMATIC 3D LOCATION TERMINAL
+   PREMIUM 3D MAP PIN (LOCATION)
    ======================================== */
-.location-wrapper {
-  width: 100%; display: flex; justify-content: center; align-items: center;
-  padding: 60px 20px; background: transparent;
-}
-
 .mega-location-3d {
-  width: 100%; max-width: 500px; height: 400px;
-  position: relative; perspective: 1500px; display: flex; align-items: center; justify-content: center;
-  z-index: 50; cursor: pointer;
+  width: 300px; height: 350px;
+  position: relative; perspective: 1500px;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 50px; transform-style: preserve-3d;
+  cursor: pointer;
 }
 
-.loc-scene {
-  width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
-  display: flex; align-items: center; justify-content: center;
-  transform: rotateX(15deg) rotateY(0deg);
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+/* Base Platform */
+.ground-platform {
+   width: 250px; height: 250px; border-radius: 50%;
+   background: linear-gradient(135deg, #18181b, #09090b);
+   border: 4px solid #3f3f46; position: absolute; bottom: 0;
+   transform: rotateX(75deg); transform-style: preserve-3d;
+   box-shadow: 0 40px 60px rgba(0,0,0,0.8), inset 0 0 20px #000;
+   transition: all 0.5s ease;
 }
+.mega-location-3d:hover .ground-platform { transform: rotateX(60deg) scale(1.05); border-color: #3b82f6; box-shadow: 0 40px 80px rgba(59,130,246,0.3), inset 0 0 40px rgba(59,130,246,0.3); }
 
-/* HOVER EFFECT */
-.mega-location-3d:hover .loc-scene {
-  transform: rotateX(5deg) rotateY(15deg) scale3d(1.1, 1.1, 1.1);
-}
+/* Edges for thickness */
+.platform-edge { position: absolute; background: #27272a; }
+.platform-surface { position: absolute; inset: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 
-/* Device Background Card */
-.device-casing-mega {
-  position: absolute; width: 320px; height: 380px;
-  border: 1px solid var(--loc-glow);
-  background: linear-gradient(180deg, var(--loc-dark), #020617);
-  backdrop-filter: blur(5px); border-radius: 20px;
-  transform: translateZ(-120px); z-index: 1; overflow: hidden;
-  box-shadow: inset 0 0 40px rgba(245, 158, 11, 0.1);
-  transition: all 0.5s ease;
-}
-.mega-location-3d:hover .device-casing-mega {
-  border-color: var(--loc-color);
-  box-shadow: 0 0 40px #020617, inset 0 0 60px var(--loc-glow);
-}
-.casing-grid {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(245,158,11,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.1) 1px, transparent 1px);
-  background-size: 20px 20px; opacity: 0.5;
-}
-.casing-scanner {
-  position: absolute; top: -10%; left: 0; width: 100%; height: 30px;
-  background: linear-gradient(to bottom, transparent, var(--loc-glow)); opacity: 0; transition: opacity 0.3s;
-}
-.mega-location-3d:hover .casing-scanner {
-  opacity: 0.5; animation: loc-scan 3s ease-in-out infinite;
-}
-.device-bezel {
-   position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-   width: 80px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;
-}
+/* Radar Details */
+.radar-rings { width: 100%; height: 100%; position: relative; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.radar { position: absolute; border-radius: 50%; border: 1px dashed rgba(59,130,246,0.5); }
+.r1 { width: 40%; height: 40%; }
+.r2 { width: 70%; height: 70%; }
+.r3 { width: 100%; height: 100%; border-style: solid; border-color: rgba(59,130,246,0.3); }
 
-/* Hologram Map Elements */
-.hologram-map {
-  position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
-  display: flex; align-items: center; justify-content: center; z-index: 10;
-}
-
-.pin-group {
-  position: relative; transform-style: preserve-3d;
-  animation: mega-float 4s ease-in-out infinite alternate; z-index: 10;
-}
-.pin-top {
-  width: 120px; height: 120px; background: rgba(245, 158, 11, 0.2);
-  border: 3px solid var(--loc-color); border-radius: 50% 50% 50% 5px;
-  transform: rotate(-45deg); backdrop-filter: blur(5px); position: relative;
-  box-shadow: 0 0 40px rgba(245, 158, 11, 0.6), inset 0 0 20px rgba(245, 158, 11, 0.4);
-  overflow: hidden;
-}
-.inner-data-grid {
-  position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
-  background-image: linear-gradient(rgba(245, 158, 11, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 158, 11, 0.3) 1px, transparent 1px);
-  background-size: 15px 15px; transform: rotate(45deg); animation: grid-move 10s linear infinite;
-}
-.pin-core-light {
-  position: absolute; width: 35px; height: 35px; background: #fff;
-  border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  box-shadow: 0 0 30px 10px var(--loc-color), 0 0 60px 20px var(--loc-glow); z-index: 2;
-}
-.pin-point {
-  position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
-  width: 4px; height: 60px; background: linear-gradient(to bottom, var(--loc-color), transparent);
-  box-shadow: 0 0 15px var(--loc-color);
-}
-
-/* Orbiting Rings */
-.orbit-rings { position: absolute; width: 300px; height: 300px; transform-style: preserve-3d; pointer-events: none; }
-.ring { position: absolute; inset: 0; border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 50%; transform-style: preserve-3d; }
-.r1 { transform: rotateX(75deg) rotateY(10deg); animation: ring-rotate 10s linear infinite; }
-.r2 { transform: rotateX(75deg) rotateY(-20deg) scale(1.3); animation: ring-rotate 15s linear infinite reverse; }
-.r3 { transform: rotateX(-10deg) rotateY(75deg) scale(0.8); animation: ring-rotate 20s linear infinite; border-style: dashed; }
-
-/* Ground Radar */
-.ground-radar {
-  position: absolute; bottom: -20px; width: 400px; height: 120px;
-  transform: rotateX(75deg); transform-style: preserve-3d;
-}
-.radar-circle {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  border: 2px solid var(--loc-color); border-radius: 50%; width: 10px; height: 10px; opacity: 0;
-  animation: radar-pulse 3s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-}
 .scan-line {
-  position: absolute; width: 50%; height: 2px;
-  background: linear-gradient(to right, var(--loc-color), transparent);
-  top: 50%; left: 50%; transform-origin: left center; animation: scan-rotate 3s linear infinite;
+   position: absolute; top: 50%; left: 50%; width: 50%; height: 2px;
+   background: linear-gradient(to right, rgba(59,130,246,0), rgba(59,130,246,1) 50%, rgba(255,255,255,1));
+   transform-origin: left center; animation: scan-anim 4s linear infinite; pointer-events: none;
+   box-shadow: 0 0 20px rgba(59,130,246,0.8);
 }
-.delay-1 { animation-delay: 1s; } .delay-2 { animation-delay: 2s; }
+@keyframes scan-anim { 100% { transform: rotate(360deg); } }
 
-/* KEYFRAMES */
-@keyframes mega-float { 0% { transform: translateY(15px) scale(1); } 100% { transform: translateY(-15px) scale(1.05); } }
-@keyframes grid-move { 0% { transform: rotate(45deg) translateY(0); } 100% { transform: rotate(45deg) translateY(100px); } }
-@keyframes radar-pulse { 0% { width: 0; height: 0; opacity: 1; border-width: 4px; } 100% { width: 400px; height: 400px; opacity: 0; border-width: 1px; } }
-@keyframes ring-rotate { from { transform: rotateX(75deg) rotateZ(0deg); } to { transform: rotateX(75deg) rotateZ(360deg); } }
-@keyframes scan-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes loc-scan { 0% { top: -10%; } 50% { top: 110%; } 100% { top: -10%; } }
+.cardinal-points { position: absolute; inset: 10px; font-family: monospace; color: rgba(255,255,255,0.3); font-size: 14px; pointer-events: none; }
+.cardinal-points span { position: absolute; }
+.cardinal-points span:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); } /* N */
+.cardinal-points span:nth-child(2) { right: 0; top: 50%; transform: translateY(-50%); } /* E */
+.cardinal-points span:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%); } /* S */
+.cardinal-points span:nth-child(4) { left: 0; top: 50%; transform: translateY(-50%); } /* W */
+
+/* The Pin Group */
+.pin-group {
+   position: relative; width: 60px; height: 140px; transform-style: preserve-3d;
+   animation: pin-bob 3s ease-in-out infinite alternate;
+   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+/* Hover drops the pin hard onto the platform */
+.mega-location-3d:hover .pin-group { transform: translateY(30px) scale(1.1); animation: pin-bob-hover 2s infinite alternate; }
+
+.pin-shadow {
+   position: absolute; bottom: -60px; left: -10px; width: 80px; height: 30px;
+   background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 70%);
+   transform: rotateX(60deg); filter: blur(4px); opacity: 0.8;
+}
+
+/* Pin Shaft (Cone-like logic using borders or 3D extrusions. We'll use a neat 3D pyramid trick) */
+.pin-shaft {
+   position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+   width: 0; height: 80px; transform-style: preserve-3d;
+}
+.pin-shaft > div {
+   position: absolute; bottom: 0; left: -15px; width: 30px; height: 80px;
+   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+   background: linear-gradient(to top, #09090b, #3f3f46);
+}
+.shaft-front { transform: translateZ(15px) rotateX(15deg); background: linear-gradient(to top, #18181b, #52525b) !important; }
+.shaft-back { transform: translateZ(-15px) rotateX(-15deg); }
+.shaft-left { transform: rotateY(-90deg) translateZ(15px) rotateX(15deg); }
+.shaft-right { transform: rotateY(90deg) translateZ(15px) rotateX(15deg); }
+
+/* The Glossy Pin Head */
+.pin-head {
+   position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+   width: 80px; height: 80px; border-radius: 50%;
+   background: radial-gradient(circle at 30% 30%, #ec4899, #be185d, #4c0519);
+   box-shadow: 0 10px 20px rgba(0,0,0,0.8), inset -10px -10px 20px rgba(0,0,0,0.5);
+   border: 2px solid #fbcfe8; display: flex; align-items: center; justify-content: center;
+}
+
+.mega-location-3d:hover .pin-head { background: radial-gradient(circle at 30% 30%, #3b82f6, #1d4ed8, #1e3a8a); border-color: #bfdbfe; box-shadow: 0 0 40px #3b82f6, inset -10px -10px 20px rgba(0,0,0,0.5); }
+
+.pin-glass { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 40%); pointer-events: none; }
+.pin-core { width: 30px; height: 30px; background: #fff; border-radius: 50%; box-shadow: 0 0 15px #fff; animation: core-pulse 2s infinite alternate; }
+
+.pin-hologram {
+   position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+   width: 60px; height: 60px; border: 2px dashed rgba(255,255,255,0.8);
+   border-radius: 50%; opacity: 0; transition: opacity 0.4s;
+   box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+.mega-location-3d:hover .pin-hologram { opacity: 1; animation: holo-spin 4s linear infinite; }
+
+@keyframes pin-bob { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+@keyframes pin-bob-hover { 0% { transform: translateY(30px) scale(1.1); } 100% { transform: translateY(20px) scale(1.1); } }
+@keyframes core-pulse { 0% { transform: scale(0.9); opacity: 0.8; } 100% { transform: scale(1.2); opacity: 1; } }
+@keyframes holo-spin { 0% { transform: translateX(-50%) rotateY(0deg) rotateX(70deg); } 100% { transform: translateX(-50%) rotateY(360deg) rotateX(70deg); } }
+
 </style>
