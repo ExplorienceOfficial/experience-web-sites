@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import ScrollProgress from '../../components/ScrollProgress.astro';
 import Footer from '../../components/Footer.astro';
 import ScrollyObjects from '../../components/ScrollyObjects.astro';
+import ScrollIndicator from '../../components/ScrollIndicator.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const lang = 'en';
@@ -50,8 +51,7 @@ const currentPath = '/en/';
 
       <div class="scrolly-card-wrapper center-force">
         <div class="fullscreen-text-slide">
-          <p class="subtitle-text" style="opacity: 0.6; font-size: 1rem;">{t.intro.scrollToExplore}</p>
-          <div style="width: 2px; height: 50px; background: rgba(255,255,255,0.5); margin: 20px auto;"></div>
+          <ScrollIndicator text={t.intro.scrollToExplore} />
         </div>
       </div>
     </div>
