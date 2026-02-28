@@ -176,9 +176,19 @@ function initScrollyObjects() {
             const clampedProgress = Math.max(-2, Math.min(2, progress));
 
             // Pull attributes, note: Phone defaults to spin to show off 3D back!
-            const tx = parseFloat(activeCard.getAttribute('data-tx')) || 0;
-            const ty = parseFloat(activeCard.getAttribute('data-ty')) || 0;
-            const scale = parseFloat(activeCard.getAttribute('data-scale')) || 1;
+            const isMobile = window.innerWidth <= 768;
+            
+            let tx = parseFloat(activeCard.getAttribute('data-tx')) || 0;
+            let ty = parseFloat(activeCard.getAttribute('data-ty')) || 0;
+            let scale = parseFloat(activeCard.getAttribute('data-scale')) || 1;
+            
+            // Eğer mobildeysek, objeyi ekranın üst yarısına al (ty = -25) ve küçült, sağa sola kaymayı (tx) iptal et ki metinle çakışmasın
+            if (isMobile) {
+                tx = 0;
+                ty = -25;
+                scale = scale * 0.7; // Mobilde objeleri ufaltıyoruz
+            }
+
             const baseRx = parseFloat(activeCard.getAttribute('data-rx')) || 0;
             const baseRy = parseFloat(activeCard.getAttribute('data-ry')) || 0;
             const baseRz = parseFloat(activeCard.getAttribute('data-rz')) || 0;
