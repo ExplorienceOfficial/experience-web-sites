@@ -174,4 +174,11 @@
 .hr1 { --tz: 80px; } .hr2 { --tz: 40px; } .hr3 { --tz: 100px; }
 @keyframes throb { 0% { transform: translate(-50%, -50%) translateZ(40px) scale(0.8); opacity: 0.6; } 100% { transform: translate(-50%, -50%) translateZ(40px) scale(1.4); opacity: 1; } }
 
+@media (max-width: 768px) {
+    .ai-chip { transform: translate(-50%, -50%) translateZ(60px) rotateZ(45deg); border-color: #00f5ff; box-shadow: 0 20px 50px rgba(0,245,255,0.4), inset 0 0 40px rgba(0,245,255,0.4); }
+    .chip-inner { filter: drop-shadow(0 0 20px #00f5ff) drop-shadow(0 0 40px #00f5ff); transform: translateZ(25px) scale(1.2) rotateZ(-45deg); }
+    .chip-led { opacity: 1 !important; box-shadow: 0 0 10px #00f5ff !important; }
+    .hologram-rings { opacity: 1 !important; }
+    .energy-orb { opacity: 1 !important; animation: throb 2s infinite alternate; }
+}
 </style>

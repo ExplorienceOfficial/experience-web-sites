@@ -242,4 +242,20 @@
 @keyframes rotate-ring { 100% { transform: rotate(360deg); } }
 @keyframes blink-call { 0% { opacity: 0.2; } 100% { opacity: 1; } }
 @keyframes wave-anim { 0% { height: 10%; } 100% { height: 100%; } }
+
+@media (max-width: 768px) {
+    .avatar-ring { border: 2px solid #10b981 !important; animation: none !important; }
+    .avatar-img { background: #10b981 !important; box-shadow: 0 0 15px #10b981 !important; transform: scale(1.1) !important; }
+    .name-text { color: #10b981 !important; }
+    .number-text { color: #fff !important; }
+    .audio-wave { opacity: 1 !important; }
+    .w1 { animation: wave-anim 0.8s infinite alternate !important; }
+    .w2 { animation: wave-anim 1.2s infinite alternate 0.2s !important; }
+    .w3 { animation: wave-anim 0.6s infinite alternate 0.4s !important; }
+    .w4 { animation: wave-anim 1s infinite alternate 0.1s !important; }
+    .w5 { animation: wave-anim 0.9s infinite alternate 0.3s !important; }
+    .b-green .led-ring.active { animation: none !important; box-shadow: inset 0 0 20px #10b981, 0 0 20px #10b981 !important; background: rgba(16,185,129,0.2) !important; }
+    .floating-receiver { transform: translateZ(80px) translateX(-30px) rotateY(-20deg) rotateZ(10deg) !important; }
+    .energy-tether { height: 120px !important; opacity: 0.6 !important; box-shadow: 0 0 20px 5px #10b981 !important; }
+}
 </style>

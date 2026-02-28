@@ -233,4 +233,17 @@
 }
 
 @keyframes server-pulse { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+
+@media (max-width: 768px) {
+    .server-chassis::after { transform: translateZ(50px) translateX(90%) rotateY(80deg) !important; opacity: 0 !important; }
+    .b1 { transform: translateZ(30px) !important; }
+    .b2 { transform: translateZ(55px) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.9) !important; }
+    .b3 { transform: translateZ(20px) !important; }
+    .b-pop-1 { transform: translateZ(25px) !important; }
+    .b-pop-2 { transform: translateZ(10px) !important; }
+    .b-pop-3 { transform: translateZ(35px) !important; }
+    .b-pop-4 { transform: translateZ(15px) !important; }
+    .bay.active::after { background: #ef4444 !important; box-shadow: 0 0 15px #ef4444 !important; animation-duration: 0.1s !important; }
+    .data-flow { background: #fff !important; box-shadow: 0 0 30px 10px #0ea5e9 !important; animation-duration: 0.5s !important; height: 80px !important; }
+}
 </style>

@@ -189,4 +189,17 @@
 .edge-right { width: 16px; height: 260px; right: -8px; top: 20px; transform: rotateY(90deg); }
 
 @keyframes scan-spin { 100% { transform: rotateX(75deg) translateZ(30px) scale(1.1) rotateZ(360deg); } }
+
+@media (max-width: 768px) {
+    .tablet-ui { opacity: 0.2 !important; }
+    .ar-glow { opacity: 1 !important; }
+    .ar-chart-bar { opacity: 1 !important; }
+    .b1 { height: 60px !important; transform: translateZ(60px) !important; }
+    .b2 { height: 100px !important; transform: translateZ(80px) !important; }
+    .b3 { height: 70px !important; transform: translateZ(100px) !important; }
+    .b4 { height: 140px !important; transform: translateZ(120px) !important; }
+    .b5 { height: 110px !important; transform: translateZ(140px) !important; }
+    .ar-ring { opacity: 1 !important; transform: rotateX(75deg) translateZ(30px) scale(1.1) !important; animation: scan-spin 10s linear infinite !important; }
+    .floating-stats { opacity: 1 !important; transform: translateZ(80px) scale(1) !important; }
+}
 </style>

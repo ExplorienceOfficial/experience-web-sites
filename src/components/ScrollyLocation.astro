@@ -154,4 +154,10 @@
 @keyframes core-pulse { 0% { transform: scale(0.9); opacity: 0.8; } 100% { transform: scale(1.2); opacity: 1; } }
 @keyframes holo-spin { 0% { transform: translateX(-50%) rotateY(0deg) rotateX(70deg); } 100% { transform: translateX(-50%) rotateY(360deg) rotateX(70deg); } }
 
+@media (max-width: 768px) {
+    .ground-platform { transform: rotateX(60deg) scale(1.05) !important; border-color: #3b82f6 !important; box-shadow: 0 40px 80px rgba(59,130,246,0.3), inset 0 0 40px rgba(59,130,246,0.3) !important; }
+    .pin-group { transform: translateY(30px) scale(1.1) !important; animation: pin-bob-hover 2s infinite alternate !important; }
+    .pin-head { background: radial-gradient(circle at 30% 30%, #3b82f6, #1d4ed8, #1e3a8a) !important; border-color: #bfdbfe !important; box-shadow: 0 0 40px #3b82f6, inset -10px -10px 20px rgba(0,0,0,0.5) !important; }
+    .pin-hologram { opacity: 1 !important; animation: holo-spin 4s linear infinite !important; }
+}
 </style>
