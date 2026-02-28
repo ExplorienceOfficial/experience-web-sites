@@ -57,6 +57,7 @@ const alternateLinks = getAlternateLinks(canonicalPath);
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="explorience.com.tr" />
     <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
@@ -80,9 +81,17 @@ const alternateLinks = getAlternateLinks(canonicalPath);
     <!-- Preloader -->
     <div id="preloader">
       <div class="loader-content">
-        <div class="loader-logo">Explorience<span>.</span></div>
-        <div class="spinner"></div>
+        <div class="loader-logo-container">
+          <div class="loader-logo">EXPLORIENCE</div>
+          <div class="loader-glitch-layer">EXPLORIENCE</div>
+          <div class="loader-glitch-layer shadow">EXPLORIENCE</div>
+        </div>
+        <div class="loader-progress-wire">
+          <div class="loader-bar"></div>
+        </div>
+        <div class="loader-status">INITIALIZING SYSTEMS...</div>
       </div>
+      <div class="loader-bg-noise"></div>
     </div>
 
     <!-- Custom Cursor -->
