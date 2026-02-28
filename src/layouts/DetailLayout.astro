@@ -85,11 +85,12 @@ const currentPath = `/${lang}/`;
     left: 50%;
     transform: translate(-50%, -50%);
     will-change: transform, opacity;
+    pointer-events: auto; /* Required for hover effects! */
   }
 
   .detail-page-main {
     min-height: 100vh;
-    padding-top: 50vh; /* Start content lower to show off 3D object */
+    padding-top: 75vh; /* Start content lower to show off 3D object without overlapping text */
     position: relative;
     background: #020617;
     overflow-x: hidden;
