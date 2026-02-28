@@ -1,192 +1,131 @@
----
-// ScrollyNetwork.astro - Cinematic 3D Network Nodes / API Systems
----
-<div class="network-satellite-3d" id="network-satellite">
-   <div class="sat-glow"></div>
+<div class="network-router-3d">
    
-   <!-- Core Body -->
-   <div class="sat-core">
-      <div class="core-chassis">
-         <div class="chassis-texture"></div>
-         <!-- Central Glowing Eye -->
-         <div class="sat-eye">
-            <div class="eye-lens"></div>
-            <div class="eye-ring"></div>
-         </div>
+   <!-- Heavy Extruded Edges -->
+   <div class="router-edge top"></div>
+   <div class="router-edge bottom"></div>
+   <div class="router-edge left"></div>
+   <div class="router-edge right"></div>
+
+   <!-- Back Panel -->
+   <div class="router-back">
+      <div class="cable-ports">
+         <div class="port"></div><div class="port"></div><div class="port"></div>
       </div>
    </div>
 
-   <!-- Solar Panels (Wings) -->
-   <div class="solar-wing left-wing">
-      <div class="wing-arm"></div>
-      <div class="panel-grid">
-         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+   <!-- Front Face -->
+   <div class="router-front">
+      <!-- Glow effect -->
+      <div class="core-glow"></div>
+
+      <!-- Surface Details -->
+      <div class="router-brand">API-NET</div>
+      
+      <!-- Central Activity Matrix -->
+      <div class="port-matrix">
+         <div class="eth-port"><div class="led-tx"></div></div>
+         <div class="eth-port"><div class="led-tx slow"></div></div>
+         <div class="eth-port"><div class="led-tx fast"></div></div>
+         <div class="eth-port"><div class="led-tx"></div></div>
+         <div class="eth-port"><div class="led-tx slow"></div></div>
       </div>
-   </div>
-   
-   <div class="solar-wing right-wing">
-      <div class="wing-arm"></div>
-      <div class="panel-grid">
-         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+      <!-- LED Indicators -->
+      <div class="status-leds">
+         <div class="s-led pwr"></div>
+         <div class="s-led wan"></div>
+         <div class="s-led lan"></div>
       </div>
    </div>
 
-   <!-- Dish / Antenna Array -->
-   <div class="sat-dish-assembly">
-       <div class="dish-arm"></div>
-       <div class="dish-bowl">
-          <div class="dish-inner"></div>
-       </div>
-       <div class="dish-antenna">
-          <div class="signal-wave sw1"></div>
-          <div class="signal-wave sw2"></div>
-       </div>
-   </div>
+   <!-- Physical Antennas -->
+   <div class="antenna ant-1"></div>
+   <div class="antenna ant-2"></div>
 </div>
 
 <style>
 /* ========================================
-   PREMIUM 3D NETWORK SATELLITE
+   CONCRETE 3D NETWORK ROUTER
    ======================================== */
-.network-satellite-3d {
-   width: 400px;
-   height: 400px;
+.network-router-3d {
+   width: 320px; height: 160px;
    position: relative;
    transform-style: preserve-3d;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   animation: sat-float 8s ease-in-out infinite alternate;
 }
 
-.sat-glow {
-   position: absolute; width: 250px; height: 250px;
-   background: radial-gradient(circle, rgba(0, 245, 255, 0.2) 0%, transparent 60%);
-   transform: translateZ(-80px); filter: blur(30px);
-   animation: sat-pulse-ambient 4s infinite alternate;
+/* Antennas projecting out */
+.antenna {
+   position: absolute; width: 15px; height: 120px;
+   background: linear-gradient(to right, #1e293b, #475569, #1e293b);
+   border-radius: 8px 8px 0 0;
+   bottom: 100%; z-index: -1; transform-origin: bottom center;
+   border: 2px solid #0f172a; border-bottom: none;
+}
+.ant-1 { left: 40px; transform: translateZ(-20px) rotateZ(-30deg) rotateX(-20deg); }
+.ant-2 { right: 40px; transform: translateZ(-20px) rotateZ(30deg) rotateX(-20deg); }
+
+.antenna::after {
+   content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+   width: 6px; height: 6px; background: #ef4444; border-radius: 50%;
+   box-shadow: 0 0 10px #ef4444; animation: blink-ant 1.5s infinite;
 }
 
-/* 1. Core Body */
-.sat-core {
-   width: 100px; height: 140px;
-   position: relative;
+/* Base Extrusions (50px thick) */
+.router-front {
+   position: absolute; inset: 0; transform: translateZ(25px);
+   background: linear-gradient(135deg, #0f172a, #020617);
+   border-radius: 16px; border: 3px solid #334155; border-top: 4px solid #64748b;
+   padding: 20px;
+   box-shadow: inset 0 0 20px #000;
    transform-style: preserve-3d;
-   z-index: 10;
+   display: flex; flex-direction: column; justify-content: space-between;
 }
-.core-chassis {
-   width: 100%; height: 100%;
-   background: linear-gradient(145deg, #475569, #1e293b, #0f172a);
-   border-radius: 20px 20px 40px 40px;
-   border: 2px solid #64748b;
-   box-shadow: 
-      inset -10px -10px 20px rgba(0,0,0,0.8),
-      inset 10px 10px 20px rgba(255,255,255,0.1),
-      0 20px 40px rgba(0,0,0,0.6);
-   position: relative; overflow: hidden;
-}
-.chassis-texture {
-   position: absolute; inset: 0;
-   background-image: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(0,0,0,0.2) 10px, rgba(0,0,0,0.2) 12px);
-   opacity: 0.5;
-}
-
-.sat-eye {
-   position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
-   width: 50px; height: 50px;
-   background: #020617; border-radius: 50%;
-   border: 3px solid #334155;
-   box-shadow: inset 0 5px 10px rgba(0,0,0,1);
+.router-back {
+   position: absolute; inset: 0; transform: translateZ(-25px) rotateY(180deg);
+   background: #1e293b; border-radius: 16px; border: 2px solid #334155;
    display: flex; justify-content: center; align-items: center;
 }
-.eye-lens {
-   width: 24px; height: 24px; border-radius: 50%;
-   background: radial-gradient(circle at 30% 30%, #fff, #00f5ff, #0284c7);
-   box-shadow: 0 0 15px #00f5ff, inset 0 0 5px #fff;
-   animation: eye-scan 4s infinite;
-}
-.eye-ring {
-   position: absolute; width: 36px; height: 36px; border-radius: 50%;
-   border: 1px dashed rgba(0, 245, 255, 0.5);
-   animation: ring-spin 10s linear infinite;
+
+.router-edge { position: absolute; background: #1e293b; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
+.router-edge.top { width: 288px; height: 50px; top: -25px; left: 16px; transform: rotateX(90deg); }
+.router-edge.bottom { width: 288px; height: 50px; bottom: -25px; left: 16px; transform: rotateX(-90deg); border-bottom: 4px solid #000; }
+.router-edge.left { width: 50px; height: 128px; left: -25px; top: 16px; transform: rotateY(-90deg); }
+.router-edge.right { width: 50px; height: 128px; right: -25px; top: 16px; transform: rotateY(90deg); }
+
+.core-glow {
+   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateZ(-10px);
+   width: 100px; height: 50px; background: rgba(0,245,255,0.2); filter: blur(20px);
 }
 
-/* 2. Solar Wings */
-.solar-wing {
-   position: absolute; top: 50%; height: 120px; width: 180px;
-   transform-style: preserve-3d; display: flex; align-items: center;
-}
-.left-wing { right: 50%; transform-origin: right center; transform: translateY(-50%) rotateY(15deg); justify-content: flex-end; }
-.right-wing { left: 50%; transform-origin: left center; transform: translateY(-50%) rotateY(-15deg); }
+.router-brand { color: #64748b; font-family: monospace; font-size: 1.2rem; font-weight: bold; letter-spacing: 3px; }
 
-.wing-arm {
-   width: 40px; height: 12px;
-   background: linear-gradient(to bottom, #94a3b8, #475569);
-   border-top: 1px solid #cbd5e1; border-bottom: 2px solid #1e293b;
-}
+/* Status LEDs */
+.status-leds { display: flex; gap: 10px; }
+.s-led { width: 8px; height: 8px; border-radius: 50%; border: 1px solid #000; }
+.pwr { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+.wan { background: #00f5ff; box-shadow: 0 0 8px #00f5ff; animation: blink-ant 0.8s infinite; }
+.lan { background: #00f5ff; box-shadow: 0 0 8px #00f5ff; animation: blink-ant 0.3s infinite alternate; }
 
-.panel-grid {
-   width: 140px; height: 100%;
-   background: #0f172a; border: 2px solid #3b82f6; border-radius: 4px;
-   display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 2px; padding: 2px;
-   box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1), inset 0 0 20px rgba(0, 245, 255, 0.2);
-}
-.cell {
-   background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
-   border: 1px solid #3b82f6;
-   position: relative; overflow: hidden;
-}
-.cell::after {
-   content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-   animation: solar-glare 6s infinite;
-}
-
-/* 3. Dish Antenna */
-.sat-dish-assembly {
-   position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
-   display: flex; flex-direction: column; align-items: center;
-   transform-style: preserve-3d;
-}
-.dish-arm {
-   width: 8px; height: 40px; background: linear-gradient(to right, #64748b, #334155);
-   border-radius: 4px; z-index: 1;
-}
-.dish-bowl {
-   width: 100px; height: 40px; background: linear-gradient(180deg, #94a3b8, #475569);
-   border-radius: 50%; margin-top: -20px;
-   border: 2px solid #cbd5e1; border-bottom-width: 4px; border-bottom-color: #334155;
-   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-   display: flex; justify-content: center; align-items: center; z-index: 2;
-   transform: rotateX(60deg);
-}
-.dish-inner {
-   width: 80px; height: 30px; border-radius: 50%; background: #1e293b;
+/* Ethernet Ports */
+.port-matrix {
+   display: flex; gap: 8px;
+   background: #000; padding: 10px; border-radius: 8px; border: 2px solid #1e293b;
    box-shadow: inset 0 5px 10px rgba(0,0,0,0.8);
 }
-.dish-antenna {
-   width: 4px; height: 50px; background: #cbd5e1; position: absolute; top: -40px; z-index: 3;
-   border-radius: 2px; box-shadow: 0 0 5px rgba(255,255,255,0.5);
-   transform: translateZ(20px);
+.eth-port {
+   flex-grow: 1; height: 25px; background: #1e293b; border-radius: 4px;
+   position: relative; border-bottom: 2px solid #000;
 }
-.dish-antenna::before { content:''; position: absolute; top: -4px; left: -3px; width: 10px; height: 10px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 10px #ef4444; animation: blink-red 1s infinite alternate; }
-
-.signal-wave {
-   position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-   border: 2px solid rgba(0, 245, 255, 0.8); border-radius: 50%;
-   opacity: 0;
+.led-tx {
+   position: absolute; top: 2px; right: 2px; width: 4px; height: 4px;
+   background: #ef4444; border-radius: 50%; animation: tx-blink 0.1s infinite alternate;
 }
-.sw1 { width: 40px; height: 40px; animation: broadcast 2s infinite; }
-.sw2 { width: 40px; height: 40px; animation: broadcast 2s infinite 1s; }
+.led-tx.slow { animation-duration: 0.5s; background: #eab308; }
+.led-tx.fast { animation-duration: 0.05s; }
 
+.cable-ports { display: flex; gap: 15px; }
+.port { width: 25px; height: 25px; background: #000; border-radius: 4px; }
 
-/* KEYFRAMES */
-@keyframes sat-float { 0% { transform: translateY(-15px) rotateZ(-2deg); } 100% { transform: translateY(15px) rotateZ(2deg); } }
-@keyframes sat-pulse-ambient { 0% { opacity: 0.5; transform: translateZ(-80px) scale(0.9); } 100% { opacity: 0.8; transform: translateZ(-80px) scale(1.1); } }
-@keyframes eye-scan { 0%, 100% { box-shadow: 0 0 15px #00f5ff, inset 0 0 5px #fff; opacity: 1; } 50% { box-shadow: 0 0 5px #00f5ff, inset 0 0 2px #fff; opacity: 0.5; } }
-@keyframes ring-spin { 100% { transform: rotateZ(360deg); } }
-@keyframes solar-glare { 0% { left: -100%; } 20%, 100% { left: 200%; } }
-@keyframes blink-red { 0% { opacity: 0.3; } 100% { opacity: 1; } }
-@keyframes broadcast { 0% { width: 10px; height: 10px; opacity: 1; top: -5px; } 100% { width: 150px; height: 60px; opacity: 0; top: -80px; } }
+@keyframes blink-ant { 50% { opacity: 0.3; } }
+@keyframes tx-blink { 100% { opacity: 0; } }
 </style>

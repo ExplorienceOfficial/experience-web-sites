@@ -1,191 +1,120 @@
----
-// ScrollyEnterpriseCore.astro - A massive cinematic 3D Enterprise/ERP Cube
----
-<div class="industrial-mainframe-3d" id="enterprise-main-vault">
-   <div class="mainframe-glow"></div>
+<div class="enterprise-server-3d">
+   <!-- Extruded Edges -->
+   <div class="server-edge top"></div>
+   <div class="server-edge bottom"></div>
+   <div class="server-edge left"></div>
+   <div class="server-edge right"></div>
    
-   <div class="mainframe-chassis">
-      <!-- Top Cooling Vents -->
-      <div class="chassis-header">
-         <div class="cooling-vent"></div>
-         <div class="cooling-vent"></div>
-         <div class="cooling-vent"></div>
+   <!-- Front Plate -->
+   <div class="server-front">
+      
+      <!-- Top Vents -->
+      <div class="vent-grid">
+         <div class="vent-hole"></div><div class="vent-hole"></div><div class="vent-hole"></div><div class="vent-hole"></div>
       </div>
 
-      <!-- Core Processing Bay -->
-      <div class="chassis-core-bay">
-         <div class="glass-shield">
-            <div class="quantum-core" id="enterprise-inner-core">
-               <div class="core-inner"></div>
-               <div class="core-ring cr1"></div>
-               <div class="core-ring cr2"></div>
+      <!-- Core Display Screen -->
+      <div class="core-display">
+         <div class="display-inner">
+            <div class="circle-system">
+               <div class="circle-line outline"></div>
+               <div class="circle-line inner-spin"></div>
+               <div class="status-core"></div>
             </div>
-            <div class="glass-glare"></div>
+            <div class="lines-data">
+               <div class="dataline l1"></div>
+               <div class="dataline l2"></div>
+               <div class="dataline l3"></div>
+            </div>
          </div>
       </div>
 
-      <!-- Data Storage Tape Arrays -->
-      <div class="data-arrays">
-         <div class="tape-drive">
-            <div class="drive-slot"></div>
-            <div class="drive-led active"></div>
-         </div>
-         <div class="tape-drive">
-            <div class="drive-slot"></div>
-            <div class="drive-led active speed-2"></div>
-         </div>
-         <div class="tape-drive">
-            <div class="drive-slot"></div>
-            <div class="drive-led"></div>
-         </div>
+      <!-- Drives Bays -->
+      <div class="drive-bays">
+         <div class="drive"><div class="drive-led active"></div></div>
+         <div class="drive"><div class="drive-led"></div></div>
+         <div class="drive"><div class="drive-led active fast"></div></div>
+         <div class="drive"><div class="drive-led active"></div></div>
       </div>
+   </div>
 
-      <!-- Bottom Power & Status -->
-      <div class="chassis-footer">
-         <div class="power-unit">
-            <div class="power-grill"></div>
-         </div>
-         <div class="status-panel">
-            <div class="led ok"></div>
-            <div class="led ok slow"></div>
-            <div class="led warning"></div>
-         </div>
+   <!-- Back Panel -->
+   <div class="server-back">
+      <div class="fan-unit">
+         <div class="fan-blade"></div>
       </div>
    </div>
 </div>
 
 <style>
 /* ========================================
-   PREMIUM 3D ENTERPRISE MAINFRAME 
+   CONCRETE 3D ENTERPRISE SERVER TOWER
    ======================================== */
-.industrial-mainframe-3d {
-   width: 260px;
-   height: 420px;
+.enterprise-server-3d {
+   width: 250px; height: 400px;
    position: relative;
    transform-style: preserve-3d;
-   display: flex;
-   justify-content: center;
 }
 
-.mainframe-glow {
-   position: absolute; top: 10%; left: -20%; width: 140%; height: 80%;
-   background: radial-gradient(ellipse, rgba(0, 245, 255, 0.3) 0%, transparent 70%);
-   transform: translateZ(-50px); filter: blur(20px);
-   animation: core-ambient-pulse 4s infinite alternate;
-}
-
-.mainframe-chassis {
-   width: 100%;
-   height: 100%;
-   background: linear-gradient(135deg, #1e293b, #0f172a, #020617);
-   border: 3px solid #475569;
-   border-top: 4px solid #64748b;
-   border-radius: 8px;
-   padding: 20px 15px;
+/* Base Extrusions (40px thick) */
+.server-front {
+   position: absolute; inset: 0; transform: translateZ(20px);
+   background: linear-gradient(135deg, #1e293b, #0f172a);
+   border-radius: 12px; border: 2px solid #64748b;
+   padding: 20px;
+   box-shadow: inset 0 0 10px #000;
+   transform-style: preserve-3d;
    display: flex; flex-direction: column; gap: 20px;
-   transform-style: preserve-3d;
-   box-shadow: 
-      inset 0 0 100px rgba(0,0,0,0.9),
-      -40px 40px 80px rgba(0,0,0,0.8),
-      inset 2px 2px 10px rgba(255,255,255,0.05);
 }
-
-/* Thick Armored Metal Door illusion */
-.mainframe-chassis::after {
-   content: ''; position: absolute; inset: -4px; border-radius: 8px;
-   background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%);
-   border: 1px solid rgba(255,255,255,0.1);
-   transform: translateZ(50px); pointer-events: none;
-}
-
-/* 1. Header Vents */
-.chassis-header {
-   height: 30px; display: flex; justify-content: space-between; gap: 10px;
-}
-.cooling-vent {
-   flex: 1; height: 100%; background: #020617;
-   border: 1px solid #334155; border-radius: 2px;
-   background-image: repeating-linear-gradient(to bottom, #020617, #020617 3px, #1e293b 3px, #1e293b 6px);
-   box-shadow: inset 0 5px 10px rgba(0,0,0,1);
-}
-
-/* 2. Core Processing Bay (Armored Glass) */
-.chassis-core-bay {
-   height: 140px; width: 100%;
-   background: #000; border: 2px solid #334155; border-radius: 6px;
-   position: relative; display: flex; align-items: center; justify-content: center;
-   box-shadow: inset 0 0 40px rgba(0,245,255,0.1);
-}
-.glass-shield {
-   position: absolute; inset: 0; border-radius: 4px;
-   background: linear-gradient(135deg, rgba(0,245,255,0.02), transparent);
-   overflow: hidden; display: flex; align-items: center; justify-content: center;
-}
-.glass-glare {
-   position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-   background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.08) 45%, transparent 50%);
-   transform: rotate(20deg); pointer-events: none;
-}
-
-/* Central Quantum Core inside the glass */
-.quantum-core {
-   width: 80px; height: 80px;
-   position: relative;
+.server-back {
+   position: absolute; inset: 0; transform: translateZ(-20px) rotateY(180deg);
+   background: #0f172a; border-radius: 12px; border: 2px solid #475569;
    display: flex; align-items: center; justify-content: center;
-   transform-style: preserve-3d;
 }
-.core-inner {
-   width: 40px; height: 40px;
-   background: #00f5ff; border-radius: 50%;
-   box-shadow: 0 0 30px #00f5ff, inset 0 0 10px #fff;
-   z-index: 2; animation: core-beat 2s infinite alternate;
-}
-.core-ring {
-   position: absolute; border: 2px solid rgba(0,245,255,0.5); border-radius: 50%;
-}
-.cr1 { width: 60px; height: 60px; animation: spin-ring 4s linear infinite; border-top-color: #00f5ff; }
-.cr2 { width: 80px; height: 80px; animation: spin-ring 6s linear infinite reverse; border-bottom-color: #00f5ff; border-right-color: transparent; }
 
-/* 3. Storage Arrays */
-.data-arrays {
-   flex-grow: 1; display: flex; flex-direction: column; gap: 8px;
-}
-.tape-drive {
-   width: 100%; height: 35px; background: linear-gradient(90deg, #1e293b, #334155);
-   border: 1px solid #475569; border-radius: 4px; position: relative;
-   display: flex; align-items: center; padding: 0 15px; justify-content: space-between;
-   box-shadow: inset 0 2px 5px rgba(255,255,255,0.05), inset 0 -2px 5px rgba(0,0,0,0.5);
-}
-.drive-slot {
-   width: 70%; height: 8px; background: #020617; border-radius: 4px; border-bottom: 1px solid rgba(255,255,255,0.1);
-   box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
-}
-.drive-led { width: 8px; height: 8px; border-radius: 50%; background: #1e293b; border: 1px solid #000; }
-.drive-led.active { background: #00f5ff; box-shadow: 0 0 8px #00f5ff; animation: data-blink 0.2s infinite; }
-.drive-led.active.speed-2 { animation: data-blink 0.5s infinite; }
+.server-edge { position: absolute; background: #334155; box-shadow: inset 0 0 15px rgba(0,0,0,0.9); }
+.server-edge.top { width: 226px; height: 40px; top: -20px; left: 12px; transform: rotateX(90deg); }
+.server-edge.bottom { width: 226px; height: 40px; bottom: -20px; left: 12px; transform: rotateX(-90deg); }
+.server-edge.left { width: 40px; height: 376px; left: -20px; top: 12px; transform: rotateY(-90deg); }
+.server-edge.right { width: 40px; height: 376px; right: -20px; top: 12px; transform: rotateY(90deg); }
 
-/* 4. Footer & Power */
-.chassis-footer {
-   height: 40px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #334155; padding-top: 15px;
-}
-.power-unit {
-   width: 60%; height: 100%; background: #020617; border-radius: 2px;
-}
-.power-grill {
-   width: 100%; height: 100%;
-   background-image: repeating-linear-gradient(90deg, #020617, #020617 2px, #334155 2px, #334155 4px);
-   opacity: 0.5;
-}
-.status-panel { display: flex; gap: 6px; }
-.led { width: 6px; height: 6px; border-radius: 50%; }
-.led.ok { background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: led-steady 2s infinite; }
-.led.ok.slow { animation: led-steady 4s infinite 1s; }
-.led.warning { background: #eab308; box-shadow: 0 0 8px #eab308; opacity: 0.2; } /* Warning OFF by default */
+/* Vents */
+.vent-grid { display: flex; gap: 5px; height: 40px; }
+.vent-hole { flex-grow: 1; background: #020617; border-radius: 4px; box-shadow: inset 0 5px 10px #000; border-bottom: 2px solid #334155;}
 
-/* KEYFRAMES */
-@keyframes core-ambient-pulse { 0% { opacity: 0.5; } 100% { opacity: 0.8; transform: translateZ(-50px) scale(1.05); } }
-@keyframes core-beat { 0% { transform: scale(0.9); box-shadow: 0 0 20px #00f5ff, inset 0 0 10px #fff; } 100% { transform: scale(1.1); box-shadow: 0 0 50px #00f5ff, inset 0 0 20px #fff; } }
-@keyframes spin-ring { 100% { transform: rotateZ(360deg); } }
-@keyframes data-blink { 0%, 40% { opacity: 1; } 50%, 100% { opacity: 0.2; } }
-@keyframes led-steady { 0%, 90% { opacity: 1; } 95%, 100% { opacity: 0.2; } }
+/* Core Screen */
+.core-display {
+   width: 100%; height: 160px; background: #000; border-radius: 8px; border: 2px solid #334155;
+   position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.display-inner {
+   display: flex; gap: 15px; align-items: center; width: 100%; padding: 0 15px;
+}
+.circle-system { width: 70px; height: 70px; position: relative; display: flex; align-items: center; justify-content: center; }
+.circle-line { position: absolute; border-radius: 50%; border: 2px solid transparent; }
+.outline { width: 100%; height: 100%; border-color: rgba(16, 185, 129, 0.2); }
+.inner-spin { width: 80%; height: 80%; border-top-color: #10b981; border-right-color: #10b981; animation: core-spin 2s linear infinite; }
+.status-core { width: 40%; height: 40%; background: #10b981; border-radius: 50%; box-shadow: 0 0 15px #10b981; animation: pulse-core 2s infinite; }
+
+.lines-data { flex-grow: 1; display: flex; flex-direction: column; gap: 8px; }
+.dataline { height: 10px; background: rgba(16, 185, 129, 0.2); border-radius: 5px; overflow: hidden; position: relative; }
+.dataline::after { content: ''; position: absolute; left: -100%; width: 50%; height: 100%; background: #10b981; animation: data-flow 2s infinite; }
+.l2::after { animation-delay: 0.5s; width: 30%; }
+.l3::after { animation-delay: 1s; width: 70%; }
+
+/* Drives */
+.drive-bays { flex-grow: 1; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end;}
+.drive { height: 25px; background: #1e293b; border-radius: 4px; border: 1px solid #000; border-bottom: 2px solid #475569; position: relative; }
+.drive-led { width: 6px; height: 6px; border-radius: 50%; background: #111; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
+.drive-led.active { background: #3b82f6; box-shadow: 0 0 5px #3b82f6; animation: dr-blink 1s infinite alternate; }
+.drive-led.active.fast { animation: dr-blink 0.2s infinite alternate; }
+
+/* Back Fan */
+.fan-unit { width: 120px; height: 120px; background: #000; border-radius: 50%; border: 5px solid #1e293b; box-shadow: inset 0 0 20px #000; position: relative; display: flex; justify-content: center; align-items: center; }
+.fan-blade { width: 100px; height: 100px; background: conic-gradient(from 0deg, #334155 0deg 45deg, transparent 45deg 90deg, #334155 90deg 135deg, transparent 135deg 180deg, #334155 180deg 225deg, transparent 225deg 270deg, #334155 270deg 315deg, transparent 315deg 360deg); border-radius: 50%; animation: core-spin 0.5s linear infinite; }
+
+@keyframes core-spin { 100% { transform: rotate(360deg); } }
+@keyframes pulse-core { 50% { transform: scale(0.9); box-shadow: 0 0 5px #10b981; } }
+@keyframes data-flow { 100% { left: 200%; } }
+@keyframes dr-blink { 50% { opacity: 0.2; } }
 </style>

@@ -145,26 +145,13 @@ function initScrollyObjects() {
          let dynamicOpacity = 1;
          const objId = activeCard.getAttribute('data-obj');
 
-         // Fade out as the card moves up (progress > 0)
-         if (progress > 0.2 && objId === 'comms') {
-             // Comms leaves earlier as requested
-             dynamicOpacity = Math.max(0, 1 - (progress - 0.2) * 2.5);
-         } else if (progress > 0.4) {
-             // Default fade out for others
-             dynamicOpacity = Math.max(0, 1 - (progress - 0.4) * 2);
-         }
-
-         // Fade in as the card moves to center (progress < 0)
-         if (progress < -0.6) {
-             dynamicOpacity = Math.max(0, 1 - (-0.6 - progress) * 2);
-         }
-
          if (objId && objs[objId]) {
             if (currentObjId !== objId) {
                if(currentObjId && objs[currentObjId]) objs[currentObjId].style.opacity = '0';
                currentObjId = objId;
             }
-            objs[currentObjId].style.opacity = dynamicOpacity.toString();
+            // User requested objects not to disappear and come back. Always visible while active.
+            objs[currentObjId].style.opacity = '1';
 
             const clampedProgress = Math.max(-2, Math.min(2, progress));
 

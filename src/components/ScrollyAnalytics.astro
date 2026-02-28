@@ -1,220 +1,152 @@
----
-// ScrollyAnalytics.astro - Cinematic 3D Data Visualization / Analytics
----
-<div class="scrolly-station-3d">
-   <div class="station-glow"></div>
+<div class="tablet-mockup-3d">
+   <!-- Extruded Edges -->
+   <div class="tablet-edge edge-top"></div>
+   <div class="tablet-edge edge-bottom"></div>
+   <div class="tablet-edge edge-left"></div>
+   <div class="tablet-edge edge-right"></div>
    
-   <!-- Monitor Main Body -->
-   <div class="monitor-chassis">
-      <div class="monitor-screen">
-         <!-- Screen Content (Analytics Dashboard) -->
-         <div class="screen-bg"></div>
-         <div class="data-grid"></div>
-         
-         <div class="dashboard-ui">
-            <div class="ui-header">
-               <div class="ui-dot red"></div><div class="ui-dot yellow"></div><div class="ui-dot green"></div>
-            </div>
-            <div class="chart-container">
-               <div class="chart-bar cb1"><div class="bar-fill"></div><div class="bar-value">84%</div></div>
-               <div class="chart-bar cb2"><div class="bar-fill"></div><div class="bar-value">62%</div></div>
-               <div class="chart-bar cb3"><div class="bar-fill"></div><div class="bar-value">95%</div></div>
-               <div class="chart-bar cb4"><div class="bar-fill"></div><div class="bar-value">48%</div></div>
-               <div class="chart-bar cb5"><div class="bar-fill"></div><div class="bar-value">76%</div></div>
-            </div>
-            <div class="ui-footer">
-               <div class="status-line"></div>
-               <div class="status-line short"></div>
+   <!-- Back Panel -->
+   <div class="tablet-back">
+       <div class="tablet-logo"></div>
+   </div>
+
+   <!-- Front Display -->
+   <div class="tablet-front">
+      <div class="tablet-frame">
+         <div class="tablet-camera"></div>
+         <div class="tablet-screen" id="analytics-screen-inner">
+            <!-- Illustrative Data Dashboard inside -->
+            <div class="dashboard-cartoony">
+               <!-- Header -->
+               <div class="dash-header">
+                  <div class="dash-title">ANALYTICS</div>
+                  <div class="dash-user"></div>
+               </div>
+
+               <!-- Main Chart Area -->
+               <div class="chart-box">
+                  <div class="bar-chart-3d">
+                     <!-- 3D looking columns -->
+                     <div class="bar-col c1"><div class="bar-face front"></div><div class="bar-face top"></div></div>
+                     <div class="bar-col c2"><div class="bar-face front"></div><div class="bar-face top"></div></div>
+                     <div class="bar-col c3"><div class="bar-face front"></div><div class="bar-face top"></div></div>
+                     <div class="bar-col c4"><div class="bar-face front"></div><div class="bar-face top"></div></div>
+                  </div>
+               </div>
+
+               <!-- Mini Stats -->
+               <div class="stats-row">
+                  <div class="stat-bubble s-green">↑ %84</div>
+                  <div class="stat-bubble s-blue">32K</div>
+                  <div class="stat-bubble s-purple">NEW</div>
+               </div>
+
+               <div class="screen-glare"></div>
             </div>
          </div>
-
-         <div class="screen-glare"></div>
-      </div>
-      
-      <div class="monitor-bezel-bottom">
-         <div class="brand-logo"></div>
-         <div class="power-led"></div>
       </div>
    </div>
-
-   <!-- Monitor Stand -->
-   <div class="monitor-neck">
-      <div class="neck-detail"></div>
-   </div>
-   <div class="monitor-base-plate"></div>
 </div>
 
 <style>
 /* ========================================
-   PREMIUM 3D ANALYTICS WORKSTATION
+   CONCRETE 3D TABLET (ANALYTICS)
    ======================================== */
-.scrolly-station-3d {
-   width: 400px;
-   height: 350px;
+.tablet-mockup-3d {
+   width: 450px; height: 320px;
    position: relative;
    transform-style: preserve-3d;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
 }
 
-.station-glow {
-   position: absolute; top: 0; left: -10%; width: 120%; height: 80%;
-   background: radial-gradient(ellipse, rgba(0, 245, 255, 0.4) 0%, transparent 70%);
-   transform: translateZ(-50px); filter: blur(20px);
-   animation: screen-pulse 4s infinite alternate;
+/* Base Extrusions (30px thick) */
+.tablet-front {
+   position: absolute; inset: 0; transform: translateZ(15px);
+   background: #111; border-radius: 24px; padding: 15px; border: 2px solid #52525b;
+   box-shadow: inset 0 0 10px #000; transform-style: preserve-3d;
 }
 
-/* 1. MONITOR CHASSIS */
-.monitor-chassis {
-   width: 100%;
-   height: 250px;
-   background: linear-gradient(145deg, #1e293b, #0f172a);
-   border: 2px solid #334155;
-   border-radius: 12px;
-   padding: 10px;
-   position: relative;
-   transform-style: preserve-3d;
-   box-shadow: 
-      0 30px 60px rgba(0,0,0,0.8),
-      inset 0 2px 4px rgba(255,255,255,0.1);
-   z-index: 10;
+.tablet-back {
+   position: absolute; inset: 0; transform: translateZ(-15px) rotateY(180deg);
+   background: #1e293b; border-radius: 24px; border: 2px solid #52525b;
+   box-shadow: inset 0 0 60px rgba(0,0,0,0.8);
+}
+.tablet-logo {
+   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+   width: 50px; height: 50px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.1);
+   background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
 }
 
-.monitor-screen {
-   width: 100%;
-   height: calc(100% - 25px);
-   background: #020617;
-   border-radius: 6px;
-   position: relative;
-   overflow: hidden;
-   border: 2px solid #000;
-   box-shadow: inset 0 0 20px rgba(0,0,0,1);
+.tablet-edge { position: absolute; background: #3f3f46; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+.edge-top { width: 410px; height: 30px; top: -15px; left: 20px; transform: rotateX(90deg); }
+.edge-bottom { width: 410px; height: 30px; bottom: -15px; left: 20px; transform: rotateX(-90deg); }
+.edge-left { width: 30px; height: 280px; left: -15px; top: 20px; transform: rotateY(-90deg); }
+.edge-right { width: 30px; height: 280px; right: -15px; top: 20px; transform: rotateY(90deg); }
+
+/* Screen Frame */
+.tablet-frame {
+   width: 100%; height: 100%; background: #000; border-radius: 12px;
+   position: relative; overflow: hidden;
+}
+.tablet-camera {
+   position: absolute; top: 50%; left: -6px; transform: translateY(-50%); width: 8px; height: 8px;
+   border-radius: 50%; background: #222; border: 1px solid #111;
+   box-shadow: inset 0 0 3px rgba(0,100,255,0.4); z-index: 100;
 }
 
-.screen-bg {
-   position: absolute; inset: 0;
-   background: radial-gradient(circle at 50% 120%, rgba(0, 245, 255, 0.2), transparent 70%);
+/* Screen Content */
+.tablet-screen {
+   width: 100%; height: 100%; background: #0f172a; position: relative;
+   display: flex; flex-direction: column; overflow: hidden;
 }
+.dashboard-cartoony {
+   width: 100%; height: 100%; padding: 15px; display: flex; flex-direction: column; gap: 15px;
+}
+.dash-header { display: flex; justify-content: space-between; align-items: center; }
+.dash-title { color: #fff; font-size: 1.2rem; font-weight: 800; font-family: monospace; letter-spacing: 2px; }
+.dash-user { width: 35px; height: 35px; border-radius: 50%; background: #3b82f6; border: 2px solid #60a5fa; }
 
-.data-grid {
-   position: absolute; inset: 0;
-   background-image: 
-      linear-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
-   background-size: 20px 20px;
-   opacity: 0.5;
+/* 3D Looking Charts inside Screen */
+.chart-box {
+   flex-grow: 1; background: rgba(255,255,255,0.05); border-radius: 10px;
+   position: relative; padding: 20px; display: flex; align-items: flex-end; justify-content: space-around;
+   border-bottom: 3px solid rgba(255,255,255,0.1);
 }
+.bar-chart-3d {
+   width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: space-around;
+}
+.bar-col {
+   width: 40px; position: relative; background: transparent; transform-style: preserve-3d;
+}
+.bar-col .front {
+   width: 100%; height: 100%; position: absolute; bottom: 0; left: 0;
+   background: linear-gradient(to top, #0ea5e9, #38bdf8); border-radius: 4px 4px 0 0;
+   box-shadow: inset 0 -10px 10px rgba(0,0,0,0.3);
+}
+.bar-col .top {
+   width: 100%; height: 15px; position: absolute; top: -15px; left: 0;
+   background: #7dd3fc; transform: skewX(-30deg) translateX(7px);
+}
+.c1 { height: 80%; animation: bar-rise 2s ease-out infinite alternate; }
+.c2 { height: 50%; animation: bar-rise 2.5s ease-out infinite alternate; }
+.c3 { height: 100%; animation: bar-rise 1.5s ease-out infinite alternate; filter: hue-rotate(50deg); }
+.c4 { height: 30%; animation: bar-rise 3s ease-out infinite alternate; filter: hue-rotate(-50deg); }
+
+.stats-row { display: flex; gap: 10px; justify-content: space-between; }
+.stat-bubble {
+   flex-grow: 1; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+   font-weight: 800; font-size: 1rem; color: #fff; text-shadow: 0 2px 2px rgba(0,0,0,0.5);
+   border: 2px solid rgba(255,255,255,0.2);
+}
+.s-green { background: linear-gradient(135deg, #10b981, #059669); }
+.s-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.s-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
 
 .screen-glare {
-   position: absolute;
-   top: -50%; left: -50%; width: 200%; height: 200%;
-   background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.1) 50%, transparent 55%);
-   transform: rotate(15deg);
-   pointer-events: none;
+   position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+   background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.08) 45%, transparent 50%);
+   animation: glare 4s infinite linear; pointer-events: none;
 }
 
-.monitor-bezel-bottom {
-   width: 100%; height: 25px;
-   display: flex; justify-content: center; align-items: center;
-   position: relative;
-}
-
-.brand-logo {
-   width: 30px; height: 4px;
-   background: #475569; border-radius: 2px;
-}
-
-.power-led {
-   position: absolute; right: 10px; top: 10px;
-   width: 6px; height: 6px; border-radius: 50%;
-   background: #00f5ff; box-shadow: 0 0 8px #00f5ff;
-}
-
-/* 2. DASHBOARD UI INSIDE SCREEN */
-.dashboard-ui {
-   position: absolute; inset: 15px;
-   display: flex; flex-direction: column;
-   z-index: 2;
-}
-
-.ui-header { display: flex; gap: 6px; margin-bottom: 20px; }
-.ui-dot { width: 8px; height: 8px; border-radius: 50%; }
-.ui-dot.red { background: #ef4444; }
-.ui-dot.yellow { background: #eab308; }
-.ui-dot.green { background: #22c55e; }
-
-.chart-container {
-   flex-grow: 1;
-   display: flex; align-items: flex-end; justify-content: space-around;
-   border-bottom: 1px solid rgba(0, 245, 255, 0.3);
-   padding-bottom: 5px;
-}
-
-.chart-bar {
-   width: 30px; height: 100%;
-   display: flex; flex-direction: column; justify-content: flex-end;
-   position: relative;
-}
-
-.bar-fill {
-   width: 100%;
-   background: linear-gradient(to top, rgba(0, 245, 255, 0.2), #00f5ff);
-   border-radius: 3px 3px 0 0;
-   box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
-   transition: height 0.5s ease;
-}
-
-.cb1 .bar-fill { height: 84%; animation: bar-bump 3s infinite 0.1s; }
-.cb2 .bar-fill { height: 62%; animation: bar-bump 3s infinite 0.4s; }
-.cb3 .bar-fill { height: 95%; animation: bar-bump 3s infinite 0.2s; }
-.cb4 .bar-fill { height: 48%; animation: bar-bump 3s infinite 0.6s; }
-.cb5 .bar-fill { height: 76%; animation: bar-bump 3s infinite 0.3s; }
-
-.bar-value {
-   position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-   color: #00f5ff; font-size: 0.7rem; font-family: monospace; font-weight: bold;
-   opacity: 0.8;
-}
-
-.ui-footer { margin-top: 15px; }
-.status-line { width: 100%; height: 4px; background: rgba(0, 245, 255, 0.2); border-radius: 2px; margin-bottom: 8px; }
-.status-line.short { width: 60%; }
-
-/* 3. MONITOR STAND */
-.monitor-neck {
-   width: 60px; height: 70px;
-   background: linear-gradient(to right, #1e293b, #334155, #1e293b);
-   position: relative;
-   transform-style: preserve-3d;
-   border-left: 2px solid #0f172a;
-   border-right: 2px solid #0f172a;
-   box-shadow: inset 0 10px 20px rgba(0,0,0,0.8);
-   z-index: 5;
-}
-
-.neck-detail {
-   position: absolute; top: 10px; bottom: 10px; left: 50%; width: 20px; transform: translateX(-50%);
-   background: repeating-linear-gradient(to bottom, #0f172a, #0f172a 2px, transparent 2px, transparent 6px);
-}
-
-.monitor-base-plate {
-   width: 220px; height: 30px;
-   background: linear-gradient(to bottom, #334155, #0f172a);
-   border-radius: 15px 15px 4px 4px;
-   box-shadow: 
-      0 15px 20px rgba(0,0,0,0.8),
-      inset 0 2px 2px rgba(255,255,255,0.2);
-   border: 1px solid #475569;
-   border-bottom: 3px solid #020617;
-   z-index: 4;
-   transform: translateZ(-20px) rotateX(20deg);
-}
-
-/* KEYFRAMES */
-@keyframes screen-pulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
-@keyframes bar-bump {
-   0%, 100% { transform: scaleY(1); }
-   50% { transform: scaleY(0.95); }
-}
+@keyframes bar-rise { 0% { opacity: 0.8; } 100% { opacity: 1; transform: scaleY(0.95); transform-origin: bottom; } }
+@keyframes glare { 0% { transform: translate(-30%, -30%); } 100% { transform: translate(30%, 30%); } }
 </style>
