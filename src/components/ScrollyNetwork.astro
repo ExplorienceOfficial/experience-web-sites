@@ -1,33 +1,52 @@
+---
+// Premium 3D Network Router Mockup (Photorealistic API Device)
+---
 <div class="network-router-3d">
    
-   <!-- Heavy Extruded Edges -->
+   <!-- Heavy Titanium Extruded Edges -->
    <div class="router-edge top"></div>
    <div class="router-edge bottom"></div>
    <div class="router-edge left"></div>
    <div class="router-edge right"></div>
 
-   <!-- Back Panel -->
-   <div class="router-back">
-      <div class="cable-ports">
-         <div class="port"></div><div class="port"></div><div class="port"></div>
-      </div>
+   <!-- Physical Antennas (Expand on Hover) -->
+   <div class="antenna ant-1">
+      <div class="ant-joint"></div>
+      <div class="ant-tip"></div>
+   </div>
+   <div class="antenna ant-2">
+      <div class="ant-joint"></div>
+      <div class="ant-tip"></div>
    </div>
 
-   <!-- Front Face -->
+   <!-- Front Face / Glass Panel -->
    <div class="router-front">
       <!-- Glow effect -->
       <div class="core-glow"></div>
 
       <!-- Surface Details -->
-      <div class="router-brand">API-NET</div>
+      <div class="router-brand">
+         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
+         NEXUS
+      </div>
       
-      <!-- Central Activity Matrix -->
+      <!-- Central Optic Matrix -->
       <div class="port-matrix">
-         <div class="eth-port"><div class="led-tx"></div></div>
-         <div class="eth-port"><div class="led-tx slow"></div></div>
-         <div class="eth-port"><div class="led-tx fast"></div></div>
-         <div class="eth-port"><div class="led-tx"></div></div>
-         <div class="eth-port"><div class="led-tx slow"></div></div>
+         <!-- Fiber Optic Cables that pop out on hover -->
+         <div class="optic-port">
+             <div class="fiber-cable c1"><div class="laser-flow"></div></div>
+         </div>
+         <div class="optic-port">
+             <div class="fiber-cable c2"><div class="laser-flow"></div></div>
+         </div>
+         <div class="optic-port">
+             <div class="fiber-cable c3"><div class="laser-flow"></div></div>
+         </div>
+         <div class="optic-port">
+             <div class="fiber-cable c4"><div class="laser-flow"></div></div>
+         </div>
+         
+         <div class="glass-shield"></div>
       </div>
 
       <!-- LED Indicators -->
@@ -37,95 +56,139 @@
          <div class="s-led lan"></div>
       </div>
    </div>
-
-   <!-- Physical Antennas -->
-   <div class="antenna ant-1"></div>
-   <div class="antenna ant-2"></div>
+   
+   <div class="router-back"></div>
 </div>
 
 <style>
 /* ========================================
-   CONCRETE 3D NETWORK ROUTER
+   PREMIUM 3D NETWORK ROUTER
    ======================================== */
 .network-router-3d {
-   width: 320px; height: 160px;
-   position: relative;
-   transform-style: preserve-3d;
+   width: 340px; height: 160px;
+   position: relative; transform-style: preserve-3d;
+   cursor: pointer;
 }
 
 /* Antennas projecting out */
 .antenna {
-   position: absolute; width: 15px; height: 120px;
-   background: linear-gradient(to right, #1e293b, #475569, #1e293b);
+   position: absolute; width: 16px; height: 140px;
+   background: linear-gradient(to right, #18181b, #3f3f46, #18181b);
    border-radius: 8px 8px 0 0;
    bottom: 100%; z-index: -1; transform-origin: bottom center;
-   border: 2px solid #0f172a; border-bottom: none;
+   border: 2px solid #09090b; border-bottom: none;
+   box-shadow: inset 0 0 5px rgba(255,255,255,0.2), 0 20px 40px rgba(0,0,0,0.8);
+   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+   transform-style: preserve-3d;
 }
-.ant-1 { left: 40px; transform: translateZ(-20px) rotateZ(-30deg) rotateX(-20deg); }
-.ant-2 { right: 40px; transform: translateZ(-20px) rotateZ(30deg) rotateX(-20deg); }
+.ant-joint {
+   position: absolute; bottom: 10px; left: -2px; width: 16px; height: 16px;
+   background: #09090b; border-radius: 50%;
+}
+.ant-tip {
+   position: absolute; top: -5px; left: 50%; width: 6px; height: 6px; transform: translateX(-50%);
+   background: #ef4444; border-radius: 50%; box-shadow: 0 0 10px #ef4444;
+   opacity: 0.3; transition: all 0.3s;
+}
 
-.antenna::after {
-   content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-   width: 6px; height: 6px; background: #ef4444; border-radius: 50%;
-   box-shadow: 0 0 10px #ef4444; animation: blink-ant 1.5s infinite;
-}
+/* Default Rest State */
+.ant-1 { left: 40px; transform: translateZ(-25px) rotateZ(-15deg) rotateX(10deg); }
+.ant-2 { right: 40px; transform: translateZ(-25px) rotateZ(15deg) rotateX(10deg); }
+
+/* Hover State: Antennas split wide and stand up, tips glow max */
+.network-router-3d:hover .ant-1 { transform: translateZ(-35px) rotateZ(-40deg) rotateX(-20deg) scale(1.1); }
+.network-router-3d:hover .ant-2 { transform: translateZ(-35px) rotateZ(40deg) rotateX(-20deg) scale(1.1); }
+.network-router-3d:hover .ant-tip { opacity: 1; box-shadow: 0 0 20px #ef4444; }
+
 
 /* Base Extrusions (50px thick) */
 .router-front {
    position: absolute; inset: 0; transform: translateZ(25px);
-   background: linear-gradient(135deg, #0f172a, #020617);
-   border-radius: 16px; border: 3px solid #334155; border-top: 4px solid #64748b;
+   background: linear-gradient(135deg, #09090b, #18181b);
+   border-radius: 16px; border: 2px solid #3f3f46;
    padding: 20px;
-   box-shadow: inset 0 0 20px #000;
+   box-shadow: inset 0 0 30px #000, 0 30px 60px rgba(0,0,0,0.6);
    transform-style: preserve-3d;
    display: flex; flex-direction: column; justify-content: space-between;
 }
 .router-back {
    position: absolute; inset: 0; transform: translateZ(-25px) rotateY(180deg);
-   background: #1e293b; border-radius: 16px; border: 2px solid #334155;
-   display: flex; justify-content: center; align-items: center;
+   background: #09090b; border-radius: 16px; border: 2px solid #27272a;
 }
 
-.router-edge { position: absolute; background: #1e293b; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
-.router-edge.top { width: 288px; height: 50px; top: -25px; left: 16px; transform: rotateX(90deg); }
-.router-edge.bottom { width: 288px; height: 50px; bottom: -25px; left: 16px; transform: rotateX(-90deg); border-bottom: 4px solid #000; }
+/* Metallic Bevel Edges */
+.router-edge { position: absolute; background: #27272a; box-shadow: inset 0 0 15px rgba(0,0,0,0.9); border: 1px solid #3f3f46; }
+.router-edge.top { width: 308px; height: 50px; top: -25px; left: 16px; transform: rotateX(90deg); background: #3f3f46; }
+.router-edge.bottom { width: 308px; height: 50px; bottom: -25px; left: 16px; transform: rotateX(-90deg); }
 .router-edge.left { width: 50px; height: 128px; left: -25px; top: 16px; transform: rotateY(-90deg); }
 .router-edge.right { width: 50px; height: 128px; right: -25px; top: 16px; transform: rotateY(90deg); }
 
 .core-glow {
    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateZ(-10px);
-   width: 100px; height: 50px; background: rgba(0,245,255,0.2); filter: blur(20px);
+   width: 150px; height: 80px; background: rgba(59,130,246,0.1); filter: blur(30px);
+   transition: all 0.5s;
 }
+.network-router-3d:hover .core-glow { background: rgba(59,130,246,0.4); }
 
-.router-brand { color: #64748b; font-family: monospace; font-size: 1.2rem; font-weight: bold; letter-spacing: 3px; }
+.router-brand { color: #fff; display: flex; align-items: center; gap: 8px; font-family: sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 2px; }
 
 /* Status LEDs */
-.status-leds { display: flex; gap: 10px; }
-.s-led { width: 8px; height: 8px; border-radius: 50%; border: 1px solid #000; }
+.status-leds { display: flex; gap: 15px; }
+.s-led { width: 8px; height: 8px; border-radius: 50%; border: 1px solid #000; transition: all 0.3s; }
 .pwr { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
-.wan { background: #00f5ff; box-shadow: 0 0 8px #00f5ff; animation: blink-ant 0.8s infinite; }
-.lan { background: #00f5ff; box-shadow: 0 0 8px #00f5ff; animation: blink-ant 0.3s infinite alternate; }
+.wan { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; opacity: 0.5; }
+.lan { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; opacity: 0.5; }
+.network-router-3d:hover .wan { opacity: 1; animation: blink-ant 0.1s infinite alternate; }
+.network-router-3d:hover .lan { opacity: 1; animation: blink-ant 0.2s infinite alternate; }
 
-/* Ethernet Ports */
+/* Fiber Optic Matrix */
 .port-matrix {
-   display: flex; gap: 8px;
-   background: #000; padding: 10px; border-radius: 8px; border: 2px solid #1e293b;
-   box-shadow: inset 0 5px 10px rgba(0,0,0,0.8);
+   display: flex; gap: 10px; position: relative;
+   background: #000; padding: 15px; border-radius: 12px; border: 2px solid #27272a;
+   box-shadow: inset 0 10px 20px rgba(0,0,0,0.9);
+   transform-style: preserve-3d;
 }
-.eth-port {
-   flex-grow: 1; height: 25px; background: #1e293b; border-radius: 4px;
-   position: relative; border-bottom: 2px solid #000;
+.glass-shield {
+   position: absolute; inset: 0; border-radius: 12px;
+   background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent 40%);
+   pointer-events: none; transform: translateZ(5px);
 }
-.led-tx {
-   position: absolute; top: 2px; right: 2px; width: 4px; height: 4px;
-   background: #ef4444; border-radius: 50%; animation: tx-blink 0.1s infinite alternate;
+.optic-port {
+   flex-grow: 1; height: 35px; background: #09090b; border-radius: 8px;
+   position: relative; border: 1px solid #27272a; box-shadow: inset 0 0 10px #000;
+   display: flex; justify-content: center; align-items: center;
+   transform-style: preserve-3d;
 }
-.led-tx.slow { animation-duration: 0.5s; background: #eab308; }
-.led-tx.fast { animation-duration: 0.05s; }
+/* Fiber cable inside port */
+.fiber-cable {
+   width: 14px; height: 14px; border-radius: 50%; background: #18181b;
+   border: 3px solid #3f3f46; position: absolute;
+   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   box-shadow: 0 0 0 rgba(59,130,246,0);
+}
+.laser-flow {
+   position: absolute; width: 4px; height: 0; background: #00f5ff;
+   top: 50%; left: 50%; transform: translateX(-50%); border-radius: 2px;
+   box-shadow: 0 0 10px #00f5ff; opacity: 0;
+   transition: all 0.4s;
+}
 
-.cable-ports { display: flex; gap: 15px; }
-.port { width: 25px; height: 25px; background: #000; border-radius: 4px; }
+/* Hover State: Cables pop out in 3D and shoot lasers out of the screen */
+.network-router-3d:hover .fiber-cable {
+   background: #fff; border-color: #0ea5e9;
+   box-shadow: 0 0 20px #0ea5e9, 0 10px 20px rgba(0,0,0,0.5);
+}
+.network-router-3d:hover .c1 { transform: translateZ(40px); }
+.network-router-3d:hover .c2 { transform: translateZ(60px); }
+.network-router-3d:hover .c3 { transform: translateZ(50px); }
+.network-router-3d:hover .c4 { transform: translateZ(70px); }
 
-@keyframes blink-ant { 50% { opacity: 0.3; } }
-@keyframes tx-blink { 100% { opacity: 0; } }
+.network-router-3d:hover .laser-flow { opacity: 1; height: 60px; top: -60px; }
+.network-router-3d:hover .c1 .laser-flow { animation: shoot-laser 0.8s infinite; }
+.network-router-3d:hover .c2 .laser-flow { animation: shoot-laser 0.6s infinite 0.2s; }
+.network-router-3d:hover .c3 .laser-flow { animation: shoot-laser 0.9s infinite 0.1s; }
+.network-router-3d:hover .c4 .laser-flow { animation: shoot-laser 0.5s infinite 0.3s; }
+
+@keyframes blink-ant { 100% { opacity: 0; } }
+@keyframes shoot-laser { 0% { top: 0; height: 0; opacity: 1; } 50% { top: -80px; height: 40px; opacity: 1; } 100% { top: -120px; height: 0; opacity: 0; } }
 </style>

@@ -1,12 +1,17 @@
+---
+// Premium 3D Enterprise Mac Pro Style Server
+---
 <div class="enterprise-server-3d">
-   <!-- Extruded Edges -->
+   <!-- Premium Aluminum Extrusions -->
    <div class="server-edge top"></div>
    <div class="server-edge bottom"></div>
    <div class="server-edge left"></div>
    <div class="server-edge right"></div>
    
-   <!-- Front Plate -->
+   <!-- Front Plate / Mesh -->
    <div class="server-front">
+      <!-- Mac Pro style grille / mesh effect inside -->
+      <div class="metal-mesh"></div>
       
       <!-- Top Vents -->
       <div class="vent-grid">
@@ -15,6 +20,7 @@
 
       <!-- Core Display Screen -->
       <div class="core-display">
+         <div class="glass-glare"></div>
          <div class="display-inner">
             <div class="circle-system">
                <div class="circle-line outline"></div>
@@ -29,12 +35,24 @@
          </div>
       </div>
 
-      <!-- Drives Bays -->
+      <!-- Physical Drive Bays (Pop out on hover) -->
       <div class="drive-bays">
-         <div class="drive"><div class="drive-led active"></div></div>
-         <div class="drive"><div class="drive-led"></div></div>
-         <div class="drive"><div class="drive-led active fast"></div></div>
-         <div class="drive"><div class="drive-led active"></div></div>
+         <div class="drive d1">
+            <div class="drive-handle"></div>
+            <div class="drive-led active"></div>
+         </div>
+         <div class="drive d2">
+            <div class="drive-handle"></div>
+            <div class="drive-led active fast"></div>
+         </div>
+         <div class="drive d3">
+            <div class="drive-handle"></div>
+            <div class="drive-led active"></div>
+         </div>
+         <div class="drive d4">
+            <div class="drive-handle"></div>
+            <div class="drive-led"></div>
+         </div>
       </div>
    </div>
 
@@ -42,79 +60,127 @@
    <div class="server-back">
       <div class="fan-unit">
          <div class="fan-blade"></div>
+         <div class="fan-grill"></div>
       </div>
    </div>
 </div>
 
 <style>
 /* ========================================
-   CONCRETE 3D ENTERPRISE SERVER TOWER
+   PREMIUM 3D ENTERPRISE SERVER TOWER
    ======================================== */
 .enterprise-server-3d {
-   width: 250px; height: 400px;
+   width: 260px; height: 420px;
    position: relative;
    transform-style: preserve-3d;
+   cursor: pointer;
 }
 
-/* Base Extrusions (40px thick) */
+/* Base Extrusions (50px thick) */
 .server-front {
-   position: absolute; inset: 0; transform: translateZ(20px);
-   background: linear-gradient(135deg, #1e293b, #0f172a);
-   border-radius: 12px; border: 2px solid #64748b;
+   position: absolute; inset: 0; transform: translateZ(25px);
+   background: linear-gradient(135deg, #d4d4d8, #71717a, #3f3f46);
+   border-radius: 16px; border: 2px solid #52525b; border-top: 2px solid #e4e4e7;
    padding: 20px;
-   box-shadow: inset 0 0 10px #000;
+   box-shadow: inset 0 0 40px rgba(0,0,0,0.5), inset 2px 2px 5px rgba(255,255,255,0.4);
    transform-style: preserve-3d;
-   display: flex; flex-direction: column; gap: 20px;
+   display: flex; flex-direction: column; gap: 20px; overflow: hidden;
 }
+
+.metal-mesh {
+   position: absolute; inset: 0;
+   background-image: radial-gradient(#18181b 15%, transparent 20%), radial-gradient(#18181b 15%, transparent 20%);
+   background-color: transparent;
+   background-position: 0 0, 10px 10px;
+   background-size: 20px 20px;
+   opacity: 0.15; pointer-events: none;
+}
+
 .server-back {
-   position: absolute; inset: 0; transform: translateZ(-20px) rotateY(180deg);
-   background: #0f172a; border-radius: 12px; border: 2px solid #475569;
+   position: absolute; inset: 0; transform: translateZ(-25px) rotateY(180deg);
+   background: linear-gradient(to bottom, #71717a, #27272a); 
+   border-radius: 16px; border: 2px solid #52525b;
    display: flex; align-items: center; justify-content: center;
 }
 
-.server-edge { position: absolute; background: #334155; box-shadow: inset 0 0 15px rgba(0,0,0,0.9); }
-.server-edge.top { width: 226px; height: 40px; top: -20px; left: 12px; transform: rotateX(90deg); }
-.server-edge.bottom { width: 226px; height: 40px; bottom: -20px; left: 12px; transform: rotateX(-90deg); }
-.server-edge.left { width: 40px; height: 376px; left: -20px; top: 12px; transform: rotateY(-90deg); }
-.server-edge.right { width: 40px; height: 376px; right: -20px; top: 12px; transform: rotateY(90deg); }
+/* Metallic Edge Panels */
+.server-edge { position: absolute; background: #52525b; box-shadow: inset 0 0 20px rgba(0,0,0,0.7); }
+.server-edge.top { width: 236px; height: 50px; top: -25px; left: 12px; transform: rotateX(90deg); background: #a1a1aa; }
+.server-edge.bottom { width: 236px; height: 50px; bottom: -25px; left: 12px; transform: rotateX(-90deg); background: #27272a; border-bottom: 5px solid #000; }
+.server-edge.left { width: 50px; height: 386px; left: -25px; top: 12px; transform: rotateY(-90deg); background: linear-gradient(to bottom, #a1a1aa, #3f3f46); }
+.server-edge.right { width: 50px; height: 386px; right: -25px; top: 12px; transform: rotateY(90deg); background: linear-gradient(to bottom, #52525b, #18181b); }
 
 /* Vents */
-.vent-grid { display: flex; gap: 5px; height: 40px; }
-.vent-hole { flex-grow: 1; background: #020617; border-radius: 4px; box-shadow: inset 0 5px 10px #000; border-bottom: 2px solid #334155;}
+.vent-grid { display: flex; gap: 6px; height: 30px; z-index: 10; }
+.vent-hole { flex-grow: 1; background: #000; border-radius: 4px; box-shadow: inset 0 5px 10px rgba(0,0,0,1); border-bottom: 1px solid rgba(255,255,255,0.2);}
 
 /* Core Screen */
 .core-display {
-   width: 100%; height: 160px; background: #000; border-radius: 8px; border: 2px solid #334155;
+   width: 100%; height: 160px; background: #09090b; border-radius: 12px; 
+   border: 1px solid #18181b; border-bottom: 2px solid rgba(255,255,255,0.2);
    position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+   box-shadow: inset 0 0 20px #000, 0 10px 20px rgba(0,0,0,0.3);
+   z-index: 10;
+}
+.glass-glare {
+   position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+   background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%);
+   pointer-events: none;
 }
 .display-inner {
-   display: flex; gap: 15px; align-items: center; width: 100%; padding: 0 15px;
+   display: flex; gap: 15px; align-items: center; width: 100%; padding: 0 15px; z-index: 2;
 }
 .circle-system { width: 70px; height: 70px; position: relative; display: flex; align-items: center; justify-content: center; }
 .circle-line { position: absolute; border-radius: 50%; border: 2px solid transparent; }
-.outline { width: 100%; height: 100%; border-color: rgba(16, 185, 129, 0.2); }
-.inner-spin { width: 80%; height: 80%; border-top-color: #10b981; border-right-color: #10b981; animation: core-spin 2s linear infinite; }
-.status-core { width: 40%; height: 40%; background: #10b981; border-radius: 50%; box-shadow: 0 0 15px #10b981; animation: pulse-core 2s infinite; }
+.outline { width: 100%; height: 100%; border-color: rgba(59, 130, 246, 0.2); }
+.inner-spin { width: 80%; height: 80%; border-top-color: #3b82f6; border-right-color: #3b82f6; animation: core-spin 2s linear infinite; }
+.status-core { width: 40%; height: 40%; background: #3b82f6; border-radius: 50%; box-shadow: 0 0 15px #3b82f6; animation: pulse-core 2s infinite alternate; }
+
+/* HOVER EFFECT: Screen Intense Core Glow */
+.enterprise-server-3d:hover .status-core { background: #00f5ff; box-shadow: 0 0 40px #00f5ff; transform: scale(1.5); transition: all 0.5s; }
+.enterprise-server-3d:hover .inner-spin { border-color: #00f5ff; animation-duration: 0.5s; }
 
 .lines-data { flex-grow: 1; display: flex; flex-direction: column; gap: 8px; }
-.dataline { height: 10px; background: rgba(16, 185, 129, 0.2); border-radius: 5px; overflow: hidden; position: relative; }
-.dataline::after { content: ''; position: absolute; left: -100%; width: 50%; height: 100%; background: #10b981; animation: data-flow 2s infinite; }
+.dataline { height: 8px; background: rgba(59, 130, 246, 0.1); border-radius: 4px; overflow: hidden; position: relative; }
+.dataline::after { content: ''; position: absolute; left: -100%; width: 50%; height: 100%; background: #3b82f6; animation: data-flow 2s infinite; }
 .l2::after { animation-delay: 0.5s; width: 30%; }
 .l3::after { animation-delay: 1s; width: 70%; }
 
-/* Drives */
-.drive-bays { flex-grow: 1; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end;}
-.drive { height: 25px; background: #1e293b; border-radius: 4px; border: 1px solid #000; border-bottom: 2px solid #475569; position: relative; }
-.drive-led { width: 6px; height: 6px; border-radius: 50%; background: #111; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
-.drive-led.active { background: #3b82f6; box-shadow: 0 0 5px #3b82f6; animation: dr-blink 1s infinite alternate; }
+/* Physical Drive Bays */
+.drive-bays { flex-grow: 1; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; z-index: 10; transform-style: preserve-3d; }
+.drive { 
+   height: 30px; background: linear-gradient(to right, #27272a, #3f3f46, #27272a); 
+   border-radius: 6px; border: 1px solid #18181b; border-top: 1px solid #71717a;
+   position: relative; display: flex; align-items: center;
+   transform-style: preserve-3d; transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+   box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+.drive-handle {
+   width: 40px; height: 14px; background: #18181b; border-radius: 2px; margin-left: 10px;
+   box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+}
+.drive-led { width: 6px; height: 6px; border-radius: 50%; background: #111; position: absolute; right: 15px; }
+.drive-led.active { background: #10b981; box-shadow: 0 0 8px #10b981; animation: dr-blink 1s infinite alternate; }
 .drive-led.active.fast { animation: dr-blink 0.2s infinite alternate; }
 
+/* DYNAMIC HOVER: Drives pop out of the server */
+.enterprise-server-3d:hover .d1 { transform: translateZ(30px); transition-delay: 0.05s; }
+.enterprise-server-3d:hover .d2 { transform: translateZ(50px); transition-delay: 0.1s; }
+.enterprise-server-3d:hover .d3 { transform: translateZ(40px); transition-delay: 0.15s; }
+.enterprise-server-3d:hover .d4 { transform: translateZ(20px); transition-delay: 0.2s; }
+
 /* Back Fan */
-.fan-unit { width: 120px; height: 120px; background: #000; border-radius: 50%; border: 5px solid #1e293b; box-shadow: inset 0 0 20px #000; position: relative; display: flex; justify-content: center; align-items: center; }
-.fan-blade { width: 100px; height: 100px; background: conic-gradient(from 0deg, #334155 0deg 45deg, transparent 45deg 90deg, #334155 90deg 135deg, transparent 135deg 180deg, #334155 180deg 225deg, transparent 225deg 270deg, #334155 270deg 315deg, transparent 315deg 360deg); border-radius: 50%; animation: core-spin 0.5s linear infinite; }
+.fan-unit { width: 140px; height: 140px; background: #000; border-radius: 50%; border: 6px solid #27272a; box-shadow: inset 0 0 30px #000; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.fan-blade { width: 120px; height: 120px; background: conic-gradient(from 0deg, #3f3f46 0deg 45deg, transparent 45deg 90deg, #3f3f46 90deg 135deg, transparent 135deg 180deg, #3f3f46 180deg 225deg, transparent 225deg 270deg, #334155 270deg 315deg, transparent 315deg 360deg); border-radius: 50%; animation: core-spin 1s linear infinite; }
+.enterprise-server-3d:hover .fan-blade { animation-duration: 0.1s; } /* Fans spin up on hover! */
+
+.fan-grill { 
+   position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #18181b 10px, #18181b 12px);
+   border-radius: 50%; box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
 
 @keyframes core-spin { 100% { transform: rotate(360deg); } }
-@keyframes pulse-core { 50% { transform: scale(0.9); box-shadow: 0 0 5px #10b981; } }
+@keyframes pulse-core { 50% { transform: scale(0.9); box-shadow: 0 0 5px #3b82f6; } }
 @keyframes data-flow { 100% { left: 200%; } }
 @keyframes dr-blink { 50% { opacity: 0.2; } }
 </style>
