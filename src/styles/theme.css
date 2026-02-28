@@ -50,11 +50,16 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
     color: var(--text-color);
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 

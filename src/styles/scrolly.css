@@ -320,11 +320,25 @@
 }
 
 @media (max-width: 768px) {
+    .scrolly-container {
+        height: auto !important;
+        position: relative;
+    }
+
+    .scrolly-text-content {
+        position: relative;
+        height: auto !important;
+        pointer-events: auto;
+        /* Allow interactions on mobile */
+    }
+
     .scrolly-card-wrapper {
         justify-content: center;
         align-items: center;
         padding: 10vh 5% !important;
         flex-direction: column !important;
+        min-height: 100vh;
+        height: auto !important;
     }
 
     .scrolly-card {
