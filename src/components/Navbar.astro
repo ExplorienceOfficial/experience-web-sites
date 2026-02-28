@@ -64,18 +64,19 @@ const { lang, currentPath, t } = Astro.props;
     </div>
 
     <!-- Language Switcher -->
-    <div class="lang-switcher" role="navigation" aria-label="Language switcher">
-      {Object.entries(languages).map(([l]) => (
-        <a
-          href={getLocalizedPath(currentPath, l as Lang)}
-          class={`lang-btn ${lang === l ? 'active' : ''}`}
-          hreflang={l}
-          aria-label={`Switch to ${l.toUpperCase()}`}
-          aria-current={lang === l ? 'true' : undefined}
-        >
-          {l === 'tr' ? '🇹🇷' : '🇬🇧'}
-        </a>
-      ))}
+    <div class="lang-switcher-v2">
+      <div class="lang-track">
+        {Object.entries(languages).map(([l]) => (
+          <a
+            href={getLocalizedPath(currentPath, l as Lang)}
+            class={`lang-option ${lang === l ? 'active' : ''}`}
+            hreflang={l}
+          >
+            {l.toUpperCase()}
+          </a>
+        ))}
+        <div class={`lang-pill pos-${lang}`}></div>
+      </div>
     </div>
 
     <!-- Mobile Hamburger -->
@@ -243,25 +244,59 @@ const { lang, currentPath, t } = Astro.props;
     to { opacity: 1; transform: translateX(-50%) translateY(10px); }
   }
 
-  /* Language Switcher */
-  .lang-btn {
-    font-size: 1.2rem;
-    text-decoration: none;
-    opacity: 0.5;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-  }
-  .lang-btn.active {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-  .lang-btn:hover {
-    opacity: 1;
-  }
-  .lang-switcher {
+  /* Premium Language Switcher V2 */
+  .lang-switcher-v2 {
+    position: relative;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    height: 34px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+  }
+  .lang-track {
+    position: relative;
+    display: flex;
+    gap: 0;
+    z-index: 1;
+  }
+  .lang-option {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 28px;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+  }
+  .lang-option.active {
+    color: #fff;
+  }
+  .lang-pill {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 28px;
+    background: var(--highlight-color);
+    border-radius: 100px;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 15px var(--highlight-color);
+  }
+  .pos-tr { left: 0; }
+  .pos-en { left: 38px; }
+
+  .lang-option:hover:not(.active) {
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .mobile-menu-btn {
