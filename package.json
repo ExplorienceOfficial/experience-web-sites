@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kagankarki/experience-web-sites.git"
+    "url": "git+https://github.com/ExplorienceOfficial/experience-web-sites.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kagankarki/experience-web-sites/issues"
+    "url": "https://github.com/ExplorienceOfficial/experience-web-sites/issues"
   },
-  "homepage": "https://github.com/kagankarki/experience-web-sites#readme",
+  "homepage": "https://github.com/ExplorienceOfficial/experience-web-sites#readme",
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/sitemap": "^3.7.0",

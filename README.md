@@ -73,7 +73,7 @@ experience-web-sites/
 
 1. **Clone & Install**:
    ```bash
-   git clone https://github.com/kagankarki/experience-web-sites.git
+   git clone https://github.com/ExplorienceOfficial/experience-web-sites.git
    cd experience-web-sites
    npm install
    ```
