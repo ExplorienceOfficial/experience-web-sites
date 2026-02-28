@@ -133,7 +133,6 @@ function initScrollyObjects() {
       let minDistance = Infinity;
       
       // Select the card that is closest to screen center.
-      // Modifying trigger logic so objects appear *before* the text block physically occupies the screen fully!
       for (let i = 0; i < cards.length; i++) {
          const objAttr = cards[i].getAttribute('data-obj');
          if (!objAttr) continue; // skip text-only slides
@@ -143,8 +142,8 @@ function initScrollyObjects() {
          const screenCenter = wh / 2;
          const dist = Math.abs(cardCenter - screenCenter);
          
-         // Generous trigger zone ensures early startup
-         if (dist < minDistance && dist < wh * 1.5) {
+         // Tightened trigger zone prevents objects bleeding into intro or footer
+         if (dist < minDistance && dist < wh * 0.8) {
              minDistance = dist;
              activeCard = cards[i];
          }
