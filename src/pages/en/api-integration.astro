@@ -1,0 +1,41 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyNetwork from '../../components/ScrollyNetwork.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<DetailLayout 
+  title="API & Microservices Integration | Explorience"
+  description="Connect your systems. Scalable, secure, and flexible microservices architectures."
+  lang={lang}
+>
+  <div slot="showcase">
+    <ScrollyNetwork />
+  </div>
+
+  <div class="detail-section">
+    <span class="category-tag">INTEGRATION</span>
+    <h1 class="giant-text">API Ecosystem</h1>
+    <p class="subtitle-text">
+       Bridges between fragmented systems. We synchronize your business processes with modern API architectures.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Microservices</h3>
+        <p>Distributed and scalable infrastructures.</p>
+      </div>
+      <div class="feature-card">
+        <h3>API Gateway</h3>
+        <p>Secure and fast traffic management.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Webhooks</h3>
+        <p>Event-driven real-time systems.</p>
+      </div>
+    </div>
+  </div>
+</DetailLayout>

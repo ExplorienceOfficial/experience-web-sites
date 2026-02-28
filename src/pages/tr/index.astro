@@ -142,35 +142,43 @@ const currentPath = '/tr/';
           <span class="category-tag">{t.solutions.dataEngTag}</span>
           <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.pipelineTitle}</h2>
           <p class="subtitle-text">{t.solutions.pipelineDesc}</p>
+          <a href="/tr/veri-muhendisligi" class="explore-detail-btn">
+            Sistemleri İncele
+          </a>
         </div>
       </div>
 
-      <div class="scrolly-card-wrapper center-force" data-obj="data" data-tx="0" data-scale="0.6" data-ry="0" data-rx="50" data-scrub-rot="90">
+      <div class="scrolly-card-wrapper center-force" data-obj="analytics" data-tx="0" data-scale="1" data-ry="0" data-rx="20" data-scrub-rot="90">
         <div class="fullscreen-text-slide">
           <span class="category-tag">{t.solutions.analyticsTag}</span>
           <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.insightTitle}</h2>
           <p class="subtitle-text">{t.solutions.insightDesc}</p>
+          <a href="/tr/analitik-isgoru" class="explore-detail-btn">
+            Analizi Gör
+          </a>
         </div>
       </div>
 
       <!-- ERP -->
-      <div class="scrolly-card-wrapper center-force" id="sec-erp" data-obj="globe" data-tx="0" data-scale="1" data-ry="0" data-rx="0" data-scrub-rot="45">
+      <div class="scrolly-card-wrapper center-force" id="sec-erp" data-obj="enterprise" data-tx="0" data-scale="1" data-ry="0" data-rx="0" data-scrub-rot="45">
         <div class="fullscreen-text-slide">
           <span class="category-tag">{t.solutions.erpTag}</span>
           <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.erpTitle}</h2>
           <p class="subtitle-text">{t.solutions.erpDesc}</p>
           <a href={`/${lang}/erp-kurumsal`} class="explore-detail-btn">
-            Süreçleri İncele
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            EkoSistemi Keşfet
           </a>
         </div>
       </div>
 
-      <div class="scrolly-card-wrapper" style="justify-content: flex-start; padding-left: 15vw;" data-obj="globe" data-tx="25" data-scale="1" data-ry="-25" data-scrub-rot="-60">
+      <div class="scrolly-card-wrapper" style="justify-content: flex-start; padding-left: 15vw;" data-obj="network" data-tx="25" data-scale="1.2" data-ry="-25" data-scrub-rot="-60">
         <div class="fullscreen-text-slide" style="text-align: left; max-width: 500px;">
           <span class="category-tag">{t.solutions.integrationTag}</span>
           <h2 class="giant-text" style="font-size: 3.5rem;">{t.solutions.microservicesTitle}</h2>
           <p class="subtitle-text">{t.solutions.microservicesDesc}</p>
+          <a href="/tr/api-entegrasyon" class="explore-detail-btn">
+            Mimarimize Bak
+          </a>
         </div>
       </div>
 

@@ -1,0 +1,149 @@
+---
+// ScrollyAnalytics.astro - Cinematic 3D Data Visualization / Analytics
+---
+<div class="analytics-canvas">
+  <div class="bars-container">
+    <!-- 8 Holographic Bars -->
+    <div class="bar h1"></div>
+    <div class="bar h2"></div>
+    <div class="bar h3"></div>
+    <div class="bar h4"></div>
+    <div class="bar h5"></div>
+    <div class="bar h6"></div>
+    <div class="bar h7"></div>
+    <div class="bar h8"></div>
+    
+    <!-- Central Insight Sphere -->
+    <div class="insight-sphere">
+      <div class="core-glow"></div>
+      <div class="data-ring r1"></div>
+      <div class="data-ring r2"></div>
+    </div>
+    
+    <!-- Floating "Data Nodes" -->
+    <div class="data-point p1"></div>
+    <div class="data-point p2"></div>
+    <div class="data-point p3"></div>
+    <div class="data-point p4"></div>
+  </div>
+</div>
+
+<style>
+  .analytics-canvas {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 2000px;
+  }
+
+  .bars-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateAnalytics 30s linear infinite;
+  }
+
+  .bar {
+    position: absolute;
+    width: 30px;
+    height: 100px;
+    background: linear-gradient(to top, var(--highlight-color), transparent);
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+    transform-origin: bottom;
+    animation: barGrow 3s ease-in-out infinite alternate;
+  }
+
+  /* Distribute bars in a circle */
+  .h1 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(0deg) translateZ(120px); height: 180px; }
+  .h2 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(45deg) translateZ(120px); height: 220px; animation-delay: 0.2s; }
+  .h3 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(90deg) translateZ(120px); height: 150px; animation-delay: 0.4s; }
+  .h4 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(135deg) translateZ(120px); height: 260px; animation-delay: 0.6s; }
+  .h5 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(180deg) translateZ(120px); height: 200px; animation-delay: 0.8s; }
+  .h6 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(225deg) translateZ(120px); height: 140px; animation-delay: 1s; }
+  .h7 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(270deg) translateZ(120px); height: 190px; animation-delay: 1.2s; }
+  .h8 { top: 50%; left: 50%; transform: translate(-50%, -100%) rotateY(315deg) translateZ(120px); height: 230px; animation-delay: 1.4s; }
+
+  .insight-sphere {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin: -50px;
+    transform-style: preserve-3d;
+  }
+
+  .core-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--highlight-color), transparent 70%);
+    box-shadow: 0 0 100px var(--highlight-color);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .data-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    margin: -125px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+  }
+
+  .r1 { transform: rotateX(70deg); animation: rotateRing 8s linear infinite; }
+  .r2 { transform: rotateY(70deg); animation: rotateRing 12s linear infinite reverse; }
+
+  .data-point {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff;
+  }
+
+  .p1 { animation: orbitPoint1 5s linear infinite; }
+  .p2 { animation: orbitPoint2 7s linear infinite; }
+
+  @keyframes rotateAnalytics {
+    from { transform: rotateY(0deg) rotateX(15deg); }
+    to { transform: rotateY(360deg) rotateX(15deg); }
+  }
+
+  @keyframes barGrow {
+    from { transform: translate(-50%, -100%) scaleY(0.8); opacity: 0.4; }
+    to { transform: translate(-50%, -100%) scaleY(1.2); opacity: 1; }
+  }
+
+  @keyframes rotateRing {
+    from { transform: rotateX(70deg) rotateZ(0deg); }
+    to { transform: rotateX(70deg) rotateZ(360deg); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+  }
+
+  @keyframes orbitPoint1 {
+    from { transform: rotateY(0deg) translate3d(200px, -50px, 0); }
+    to { transform: rotateY(360deg) translate3d(200px, -50px, 0); }
+  }
+
+  @keyframes orbitPoint2 {
+    from { transform: rotateX(0deg) translate3d(-180px, 60px, 0); }
+    to { transform: rotateX(360deg) translate3d(-180px, 60px, 0); }
+  }
+</style>

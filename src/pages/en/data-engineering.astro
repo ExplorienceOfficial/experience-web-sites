@@ -1,0 +1,41 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyServerRack from '../../components/ScrollyServerRack.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<DetailLayout 
+  title="Data Engineering & Pipeline | Explorience"
+  description="Seamless and real-time data flow systems. We process complex data sources in seconds to make them ready for analytics."
+  lang={lang}
+>
+  <div slot="showcase">
+    <ScrollyServerRack />
+  </div>
+
+  <div class="detail-section">
+    <span class="category-tag">DATA ENGINEERING</span>
+    <h1 class="giant-text">Data Pipeline</h1>
+    <p class="subtitle-text">
+      We build the highways that turn raw data into action. In modern data architectures, speed and reliability are everything.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>ETL & ELT</h3>
+        <p>Collecting, cleaning, and centralizing scattered data points.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Real-time Streaming</h3>
+        <p>Milling-second data processing with Kafka and RabbitMQ technologies.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Data Lakehouse</h3>
+        <p>Flexible and performant modern storage solutions.</p>
+      </div>
+    </div>
+  </div>
+</DetailLayout>

@@ -6,37 +6,55 @@ import ScrollyGlobe from './ScrollyGlobe.astro';
 import ScrollyPhone from './ScrollyPhone.astro';
 import ScrollyLocation from './ScrollyLocation.astro';
 import ScrollyPhoneIcon from './ScrollyPhoneIcon.astro';
+import ScrollyEnterpriseCore from './ScrollyEnterpriseCore.astro';
+import ScrollyAnalytics from './ScrollyAnalytics.astro';
+import ScrollyNetwork from './ScrollyNetwork.astro';
 ---
 <div id="apple-scrolly-canvas">
    
-   <!-- 1. AI Core (Premium Quantum AI Processor) -->
+   <!-- 1. AI Core -->
    <div id="obj-ai" class="scrolly-item" style="opacity: 0;">
       <ScrollyAiCore />
    </div>
 
-   <!-- 2. Server / Big Data (Premium 3D Server Rack) -->
+   <!-- 2. Server / Big Data -->
    <div id="obj-data" class="scrolly-item" style="opacity: 0;">
       <ScrollyServerRack />
    </div>
 
-   <!-- 3. Globe / Network (3D Wireframe Sphere) -->
+   <!-- 3. Globe / Network -->
    <div id="obj-globe" class="scrolly-item" style="opacity: 0;">
       <ScrollyGlobe />
    </div>
 
-   <!-- 4. Mobile Phone App (Photorealistic Pure CSS 3D iPhone) -->
+   <!-- 4. Mobile Phone App -->
    <div id="obj-phone" class="scrolly-item" style="opacity: 0;">
       <ScrollyPhone />
    </div>
 
-   <!-- 5. Location / Radar (Premium 3D Location Marker) -->
+   <!-- 5. Location / Radar -->
    <div id="obj-location" class="scrolly-item" style="opacity: 0;">
       <ScrollyLocation />
    </div>
 
-   <!-- 6. Communication Hub (Premium Holographic Sphere) -->
+   <!-- 6. Communication Hub -->
    <div id="obj-comms" class="scrolly-item" style="opacity: 0;">
       <ScrollyPhoneIcon />
+   </div>
+
+   <!-- NEW: Enterprise/ERP Core -->
+   <div id="obj-enterprise" class="scrolly-item" style="opacity: 0;">
+      <ScrollyEnterpriseCore />
+   </div>
+
+   <!-- NEW: Analytics/Insights -->
+   <div id="obj-analytics" class="scrolly-item" style="opacity: 0;">
+      <ScrollyAnalytics />
+   </div>
+
+   <!-- NEW: Network Node Mesh (API) -->
+   <div id="obj-network" class="scrolly-item" style="opacity: 0;">
+      <ScrollyNetwork />
    </div>
 </div>
 
@@ -247,6 +265,49 @@ function initScrollyObjects() {
             }
 
             // Handle UI Background & Internal App Scrolling changes smoothly
+            // Interactive scroll physics for Enterprise Core
+            if(objId === 'enterprise') {
+                const cube = document.querySelector('.enterprise-core-canvas .main-cube') as HTMLElement;
+                const inner = document.querySelector('.enterprise-core-canvas .inner-core') as HTMLElement;
+                const sats = document.querySelectorAll('.enterprise-core-canvas .satellite');
+                
+                if (cube && inner) {
+                    // Cube faces separate (Disassemble) based on scroll
+                    cube.style.transform = `scale(${1 + Math.max(0, clampedProgress * 0.5)}) rotateX(${clampedProgress * 20}deg)`;
+                    inner.style.transform = `translateZ(${clampedProgress * 100}px) scale(${1 + Math.abs(clampedProgress) * 0.3})`;
+                }
+            }
+
+            // Interactive scroll physics for Analytics
+            if(objId === 'analytics') {
+                const bars = document.querySelectorAll('.analytics-canvas .bar');
+                const sphere = document.querySelector('.analytics-canvas .insight-sphere') as HTMLElement;
+                if(bars.length > 0 && sphere) {
+                    // Bars heighten based on scroll intensity
+                    bars.forEach((bar, i) => {
+                        (bar as HTMLElement).style.height = `${160 + (i * 10) + (Math.abs(clampedProgress) * 40)}px`;
+                    });
+                    sphere.style.transform = `scale(${1 + Math.abs(clampedProgress) * 0.2}) translateZ(${clampedProgress * 50}px)`;
+                }
+            }
+
+            // Interactive scroll physics for Network Mesh
+            if(objId === 'network') {
+                const nodes = document.querySelectorAll('.network-canvas .node');
+                const core = document.querySelector('.network-canvas .power-core') as HTMLElement;
+                if(nodes.length > 0 && core) {
+                    // Nodes expand outwards (Network Expansion)
+                    nodes.forEach((node, i) => {
+                        const basePos = 150 + (Math.abs(clampedProgress) * 50);
+                        const x = (i % 2 === 0 ? 1 : -1) * basePos;
+                        const y = (i % 3 === 0 ? 1 : -1) * basePos;
+                        const z = (i % 5 === 0 ? 1 : -1) * basePos;
+                        (node as HTMLElement).style.transform = `translate3d(${x}px, ${y}px, ${z}px) scale(${1 + Math.abs(clampedProgress) * 0.5})`;
+                    });
+                    core.style.transform = `scale(${1 + Math.abs(clampedProgress) * 1.5})`;
+                }
+            }
+
             if(objId === 'phone') {
                 const screen = document.getElementById('phone-screen-inner');
                 const scrollView = document.getElementById('phone-scroll-view');

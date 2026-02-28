@@ -1,0 +1,41 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyAnalytics from '../../components/ScrollyAnalytics.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+---
+
+<DetailLayout 
+  title="Veri Analitiği & İçgörü | Explorience"
+  description="Karar alma süreçlerinizi veriyle güçlendirin. Kompleks verileri anlamlı hikayelere dönüştürüyoruz."
+  lang={lang}
+>
+  <div slot="showcase">
+    <ScrollyAnalytics />
+  </div>
+
+  <div class="detail-section">
+    <span class="category-tag">ANALİTİK</span>
+    <h1 class="giant-text">Yeni Nesil İçgörü</h1>
+    <p class="subtitle-text">
+      Karmaşık veri setlerinden anlamlı kararlar çıkarın. Raporlamak yetmez; verinin ne anlattığını anlamak gerekir.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Power BI & Tableau</h3>
+        <p>Gelişmiş görselleştirme araçlarıyla verinizi konuşturuyoruz.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Tahminleme Modelleri</h3>
+        <p>Geçmiş veriden geleceği öngören istatistiksel analizler.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Otonom Dashboard</h3>
+        <p>Kendi kendine güncellenen akıllı raporlama sistemleri.</p>
+      </div>
+    </div>
+  </div>
+</DetailLayout>

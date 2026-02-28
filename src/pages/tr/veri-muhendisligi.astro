@@ -1,0 +1,41 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyServerRack from '../../components/ScrollyServerRack.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+---
+
+<DetailLayout 
+  title="Veri Mühendisliği & Pipeline | Explorience"
+  description="Kesintisiz ve gerçek zamanlı veri akış sistemleri. Karmaşık veri kaynaklarını saniyeler içinde işleyerek analitiğe hazır hale getiriyoruz."
+  lang={lang}
+>
+  <div slot="showcase">
+    <ScrollyServerRack />
+  </div>
+
+  <div class="detail-section">
+    <span class="category-tag">VERİ MÜHENDİSLİĞİ</span>
+    <h1 class="giant-text">Data Pipeline</h1>
+    <p class="subtitle-text">
+      Ham veriyi aksiyona dönüştüren otoyollar inşa ediyoruz. Modern veri mimarilerinde hız ve güvenilirlik her şeydir.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>ETL & ELT</h3>
+        <p>Dağınık verileri topluyor, temizliyor ve merkezi bir noktada birleştiriyoruz.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Real-time Streaming</h3>
+        <p>Kafka ve RabbitMQ gibi teknolojilerle milisaniyelik veri işleme kapasitesi.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Data Lakehouse</h3>
+        <p>Hem esnek hem de performanslı modern depolama çözümleri.</p>
+      </div>
+    </div>
+  </div>
+</DetailLayout>

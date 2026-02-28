@@ -1,0 +1,41 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyNetwork from '../../components/ScrollyNetwork.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+---
+
+<DetailLayout 
+  title="API & Mikroservis Entegrasyonu | Explorience"
+  description="Sistemlerinizi birbirine bağlayın. Ölçeklenebilir, güvenli ve esnek microservices mimarileri."
+  lang={lang}
+>
+  <div slot="showcase">
+    <ScrollyNetwork />
+  </div>
+
+  <div class="detail-section">
+    <span class="category-tag">ENTEGRASYON</span>
+    <h1 class="giant-text">API Ecosystem</h1>
+    <p class="subtitle-text">
+      Parçalanmış sistemler arasında köprüler kuruyoruz. Modern API mimarileriyle iş süreçlerinizi senkronize ediyoruz.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Microservices</h3>
+        <p>Dağınık ve ölçeklenebilir altyapılar.</p>
+      </div>
+      <div class="feature-card">
+        <h3>API Gateway</h3>
+        <p>Güvenli ve hızlı trafik yönetimi.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Webhooks</h3>
+        <p>Olay tabanlı (event-driven) gerçek zamanlı sistemler.</p>
+      </div>
+    </div>
+  </div>
+</DetailLayout>

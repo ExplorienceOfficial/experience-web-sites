@@ -1,0 +1,41 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ScrollyAnalytics from '../../components/ScrollyAnalytics.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<DetailLayout 
+  title="Analytics & Insights | Explorience"
+  description="Power your decision-making processes with data. We transform complex data into meaningful stories."
+  lang={lang}
+>
+  <div slot="showcase">
+    <ScrollyAnalytics />
+  </div>
+
+  <div class="detail-section">
+    <span class="category-tag">ANALYTICS</span>
+    <h1 class="giant-text">Next-Gen Insight</h1>
+    <p class="subtitle-text">
+      Draw meaningful conclusions from complex data sets. Reporting isn't enough; you need to understand the story.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Power BI & Tableau</h3>
+        <p>Talk to your data with advanced visualization tools.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Predictive Models</h3>
+        <p>Statistical analyses that foresee the future from past data.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Autonomous Dashboard</h3>
+        <p>Self-updating smart reporting systems.</p>
+      </div>
+    </div>
+  </div>
+</DetailLayout>

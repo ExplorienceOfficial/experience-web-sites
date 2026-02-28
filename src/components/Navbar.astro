@@ -23,8 +23,13 @@ const { lang, currentPath, t } = Astro.props;
       <div class="dropdown-content">
         <a href={`/${lang}/${lang === 'tr' ? 'ai-cozumleri' : 'ai-solutions'}`}>{t.nav.ai}</a>
         <a href={`/${lang}/${lang === 'tr' ? 'veri-analitik' : 'data-analytics'}`}>{t.nav.data}</a>
+        <div class="dropdown-submenu">
+          <a href={`/${lang}/${lang === 'tr' ? 'veri-muhendisligi' : 'data-engineering'}`}>{lang === 'tr' ? 'Veri Mühendisliği' : 'Data Engineering'}</a>
+          <a href={`/${lang}/${lang === 'tr' ? 'analitik-isgoru' : 'analytics-insights'}`}>{lang === 'tr' ? 'Analitik & İçgörü' : 'Analytics & Insights'}</a>
+        </div>
         <a href={`/${lang}/${lang === 'tr' ? 'erp-kurumsal' : 'erp-enterprise'}`}>{t.nav.erp}</a>
         <a href={`/${lang}/${lang === 'tr' ? 'web-mobil-cozumler' : 'web-mobile-solutions'}`}>{t.nav.apps}</a>
+        <a href={`/${lang}/${lang === 'tr' ? 'api-entegrasyon' : 'api-integration'}`}>{lang === 'tr' ? 'API Entegrasyon' : 'API Integration'}</a>
       </div>
     </div>
     <a href={`/${lang}/#sec-contact`} class="nav-link">{t.nav.contact}</a>
@@ -182,14 +187,26 @@ const { lang, currentPath, t } = Astro.props;
     height: 20px;
   }
   .dropdown-content a {
-    color: var(--text-color);
-    padding: 0.8rem 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 12px 16px;
     text-decoration: none;
     display: block;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
-    opacity: 0.6;
+    transition: all 0.2s ease;
   }
+
+  .dropdown-submenu {
+    padding-left: 1rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.05);
+    margin: 5px 0;
+  }
+
+  .dropdown-submenu a {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
   .dropdown-content a:hover {
     background: rgba(255, 255, 255, 0.05);
     color: var(--highlight-color);
