@@ -73,13 +73,13 @@ import ScrollyNetwork from './ScrollyNetwork.astro';
    top: 50%; left: 50%;
    transform-origin: center center;
    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-   will-change: transform, opacity;
    transform-style: preserve-3d;
    pointer-events: none;
 }
 
-.scrolly-item > :global(*) {
-   pointer-events: auto !important; /* Force all hitboxes inside to work */
+/* Yalnızca aktif olan obje fare etkileşimlerini alır! */
+.scrolly-item.is-active > :global(*) {
+   pointer-events: auto !important;
 }
 </style>
 
@@ -143,7 +143,7 @@ function initScrollyObjects() {
          const dist = Math.abs(cardCenter - screenCenter);
          
          // Tightened trigger zone prevents objects bleeding into intro or footer
-         if (dist < minDistance && dist < wh * 0.8) {
+         if (dist < minDistance && dist < wh * 0.6) {
              minDistance = dist;
              activeCard = cards[i];
          }
@@ -163,11 +163,15 @@ function initScrollyObjects() {
 
          if (objId && objs[objId]) {
             if (currentObjId !== objId) {
-               if(currentObjId && objs[currentObjId]) objs[currentObjId].style.opacity = '0';
+               if(currentObjId && objs[currentObjId]) {
+                  objs[currentObjId].style.opacity = '0';
+                  objs[currentObjId].classList.remove('is-active');
+               }
                currentObjId = objId;
             }
             // User requested objects not to disappear and come back. Always visible while active.
             objs[currentObjId].style.opacity = '1';
+            objs[currentObjId].classList.add('is-active');
 
             const clampedProgress = Math.max(-2, Math.min(2, progress));
 
@@ -327,8 +331,16 @@ function initScrollyObjects() {
          } else {
              if(currentObjId && objs[currentObjId]) {
                  objs[currentObjId].style.opacity = '0';
+                 objs[currentObjId].classList.remove('is-active');
                  currentObjId = null;
              }
+         }
+      } else {
+         // If activeCard is null (all cards out of 0.6wh bounds), hide the object
+         if(currentObjId && objs[currentObjId]) {
+             objs[currentObjId].style.opacity = '0';
+             objs[currentObjId].classList.remove('is-active');
+             currentObjId = null;
          }
       }
    });
