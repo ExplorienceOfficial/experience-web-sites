@@ -36,5 +36,9 @@ yarn-error.log*
 .astro/
 .wrangler/
 
+# opennext / cloudflare build output
+.open-next/
+cloudflare-env.d.ts
+
 # local backup of the previous Astro stack (kept locally, not in the repo)
 legacy-astro/
