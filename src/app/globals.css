@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #0d0e12;
+  color: #ffffff;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Hide scrollbar but keep scroll */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+body {
+  scrollbar-width: none;
+}
+
+/* Selection — per spec */
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Custom cursor — hide the native one on precise pointers */
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  input,
+  [data-cursor],
+  [role='button'] {
+    cursor: none;
+  }
+}
+
+@layer utilities {
+  /* IntersectionObserver reveal — hidden / visible states (spec) */
+  .reveal {
+    transition: all 700ms ease-out;
+  }
+  .reveal-hidden {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  .reveal-shown {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Cosmic Energy kicker — soft, futuristic colour flow through the trio
+   (#8A2BE2 · #00FFFF · #FF6347): start / middle / end of the palette. */
+@keyframes cosmic-border {
+  0% { border-color: #8a2be2; }
+  33% { border-color: #00ffff; }
+  66% { border-color: #ff6347; }
+  100% { border-color: #8a2be2; }
+}
+@keyframes cosmic-flow {
+  0% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 5px rgba(138, 43, 226, 0.45));
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.5));
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 5px rgba(138, 43, 226, 0.45));
+  }
+}
+.cosmic-badge {
+  border-color: #8a2be2;
+  animation: cosmic-border 12s ease-in-out infinite;
+}
+.cosmic-text {
+  background: linear-gradient(
+    90deg,
+    #8a2be2,
+    #00ffff,
+    #ff6347,
+    #00ffff,
+    #8a2be2
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: cosmic-flow 12s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-badge,
+  .cosmic-text {
+    animation: none;
+  }
+  .cosmic-text {
+    background-position: 50% 50%;
+  }
+}

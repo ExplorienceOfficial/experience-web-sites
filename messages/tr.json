@@ -1,0 +1,153 @@
+{
+  "site": {
+    "title": "Explorience — Net. Kesin. Otomatik.",
+    "description": "Explorience, şirketinizin çalışma biçimine netlik, hassasiyet ve verimlilik getiren otomasyonlar tasarlar.",
+    "keywords": "Explorience, Yapay Zeka Otomasyonu, Yapay Zeka Entegrasyonu, Yapay Zeka Ajanı, Makine Öğrenmesi, Otomasyon, Ankara"
+  },
+  "loader": {
+    "line": "Deneyim hazırlanıyor"
+  },
+  "nova": {
+    "nav": {
+      "projects": "Hizmetler",
+      "about": "Hakkımızda",
+      "blog": "İçgörü",
+      "contact": "İletişim",
+      "cta": "Ücretsiz Danışmanlık Al",
+      "menu": "Menü",
+      "close": "Kapat"
+    },
+    "hero": {
+      "services": ["YAPAY ZEKA OTOMASYONU", "YAPAY ZEKA ENTEGRASYONU", "YAPAY ZEKA AJANI GELİŞTİRME"],
+      "intro": "Şirketinizin çalışma biçimine netlik, hassasiyet ve verimlilik getiren otomasyonlar tasarlıyoruz.",
+      "badge": "100+ İşletmeyi Otomatikleştiriyoruz",
+      "titleLineOne": "Net. Kesin.",
+      "titleLineTwo": "Otomatik.",
+      "talk": "Bizimle konuş",
+      "role": "Explorience ekibi",
+      "book": "15 dk görüşme ayarla"
+    },
+    "capability": {
+      "badge": "Talebe Göre İçgörü",
+      "intro": "Yapay zekamız yalnızca yanıt vermez — yorumlar, keskinleştirir ve ihtiyacınız olan sinyali sunar.",
+      "titleLineOne": "Görmeyi öğren",
+      "titleLineTwo": "kusursuzca.",
+      "body": "İlk eskizden nihai render'a kadar Explorience, ham niyeti ekibinizin harekete geçebileceği kararlara dönüştürür — sessizce, hassas ve hızlı.",
+      "runDemo": "Demoyu çalıştır",
+      "freeConsult": "Ücretsiz danışmanlık",
+      "rows": [
+        {
+          "index": "01",
+          "title": "Gerçek zamanlı görüş",
+          "body": "Bağlamı anında okur ve siz sormadan önemli olanı öne çıkarır."
+        },
+        {
+          "index": "02",
+          "title": "Katmanlı içgörü",
+          "body": "İpi kaybetmeden kaba taslaktan keskin çıktıya geçer."
+        },
+        {
+          "index": "03",
+          "title": "Uyarlanabilir hız",
+          "body": "Ritminizi öğrenir ve her geçişte her adımı sıkılaştırır."
+        }
+      ]
+    }
+  },
+  "solutions": {
+    "tag": "Neler İnşa Ediyoruz",
+    "title": "Modern sorunlara yeni nesil cevaplar",
+    "lead": "Dokuz disiplin, tek ekip — uygulamalı yapay zekadan müşterilerinizin dokunduğu arayüzlere kadar.",
+    "items": [
+      {
+        "tag": "YAPAY ZEKA",
+        "title": "GenAI & LLM",
+        "desc": "İş süreçlerinizi otomatikleştiren akıllı asistanlar ve özel modeller. RAG mimarisiyle kurumsal verinizi güvenle kullanan yapay zeka geliştiriyoruz."
+      },
+      {
+        "tag": "MAKİNE ÖĞRENMESİ",
+        "title": "Tahminleme",
+        "desc": "Geleceği öngören ileri makine öğrenmesi algoritmaları — belirsizliği kaldıran talep tahmini, kayıp analizi ve dinamik fiyatlandırma."
+      },
+      {
+        "tag": "BÜYÜK VERİ",
+        "title": "Mimari",
+        "desc": "Ölçeklenebilir Veri Ambarı ve Lakehouse tasarımları. Verinizi silolardan kurtarır, modern bulutta tek doğruluk kaynağı oluştururuz."
+      },
+      {
+        "tag": "VERİ MÜHENDİSLİĞİ",
+        "title": "Veri Hattı",
+        "desc": "Kesintisiz, gerçek zamanlı veri akışı (ETL/ELT). Karmaşık kaynakları saniyeler içinde işler, analize hazır hale getiririz."
+      },
+      {
+        "tag": "ANALİTİK",
+        "title": "İçgörü",
+        "desc": "Ham veriden stratejik kararlara en kısa yol. Power BI ve Tableau entegrasyonlarıyla herkesin hikayeyi anlamasını sağlarız."
+      },
+      {
+        "tag": "KURUMSAL",
+        "title": "ERP & CRM",
+        "desc": "Kaynaklarınızı tek merkezden yönetin, verimliliği artırın. Özel modüller süreçlerinizi dijitalleştirir, insan hatasını en aza indirir."
+      },
+      {
+        "tag": "ENTEGRASYON",
+        "title": "API & Mikroservis",
+        "desc": "Dağınık sistemleri birbirine bağlayan güçlü altyapılar. Eski sistemleri modern dünyayla konuşturur, esnek ve güvenli entegrasyonlar kurarız."
+      },
+      {
+        "tag": "DİJİTAL YÜZÜNÜZ",
+        "title": "Web & Mobil",
+        "desc": "iOS, Android ve Web'de deneyimi zirveye taşıyan arayüzler. React Native ve Flutter ile çapraz platform, Next.js ile ultra hızlı web."
+      },
+      {
+        "tag": "SÜRÜKLEYİCİ",
+        "title": "WebGL & 3D",
+        "desc": "Tarayıcının sınırlarını zorlayan etkileşimli 3D. Ürünlerinizi ve vizyonunuzu gerçek zamanlı WebGL ile sürükleyici kılarız."
+      }
+    ]
+  },
+  "about": {
+    "tag": "Hikayemiz",
+    "title": "Yeni bir yolculuk başlıyor",
+    "lead": "Genç, cesur ve durmak bilmeyen — birlikte çalışmak isteyeceğimiz stüdyoyu inşa ediyoruz.",
+    "cards": [
+      {
+        "tag": "MİSYON",
+        "title": "Dönüşüm",
+        "desc": "Kuralları yeniden yazmak ve işletmeleri geleceğe taşımak için buradayız."
+      },
+      {
+        "tag": "VİZYON",
+        "title": "Küresel",
+        "desc": "Daha yeni başlıyoruz ama hedefimiz tüm dünya."
+      },
+      {
+        "tag": "YAKLAŞIM",
+        "title": "Tutku",
+        "desc": "Genç, dinamik ve başarıya aç bir ekibiz."
+      }
+    ]
+  },
+  "contact": {
+    "tag": "Hazır olduğunuzda",
+    "titleLineOne": "Geleceği inşa etmeye",
+    "titleLineTwo": "bugün başlayın.",
+    "body": "Nereye gitmek istediğinizi söyleyin. Oraya giden en kısa ve en keskin rotayı çizelim.",
+    "cta": "İletişime geç",
+    "officeTag": "OFİSİMİZ",
+    "office": "Ankara",
+    "address": "Çankaya, Teknoloji Vadisi · No: 123, Kat: 5",
+    "emailTag": "E-POSTA",
+    "email": "info@explorience.com"
+  },
+  "footer": {
+    "tagline": "Geleceği kodluyoruz.",
+    "rights": "© 2026 Explorience. Tüm hakları saklıdır."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Sinyal Kayboldu",
+    "message": "Bu rota ağın dışına sürüklendi. Sizi geri yönlendirelim.",
+    "btn": "Ana sayfaya dön"
+  }
+}

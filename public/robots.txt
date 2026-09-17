@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.explorience.com.tr/sitemap-index.xml
+Sitemap: https://explorience.com/sitemap.xml

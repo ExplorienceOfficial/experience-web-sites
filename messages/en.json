@@ -1,0 +1,153 @@
+{
+  "site": {
+    "title": "Explorience — Clear. Precise. Automated.",
+    "description": "Explorience designs automation that brings clarity, precision, and efficiency to the way your company operates.",
+    "keywords": "Explorience, AI Automation, AI Integration, AI Agent Development, Artificial Intelligence, Machine Learning, Automation, Ankara"
+  },
+  "loader": {
+    "line": "Preparing the experience"
+  },
+  "nova": {
+    "nav": {
+      "projects": "Services",
+      "about": "About",
+      "blog": "Insight",
+      "contact": "Contact",
+      "cta": "Get Free Consultation",
+      "menu": "Menu",
+      "close": "Close"
+    },
+    "hero": {
+      "services": ["AI AUTOMATION", "AI INTEGRATION", "AI AGENT DEVELOPMENT"],
+      "intro": "We design automation that brings clarity, precision, and efficiency to the way your company operates.",
+      "badge": "We Automate 100+ Businesses",
+      "titleLineOne": "Clear. Precise.",
+      "titleLineTwo": "Automated.",
+      "talk": "Talk with us",
+      "role": "Explorience team",
+      "book": "Book 15-mins call"
+    },
+    "capability": {
+      "badge": "Insight On Demand",
+      "intro": "Our AI doesn't just respond — it interprets, sharpens, and delivers the signal you need.",
+      "titleLineOne": "Learn to see",
+      "titleLineTwo": "brilliantly.",
+      "body": "From the first sketch to the final render, Explorience turns raw intent into decisions your team can act on — quietly, precisely, at speed.",
+      "runDemo": "Run the demo",
+      "freeConsult": "Free consultation",
+      "rows": [
+        {
+          "index": "01",
+          "title": "Real-time vision",
+          "body": "Reads context as it happens and surfaces what matters before you ask."
+        },
+        {
+          "index": "02",
+          "title": "Layered insight",
+          "body": "Moves from rough outline to sharp output without losing the thread."
+        },
+        {
+          "index": "03",
+          "title": "Adaptive speed",
+          "body": "Learns your cadence and tightens every pass as you work."
+        }
+      ]
+    }
+  },
+  "solutions": {
+    "tag": "What we build",
+    "title": "New-generation answers to modern problems",
+    "lead": "Nine disciplines, one team — from applied AI to the interfaces your customers touch.",
+    "items": [
+      {
+        "tag": "ARTIFICIAL INTELLIGENCE",
+        "title": "GenAI & LLM",
+        "desc": "Intelligent assistants and custom models that automate your business processes. We build AI that securely uses your internal data with RAG architecture."
+      },
+      {
+        "tag": "MACHINE LEARNING",
+        "title": "Prediction",
+        "desc": "Advanced machine-learning algorithms that foresee the future — demand forecasting, churn analysis, and dynamic pricing that remove uncertainty."
+      },
+      {
+        "tag": "BIG DATA",
+        "title": "Architecture",
+        "desc": "Scalable Data Warehouse and Lakehouse designs. We rescue your data from silos and create a single source of truth on modern cloud."
+      },
+      {
+        "tag": "DATA ENGINEERING",
+        "title": "Pipeline",
+        "desc": "Seamless, real-time data flow (ETL/ELT). We process complex sources in seconds and make them analytics-ready."
+      },
+      {
+        "tag": "ANALYTICS",
+        "title": "Insight",
+        "desc": "The shortest path from raw data to strategic decisions. Power BI and Tableau integrations so everyone understands the story."
+      },
+      {
+        "tag": "ENTERPRISE",
+        "title": "ERP & CRM",
+        "desc": "Run your resources from a single center and raise efficiency. Custom modules digitalize your processes and minimize human error."
+      },
+      {
+        "tag": "INTEGRATION",
+        "title": "API & Microservices",
+        "desc": "Strong infrastructures connecting scattered systems. We make legacy talk to the modern world with flexible, secure integrations."
+      },
+      {
+        "tag": "YOUR DIGITAL FACE",
+        "title": "Web & Mobile",
+        "desc": "Interfaces that push UX to the peak on iOS, Android and Web. Cross-platform with React Native and Flutter, ultra-fast web with Next.js."
+      },
+      {
+        "tag": "IMMERSIVE",
+        "title": "WebGL & 3D",
+        "desc": "Interactive 3D that pushes the boundaries of the browser. Immerse your products and vision with real-time WebGL."
+      }
+    ]
+  },
+  "about": {
+    "tag": "Our story",
+    "title": "A new journey begins",
+    "lead": "Young, bold and relentless — building the studio we always wanted to work with.",
+    "cards": [
+      {
+        "tag": "MISSION",
+        "title": "Transformation",
+        "desc": "We are here to rewrite the rules and carry businesses into the future."
+      },
+      {
+        "tag": "VISION",
+        "title": "Global",
+        "desc": "We are just at the beginning, but our goal is the world."
+      },
+      {
+        "tag": "APPROACH",
+        "title": "Passion",
+        "desc": "We are a young, dynamic, and hungry-for-success team."
+      }
+    ]
+  },
+  "contact": {
+    "tag": "Ready when you are",
+    "titleLineOne": "Start building the",
+    "titleLineTwo": "future today.",
+    "body": "Tell us where you want to go. We'll map the shortest, sharpest route there.",
+    "cta": "Get in touch",
+    "officeTag": "OUR OFFICE",
+    "office": "Ankara",
+    "address": "Çankaya, Technology Valley · No: 123, Floor: 5",
+    "emailTag": "EMAIL",
+    "email": "info@explorience.com"
+  },
+  "footer": {
+    "tagline": "Coding the future.",
+    "rights": "© 2026 Explorience. All rights reserved."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Signal Lost",
+    "message": "This route drifted outside the network. Let's route you back.",
+    "btn": "Return home"
+  }
+}
